@@ -3,6 +3,7 @@
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
     <AndroidDesignerPreferredDevice>Nexus 4</AndroidDesignerPreferredDevice>
-    <SelectedDevice>Samsung GT-I9195</SelectedDevice>
+    <SelectedDevice>LGE Nexus 5X</SelectedDevice>
+    <DefaultDevice>Android_Accelerated_x86</DefaultDevice>
   </PropertyGroup>
 </Project>

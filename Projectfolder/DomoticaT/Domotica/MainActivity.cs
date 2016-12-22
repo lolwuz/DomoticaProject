@@ -165,7 +165,7 @@ namespace Domotica
 
 
         //Send command to server and wait for response (blocking)
-        //Method should only be called when socket existst
+        //Method should only be called when so cket existst
         public string ExecuteCommand(string cmd)
         {
             byte[] buffer = new byte[4]; // response is always 4 bytes

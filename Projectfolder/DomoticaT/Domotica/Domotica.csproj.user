@@ -3,7 +3,7 @@
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
     <AndroidDesignerPreferredDevice>Nexus 5X</AndroidDesignerPreferredDevice>
-    <SelectedDevice>Android_Accelerated_x86</SelectedDevice>
+    <SelectedDevice>LGE Nexus 5X</SelectedDevice>
     <DefaultDevice>Android_Accelerated_x86</DefaultDevice>
     <AndroidDesignerPreferredTheme>Theme.Custom</AndroidDesignerPreferredTheme>
   </PropertyGroup>
