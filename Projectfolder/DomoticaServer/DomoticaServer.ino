@@ -38,7 +38,7 @@
 // Include files.
 #include <SPI.h>                  // Ethernet shield uses SPI-interface
 #include <Ethernet.h>             // Ethernet library (use Ethernet2.h for new ethernet shield v2)
-// #include <NewRemoteTransmitter.h> // Remote Control, Gamma, APA3
+#include <NewRemoteTransmitter.h> // Remote Control, Gamma, APA3
 //#include <RemoteTransmitter.h>    // Remote Control, Action, old model
 //#include <RCSwitch.h>           // Remote Control, Action, new model
 
@@ -47,7 +47,7 @@ byte mac[] = { 0x40, 0x6c, 0x8f, 0x36, 0x84, 0x8a }; // Ethernet adapter shield 
 IPAddress ip(192, 168, 1, 3); // STATIC IP.
 int ethPort = 3300;                                  // Take a free port (check your router)
 
-#define RFPin        3  // output, pin to control the RF-sender (and Click-On Click-Off-device)
+#define RFPin        11  // output, pin to control the RF-sender (and Click-On Click-Off-device)
 #define lowPin       5  // output, always LOW
 #define highPin      6  // output, always HIGH
 #define switchPin    7  // input, connected to some kind of inputswitch
@@ -55,9 +55,11 @@ int ethPort = 3300;                                  // Take a free port (check 
 #define infoPin      9  // output, more information
 #define analogPin    0  // sensor value
 
+
 EthernetServer server(ethPort);              // EthernetServer instance (listening on port <ethPort>).
-//NewRemoteTransmitter apa3Transmitter(unitCodeApa3, RFPin, 260, 3);  // APA3 (Gamma) remote, use pin <RFPin> 
-//ActionTransmitter actionTransmitter(RFPin);  // Remote Control, Action, old model (Impulse), use pin <RFPin>
+NewRemoteTransmitter apa3Transmitter(unitCodeApa3, RFPin, 260, 3);  // APA3 (Gamma) remote, use pin <RFPin> 
+
+																	//ActionTransmitter actionTransmitter(RFPin);  // Remote Control, Action, old model (Impulse), use pin <RFPin>
 //RCSwitch mySwitch = RCSwitch();            // Remote Control, Action, new model (on-off), use pin <RFPin>
 
 char actionDevice = 'A';                 // Variable to store Action Device id ('A', 'B', 'C')
@@ -87,6 +89,7 @@ void setup()
    digitalWrite(RFPin, LOW);
    digitalWrite(ledPin, LOW);
    digitalWrite(infoPin, LOW);
+   
 
    //Try to get an IP address from the DHCP server.
    if (Ethernet.begin(mac) == 0)
@@ -153,7 +156,7 @@ void loop()
 // Choose and switch your Kaku device, state is true/false (HIGH/LOW)
 void switchDefault(bool state)
 {   
-   // apa3Transmitter.sendUnit(0, state);          // APA3 Kaku (Gamma)                
+   apa3Transmitter.sendUnit(0, state);          // APA3 Kaku (Gamma)                
    delay(100);
    // actionTransmitter.sendSignal(unitCodeActionOld, actionDevice, state);  // Action Kaku, old model
    delay(100);

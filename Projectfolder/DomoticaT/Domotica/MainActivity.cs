@@ -1,4 +1,4 @@
-﻿// Xamarin/C# app voor de besturing van een Arduino (Uno met Ethernet Shield) m.b.v. een socket-interface.
+﻿   // Xamarin/C# app voor de besturing van een Arduino (Uno met Ethernet Shield) m.b.v. een socket-interface.
 // Dit programma werkt samen met het Arduino-programma DomoticaServer.ino
 // De besturing heeft betrekking op het aan- en uitschakelen van een Arduino pin, waar een led aan kan hangen of, 
 // t.b.v. het Domotica project, een RF-zender waarmee een klik-aan-klik-uit apparaat bestuurd kan worden.
@@ -116,7 +116,7 @@ namespace Domotica
                     if (socket != null) // only if socket exists
                     {
                         // Send a command to the Arduino server on every tick (loop though list)
-                        UpdateGUI(executeCommand(commandList[listIndex].Item1), commandList[listIndex].Item2);  //e.g. UpdateGUI(executeCommand("s"), textViewChangePinStateValue);
+                        UpdateGUI(ExecuteCommand(commandList[listIndex].Item1), commandList[listIndex].Item2);  //e.g. UpdateGUI(executeCommand("s"), textViewChangePinStateValue);
                         if (++listIndex >= commandList.Count) listIndex = 0;
                     }
                     else timerSockets.Enabled = false;  // If socket broken -> disable timer
@@ -166,7 +166,7 @@ namespace Domotica
 
         //Send command to server and wait for response (blocking)
         //Method should only be called when socket existst
-        public string executeCommand(string cmd)
+        public string ExecuteCommand(string cmd)
         {
             byte[] buffer = new byte[4]; // response is always 4 bytes
             int bytesRead = 0;

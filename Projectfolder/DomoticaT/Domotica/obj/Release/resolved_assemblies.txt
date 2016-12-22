@@ -1,0 +1,7 @@
+C:\Users\Marten Hoekstra\Documents\GitHub\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Release\android\assets\DomoticaT.dll
+C:\Users\Marten Hoekstra\Documents\GitHub\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Release\android\assets\Java.Interop.dll
+C:\Users\Marten Hoekstra\Documents\GitHub\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Release\android\assets\Mono.Android.dll
+C:\Users\Marten Hoekstra\Documents\GitHub\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Release\android\assets\mscorlib.dll
+C:\Users\Marten Hoekstra\Documents\GitHub\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Release\android\assets\System.Core.dll
+C:\Users\Marten Hoekstra\Documents\GitHub\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Release\android\assets\System.dll
+C:\Users\Marten Hoekstra\Documents\GitHub\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Release\android\assets\System.Runtime.Serialization.dll

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="theme_custom_background">#fffffeff</color><color name="theme_devicedefault_background">#ffeceff1</color>
+  <style name="Theme.Custom" parent="@android:style/Theme.DeviceDefault">
+    <item name="android:colorBackground">@color/theme_custom_background</item>
+    <item name="android:windowBackground">?android:attr/colorBackground</item>
+    <item name="android:textColorPrimary">#ff252522</item>
+    <item name="android:textColorSecondary">#ff000000</item>
+  <item name="android:colorButtonNormal">#ff03a9f4</item><item name="android:colorControlNormal">#ff2196f3</item><item name="android:colorPrimary">#ff607d8b</item></style>
+</resources>
