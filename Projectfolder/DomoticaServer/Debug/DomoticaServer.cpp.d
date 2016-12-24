@@ -26,4 +26,6 @@ C:\Users\Marten\ Hoekstra\AppData\Local\Temp\VMBuilds\DomoticaServer\uno\Debug\D
  C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/Udp.h \
  C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/Stream.h \
  C:\Program\ Files\ (x86)\Arduino\libraries\NewRemoteSwitch/NewRemoteTransmitter.h \
+ C:\Program\ Files\ (x86)\Arduino\libraries\OneWire/OneWire.h \
+ C:\Program\ Files\ (x86)\Arduino\libraries\Arduino-Temperature-Control-Library-master/DallasTemperature.h \
  C:\Program\ Files\ (x86)\Microsoft\ Visual\ Studio\ 14.0\Common7\IDE\Extensions\2a42lusc.mbn\Micro\ Platforms\default\debuggers\VM_DBG/VM_DBG.h

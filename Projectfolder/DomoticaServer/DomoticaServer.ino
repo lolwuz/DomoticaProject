@@ -36,6 +36,8 @@
 #include <SPI.h>                  // Ethernet shield uses SPI-interface
 #include <Ethernet.h>             // Ethernet library (use Ethernet2.h for new ethernet shield v2)
 #include <NewRemoteTransmitter.h> // Remote Control, Gamma, APA3
+#include <OneWire.h>              // Dallas Semiconductor's protocol for DS18B20 temp. http://playground.arduino.cc/Learning/OneWire
+#include <DallasTemperature.h>    // Lib. Om te temperatuur hex. om te zetten naar Graden.
 
 // Set Ethernet Shield MAC address  (check yours)
 byte mac[] = { 0x40, 0x6c, 0x8f, 0x36, 0x84, 0x8a }; // Ethernet adapter shield S. Oosterhaven
@@ -50,6 +52,8 @@ int ethPort = 3300;                                  // Take a free port (check 
 #define infoPin      9  // output, more information
 #define analogPin    1  // sensor value
 
+OneWire ds(3);
+DallasTemperature sensors(&ds);
 
 EthernetServer server(ethPort);              // EthernetServer instance (listening on port <ethPort>).
 NewRemoteTransmitter transmitter(22708690, 2, 265, 3);  // APA3 (Gamma) remote, use pin <RFPin> 
@@ -60,15 +64,14 @@ NewRemoteTransmitter transmitter(22708690, 2, 265, 3);  // APA3 (Gamma) remote, 
 char actionDevice = 'A';                 // Variable to store Action Device id ('A', 'B', 'C')
 bool pinState = false;                   // Variable to store actual pin state
 bool pinChange = false;                  // Variable to store actual pin change
-int  sensorValue = 0;                    // Variable to store actual sensor value
+float sensorValue = 0;                    // Variable to store actual sensor value
 
 void setup()
 {
    Serial.begin(9600);
-   transmitter.sendGroup(true);
-   delay(2000);
-   transmitter.sendGroup(false);
    Serial.println("Domotica project, Arduino Domotica Server\n");
+   Serial.println("Dallas Temperature begin");
+   sensors.begin();
    
    //Init I/O-pins
    pinMode(switchPin, INPUT);            // hardware switch, for changing pin state
@@ -117,6 +120,7 @@ void setup()
 void loop()
 {
    // Listen for incomming connection (app)
+ 
    EthernetClient ethernetClient = server.available();
    if (!ethernetClient) {
       blink(ledPin);
@@ -129,21 +133,20 @@ void loop()
   
    // Do what needs to be done while the socket is connected.
    while (ethernetClient.connected()) 
-   {
-
-      float val = analogRead(analogPin);
-      float mv = ( val/1024.0)*5000; 
-      float cel = mv/10;
-      float farh = (cel*9)/5 + 32;
-      
-      Serial.print("TEMPRATURE = ");
-      Serial.print(cel);
-      Serial.print("*C");
-      Serial.println();
-      delay(1000);
+   {   
+      // You can have more than one IC on the same bus. 
+      // 0 refers to the first IC on the wire
       
       checkEvent(switchPin, pinState);          // update pin state
-      sensorValue = readSensor(0, 100);         // update sensor value
+
+	  Serial.print(" Requesting temperatures...");
+	  sensors.requestTemperatures(); // Send the command to get temperatures
+	  Serial.println("DONE");
+
+	  Serial.print("Temperature for Device 1 is: ");
+	  Serial.print(sensors.getTempCByIndex(0)); // Why "byIndex"? 
+
+	  sensorValue = sensors.getTempCByIndex(0); // update sensor value
         
       // Activate pin based op pinState
       if (pinChange) {
