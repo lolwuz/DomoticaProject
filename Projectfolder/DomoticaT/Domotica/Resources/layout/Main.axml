@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:minWidth="25px"
     android:minHeight="25px"
     android:backgroundTint="#fff5f5dc"
-    xmlns:tools="http://schemas.android.com/tools"
     tools:menu="menu">
     <RelativeLayout
         android:orientation="horizontal"
@@ -91,14 +91,6 @@
             android:id="@+id/buttonConnect"
             android:layout_alignParentLeft="true"
             android:backgroundTint="#add8e6ff" />
-        <Button
-            android:text="@string/button_pin_state_text"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/editTextIPPort"
-            android:id="@+id/buttonChangePinState"
-            android:layout_alignParentRight="true"
-            android:backgroundTint="#add8e6ff" />
         <TextView
             android:text="@string/pin_state_text"
             android:layout_width="150dp"
@@ -147,5 +139,31 @@
             android:layout_alignParentRight="true"
             android:layout_below="@id/textViewSensorValue"
             android:textAppearance="?android:attr/textAppearanceMedium" />
+        <Button
+            android:text="@string/button_pin_state_text"
+            android:id="@+id/buttonChangePinState"
+            android:backgroundTint="#add8e6ff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewDebug" />
     </RelativeLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1"
+        android:baselineAligned="true">
+        <ToggleButton
+            android:id="@+id/toggleButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+        <ToggleButton
+            android:id="@+id/toggleButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+        <ToggleButton
+            android:id="@+id/toggleButton2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 </LinearLayout>

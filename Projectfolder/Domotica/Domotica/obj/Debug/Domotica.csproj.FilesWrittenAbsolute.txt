@@ -1,0 +1,16 @@
+/Users/Marten/DomoticaProject/Projectfolder/Domotica/Domotica/obj/Debug/MonoAndroid,Version=v7.1.AssemblyAttribute.cs
+/Users/Marten/DomoticaProject/Projectfolder/Domotica/Domotica/bin/Debug/Domotica.dll.mdb
+/Users/Marten/DomoticaProject/Projectfolder/Domotica/Domotica/bin/Debug/Domotica.pdb
+/Users/Marten/DomoticaProject/Projectfolder/Domotica/Domotica/bin/Debug/Domotica.dll
+/Users/Marten/DomoticaProject/Projectfolder/Domotica/Domotica/bin/Debug/Domotica.Domotica.apk
+/Users/Marten/DomoticaProject/Projectfolder/Domotica/Domotica/obj/Debug/android/bin/Domotica.Domotica.apk
+/Users/Marten/DomoticaProject/Projectfolder/Domotica/Domotica/obj/Debug/res/layout/main.xml
+/Users/Marten/DomoticaProject/Projectfolder/Domotica/Domotica/obj/Debug/res/values/strings.xml
+/Users/Marten/DomoticaProject/Projectfolder/Domotica/Domotica/obj/Debug/res/drawable/icon.png
+/Users/Marten/DomoticaProject/Projectfolder/Domotica/Domotica/obj/Debug/res/menu/menu.xml
+/Users/Marten/DomoticaProject/Projectfolder/Domotica/Domotica/obj/Debug/R.cs.flag
+/Users/Marten/DomoticaProject/Projectfolder/Domotica/Domotica/bin/Debug/Domotica.Domotica-Signed.apk
+/Users/Marten/DomoticaProject/Projectfolder/Domotica/Domotica/obj/Debug/uploadflags.txt
+/Users/Marten/DomoticaProject/Projectfolder/Domotica/Domotica/obj/Debug/Domotica.dll
+/Users/Marten/DomoticaProject/Projectfolder/Domotica/Domotica/obj/Debug/Domotica.dll.mdb
+/Users/Marten/DomoticaProject/Projectfolder/Domotica/Domotica/obj/Debug/Domotica.pdb

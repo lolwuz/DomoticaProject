@@ -45,6 +45,7 @@ IPAddress ip(192, 168, 1, 3); // STATIC IP.
 int ethPort = 3300;                                  // Take a free port (check your router)
 
 #define RFPin        2  // output, pin to control the RF-sender (and Click-On Click-Off-device)
+#define TempPin      3  // Temp pin onewire.
 #define lowPin       5  // output, always LOW
 #define highPin      6  // output, always HIGH
 #define switchPin    7  // input, connected to some kind of inputswitch
@@ -52,7 +53,7 @@ int ethPort = 3300;                                  // Take a free port (check 
 #define infoPin      9  // output, more information
 #define analogPin    1  // sensor value
 
-OneWire ds(3);
+OneWire ds(TempPin);
 DallasTemperature sensors(&ds);
 
 EthernetServer server(ethPort);              // EthernetServer instance (listening on port <ethPort>).
@@ -64,7 +65,8 @@ NewRemoteTransmitter transmitter(22708690, 2, 265, 3);  // APA3 (Gamma) remote, 
 char actionDevice = 'A';                 // Variable to store Action Device id ('A', 'B', 'C')
 bool pinState = false;                   // Variable to store actual pin state
 bool pinChange = false;                  // Variable to store actual pin change
-float sensorValue = 0;                    // Variable to store actual sensor value
+float temperatureValue = 0;                    // Variable to store actual sensor value
+float photoResistorValue = 0;
 
 void setup()
 {
@@ -89,6 +91,7 @@ void setup()
    digitalWrite(RFPin, HIGH);
    digitalWrite(ledPin, LOW);
    digitalWrite(infoPin, LOW);
+  
 
 
    //Try to get an IP address from the DHCP server.
@@ -123,7 +126,23 @@ void loop()
  
    EthernetClient ethernetClient = server.available();
    if (!ethernetClient) {
+
+      // Temperatuur Onewire
+      Serial.println(" Requesting temperatures...");
+      sensors.requestTemperatures(); // Send the command to get temperatures
+      Serial.println("DONE");
+      Serial.println("Temperature for Device 1 is: ");
+      Serial.println(sensors.getTempCByIndex(0)); // Why "byIndex"? 
+  
+      temperatureValue = sensors.getTempCByIndex(0); // update sensor value
       blink(ledPin);
+      
+      // Digitaal FotoResistor
+      Serial.println("Digitaal waarde: ");
+      Serial.println(analogRead(A0));
+
+      photoResistorValue = analogRead(A0);
+      
       return; // wait for connection and blink LED
    }
 
@@ -139,14 +158,14 @@ void loop()
       
       checkEvent(switchPin, pinState);          // update pin state
 
-	  Serial.print(" Requesting temperatures...");
+	  Serial.println(" Requesting temperatures...");
 	  sensors.requestTemperatures(); // Send the command to get temperatures
 	  Serial.println("DONE");
 
-	  Serial.print("Temperature for Device 1 is: ");
-	  Serial.print(sensors.getTempCByIndex(0)); // Why "byIndex"? 
+	  Serial.println("Temperature for Device 1 is: ");
+	  Serial.println(sensors.getTempCByIndex(0)); // Why "byIndex"? 
 
-	  sensorValue = sensors.getTempCByIndex(0); // update sensor value
+	  temperatureValue = sensors.getTempCByIndex(0); // update sensor value
         
       // Activate pin based op pinState
       if (pinChange) {
@@ -186,11 +205,15 @@ void executeCommand(char cmd)
          // Command protocol
          Serial.print("["); Serial.print(cmd); Serial.print("] -> ");
          switch (cmd) {
-         case 'a': // Report sensor value to the app  
-            intToCharBuf(sensorValue, buf, 4);                // convert to charbuffer
+         case 'a': // Report temperature value to app.
+            intToCharBuf(temperatureValue, buf, 4);                // convert to charbuffer
             server.write(buf, 4);                             // response is always 4 chars (\n included)
             Serial.print("Sensor: "); Serial.println(buf);
             break;
+         case 'b': // Report photoResistor value to app.
+            intToCharBuf(photoResistorValue, buf, 4);
+            server.write(buf, 4);
+            Serial.print("Sensor: "); Serial.println(buf);
          case 's': // Report switch state to the app
             if (pinState) { server.write(" ON\n"); Serial.println("Pin state is ON"); }  // always send 4 chars
             else { server.write("OFF\n"); Serial.println("Pin state is OFF"); }

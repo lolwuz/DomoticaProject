@@ -52,6 +52,10 @@ namespace Domotica
         // Variables (components/controls)
         // Controls on GUI
         Button buttonConnect;
+		//Button buttonLight1;
+		//Button buttonLight2;
+		//Button buttonLight3;
+
         Button buttonChangePinState;
         TextView textViewServerConnect, textViewTimerStateValue;
         public TextView textViewChangePinStateValue, textViewSensorValue, textViewDebugValue;
@@ -72,6 +76,13 @@ namespace Domotica
             // find and set the controls, so it can be used in the code
             buttonConnect = FindViewById<Button>(Resource.Id.buttonConnect);
             buttonChangePinState = FindViewById<Button>(Resource.Id.buttonChangePinState);
+
+			// Light Buttons
+			//buttonLight1 = FindViewById<Button>(Resource.Id.buttonLight1);
+			//buttonLight2 = FindViewById<Button>(Resource.Id.buttonLight2);
+			//buttonLight3 = FindViewById<Button>(Resource.Id.buttonLight3);
+
+			// Divers
             textViewTimerStateValue = FindViewById<TextView>(Resource.Id.textViewTimerStateValue);
             textViewServerConnect = FindViewById<TextView>(Resource.Id.textViewServerConnect);
             textViewChangePinStateValue = FindViewById<TextView>(Resource.Id.textViewChangePinStateValue);
@@ -131,9 +142,35 @@ namespace Domotica
             {
                 buttonChangePinState.Click += (sender, e) =>
                 {
-                    socket.Send(Encoding.ASCII.GetBytes("t"));                 // Send toggle-command to the Arduino
+                    socket.Send(Encoding.ASCII.GetBytes("t"));                 // Turn All lights off command.
                 };
             }
+
+			/*
+			if (buttonLight1 != null)
+			{
+				buttonLight1.Click += (sender, e) =>
+				{
+					socket.Send(Encoding.ASCII.GetBytes("ta"));                 // Licht 1 On/Off
+				};
+			}
+
+			if (buttonLight2 != null)
+			{
+				buttonLight1.Click += (sender, e) =>
+				{
+					socket.Send(Encoding.ASCII.GetBytes("tb"));                 // Licht 2 On/Off
+				};
+			}
+
+			if (buttonLight3 != null)
+			{
+				buttonLight1.Click += (sender, e) =>
+				{
+					socket.Send(Encoding.ASCII.GetBytes("tc"));                 // Licht 3 On/Off
+				};
+			}
+			*/
         }
 
 

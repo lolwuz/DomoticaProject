@@ -1,0 +1,3 @@
+/Users/Marten/DomoticaProject/Projectfolder/DomoticaT/Domotica/obj/Debug/MonoAndroid,Version=v7.1.AssemblyAttribute.cs
+/Users/Marten/DomoticaProject/Projectfolder/DomoticaT/Domotica/obj/Debug/DomoticaT.dll
+/Users/Marten/DomoticaProject/Projectfolder/DomoticaT/Domotica/obj/Debug/DomoticaT.pdb
