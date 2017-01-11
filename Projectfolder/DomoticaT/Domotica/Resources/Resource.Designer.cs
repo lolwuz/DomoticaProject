@@ -79,8 +79,17 @@ namespace Domotica
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f080012
-			public const int abort = 2131230738;
+			// aapt resource value: 0x7f08001c
+			public const int abort = 2131230748;
+			
+			// aapt resource value: 0x7f08000f
+			public const int button1 = 2131230735;
+			
+			// aapt resource value: 0x7f080010
+			public const int button2 = 2131230736;
+			
+			// aapt resource value: 0x7f080011
+			public const int button3 = 2131230737;
 			
 			// aapt resource value: 0x7f08000a
 			public const int buttonChangePinState = 2131230730;
@@ -94,11 +103,32 @@ namespace Domotica
 			// aapt resource value: 0x7f080008
 			public const int editTextIPPort = 2131230728;
 			
-			// aapt resource value: 0x7f080011
-			public const int exit = 2131230737;
+			// aapt resource value: 0x7f08001b
+			public const int exit = 2131230747;
+			
+			// aapt resource value: 0x7f080016
+			public const int photoresistor = 2131230742;
+			
+			// aapt resource value: 0x7f080017
+			public const int photoresistorValue = 2131230743;
 			
 			// aapt resource value: 0x7f080000
 			public const int relativeLayout1 = 2131230720;
+			
+			// aapt resource value: 0x7f080012
+			public const int relativeLayout4 = 2131230738;
+			
+			// aapt resource value: 0x7f080015
+			public const int relativeLayout5 = 2131230741;
+			
+			// aapt resource value: 0x7f080018
+			public const int relativeLayout6 = 2131230744;
+			
+			// aapt resource value: 0x7f080019
+			public const int temperature = 2131230745;
+			
+			// aapt resource value: 0x7f08001a
+			public const int temperatureValue = 2131230746;
 			
 			// aapt resource value: 0x7f08000b
 			public const int textViewChangePinState = 2131230731;
@@ -106,11 +136,11 @@ namespace Domotica
 			// aapt resource value: 0x7f08000c
 			public const int textViewChangePinStateValue = 2131230732;
 			
-			// aapt resource value: 0x7f08000f
-			public const int textViewDebug = 2131230735;
+			// aapt resource value: 0x7f080013
+			public const int textViewDebug = 2131230739;
 			
-			// aapt resource value: 0x7f080010
-			public const int textViewDebugValue = 2131230736;
+			// aapt resource value: 0x7f080014
+			public const int textViewDebugValue = 2131230740;
 			
 			// aapt resource value: 0x7f080005
 			public const int textViewIPAddress = 2131230725;

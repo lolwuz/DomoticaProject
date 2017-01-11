@@ -60,6 +60,9 @@ namespace Domotica
         // Controls on GUI
         Button buttonConnect;
         Button buttonChangePinState;
+        Button button1;
+        Button button2;
+        Button button3;
         TextView textViewServerConnect, textViewTimerStateValue;
         public TextView textViewChangePinStateValue, textViewSensorValue, textViewDebugValue;
         EditText editTextIPAddress, editTextIPPort;
@@ -80,6 +83,9 @@ namespace Domotica
             // find and set the controls, so it can be used in the code
             buttonConnect = FindViewById<Button>(Resource.Id.buttonConnect);
             buttonChangePinState = FindViewById<Button>(Resource.Id.buttonChangePinState);
+            button1 = FindViewById<Button>(Resource.Id.button1);
+            button2 = FindViewById<Button>(Resource.Id.button2);
+            button3 = FindViewById<Button>(Resource.Id.button3);
             textViewTimerStateValue = FindViewById<TextView>(Resource.Id.textViewTimerStateValue);
             textViewServerConnect = FindViewById<TextView>(Resource.Id.textViewServerConnect);
             textViewChangePinStateValue = FindViewById<TextView>(Resource.Id.textViewChangePinStateValue);
@@ -158,6 +164,48 @@ namespace Domotica
                     else // -> threaded sockets
                     {
                         if (connector.CheckStarted()) connector.SendMessage("t");  // Send toggle-command to the Arduino
+                    }
+                };
+            }
+            if (button1 != null)
+            {
+                button1.Click += (sender, e) =>
+                {
+                    if (connector == null)
+                    {
+                        socket.Send(Encoding.ASCII.GetBytes("0"));
+                    }
+                    else if (connector.CheckStarted())
+                    {
+                        connector.SendMessage("0");
+                    }
+                };
+            }
+            if (button2 != null)
+            {
+                button2.Click += (sender, e) =>
+                {
+                    if (connector == null)
+                    {
+                        socket.Send(Encoding.ASCII.GetBytes("1"));
+                    }
+                    else if (connector.CheckStarted())
+                    {
+                        connector.SendMessage("1");
+                    }
+                };
+            }
+            if (button3 != null)
+            {
+                button3.Click += (sender, e) =>
+                {
+                    if (connector == null)
+                    {
+                        socket.Send(Encoding.ASCII.GetBytes("2"));
+                    }
+                    else if (connector.CheckStarted())
+                    {
+                        connector.SendMessage("2");
                     }
                 };
             }
