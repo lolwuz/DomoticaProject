@@ -44,8 +44,10 @@ byte mac[] = { 0x40, 0x6c, 0x8f, 0x36, 0x84, 0x8a }; // Ethernet adapter shield 
 IPAddress ip(192, 168, 1, 3); // STATIC IP.
 int ethPort = 3300;                                  // Take a free port (check your router)
 
+#define photoPin     A0 // Photoresistor pin. 
+
 #define RFPin        2  // output, pin to control the RF-sender (and Click-On Click-Off-device)
-#define TempPin      3  // Temp pin onewire.
+#define TempPin      3  // Temp pin onewire
 #define lowPin       5  // output, always LOW
 #define highPin      6  // output, always HIGH
 #define switchPin    7  // input, connected to some kind of inputswitch
@@ -59,17 +61,18 @@ DallasTemperature sensors(&ds);
 EthernetServer server(ethPort);              // EthernetServer instance (listening on port <ethPort>).
 NewRemoteTransmitter transmitter(22708690, 2, 265, 3);  // APA3 (Gamma) remote, use pin <RFPin> 
 
-																	//ActionTransmitter actionTransmitter(RFPin);  // Remote Control, Action, old model (Impulse), use pin <RFPin>
-//RCSwitch mySwitch = RCSwitch();            // Remote Control, Action, new model (on-off), use pin <RFPin>
 
 char actionDevice = 'A';                 // Variable to store Action Device id ('A', 'B', 'C')
 bool pinState = false;                   // Variable to store actual pin state
 bool pinChange = false;                  // Variable to store actual pin change
-float temperatureValue = 0;                    // Variable to store actual sensor value
+float temperatureValue = 0;              // Variable to store temperature value.
 float photoResistorValue = 0;
+
+bool switchArray[3] = {false, false, false};
 
 void setup()
 {
+   
    Serial.begin(9600);
    Serial.println("Domotica project, Arduino Domotica Server\n");
    Serial.println("Dallas Temperature begin");
@@ -126,22 +129,23 @@ void loop()
  
    EthernetClient ethernetClient = server.available();
    if (!ethernetClient) {
-
+      Serial.println("Trying to connect to App.");
       // Temperatuur Onewire
-      Serial.println(" Requesting temperatures...");
+      // Serial.println(" Requesting temperatures...");
       sensors.requestTemperatures(); // Send the command to get temperatures
-      Serial.println("DONE");
-      Serial.println("Temperature for Device 1 is: ");
-      Serial.println(sensors.getTempCByIndex(0)); // Why "byIndex"? 
+      // Serial.println("DONE");
+      // Serial.println("Temperature for Device 1 is: ");
+      // Serial.println(sensors.getTempCByIndex(0)); // Why "byIndex"? 
   
       temperatureValue = sensors.getTempCByIndex(0); // update sensor value
       blink(ledPin);
       
       // Digitaal FotoResistor
-      Serial.println("Digitaal waarde: ");
-      Serial.println(analogRead(A0));
+      //Serial.println("Digitaal waarde: ");
+      //Serial.println(analogRead(photoPin));
 
-      photoResistorValue = analogRead(A0);
+      photoResistorValue = analogRead(photoPin);
+
       
       return; // wait for connection and blink LED
    }
@@ -152,25 +156,25 @@ void loop()
   
    // Do what needs to be done while the socket is connected.
    while (ethernetClient.connected()) 
-   {   
+   { 
       // You can have more than one IC on the same bus. 
       // 0 refers to the first IC on the wire
       
       checkEvent(switchPin, pinState);          // update pin state
 
-	  Serial.println(" Requesting temperatures...");
-	  sensors.requestTemperatures(); // Send the command to get temperatures
-	  Serial.println("DONE");
-
-	  Serial.println("Temperature for Device 1 is: ");
-	  Serial.println(sensors.getTempCByIndex(0)); // Why "byIndex"? 
-
-	  temperatureValue = sensors.getTempCByIndex(0); // update sensor value
+  	  //Serial.println(" Requesting temperatures...");
+  	  //sensors.requestTemperatures(); // Send the command to get temperatures
+  	  //Serial.println("DONE");
+  
+  	  //Serial.println("Temperature for Device 1 is: ");
+  	  //Serial.println(sensors.getTempCByIndex(0)); // Why "byIndex"? 
+  
+    	  temperatureValue = sensors.getTempCByIndex(0); // update sensor value
         
       // Activate pin based op pinState
       if (pinChange) {
-         if (pinState) { digitalWrite(ledPin, HIGH); switchDefault(true); }
-         else { switchDefault(false); digitalWrite(ledPin, LOW); }
+         if (pinState) { switchDefault(3); }
+         else { switchDefault(3); }
          pinChange = false;
       }
    
@@ -186,13 +190,38 @@ void loop()
 }
 
 // Choose and switch your Kaku device, state is true/false (HIGH/LOW)
-void switchDefault(bool state)
+void switchDefault(int light)
 {   
-   transmitter.sendGroup(state);          // APA3 Kaku (Gamma)                
+
+   switch(light){
+    case 0:
+      transmitter.sendUnit(0, changeSwitchState(switchArray[0], 0));
+      break;
+    case 1:
+      transmitter.sendUnit(1, changeSwitchState(switchArray[1], 1));
+      break; 
+    case 2:
+      transmitter.sendUnit(2, changeSwitchState(switchArray[2], 2));
+      break;
+    case 3:
+      transmitter.sendGroup(pinState);
+      break;
+    default:
+      Serial.println("None Switched");
+   }
+      
+            
    delay(100);
-   // actionTransmitter.sendSignal(unitCodeActionOld, actionDevice, state);  // Action Kaku, old model
-   //mySwitch.send(2210410 + state, 24);  // tricky, false = 0, true = 1  // Action Kaku, new model
-  
+}
+
+bool changeSwitchState(bool state, int sw){
+  Serial.println("Switch Number: ");
+  Serial.println(sw);
+  Serial.println("To State: ");
+  Serial.println(!state);
+ 
+  switchArray[sw] = !state;
+  return !state;
 }
 
 // Implementation of (simple) protocol between app and Arduino
@@ -203,17 +232,17 @@ void executeCommand(char cmd)
          char buf[4] = {'\0', '\0', '\0', '\0'};
 
          // Command protocol
-         Serial.print("["); Serial.print(cmd); Serial.print("] -> ");
+         // Serial.print("["); Serial.print(cmd); Serial.print("] -> ");
          switch (cmd) {
          case 'a': // Report temperature value to app.
             intToCharBuf(temperatureValue, buf, 4);                // convert to charbuffer
             server.write(buf, 4);                             // response is always 4 chars (\n included)
-            Serial.print("Sensor: "); Serial.println(buf);
+            //Serial.print("Sensor: "); Serial.println(buf);
             break;
          case 'b': // Report photoResistor value to app.
             intToCharBuf(photoResistorValue, buf, 4);
             server.write(buf, 4);
-            Serial.print("Sensor: "); Serial.println(buf);
+            //Serial.print("Sensor: "); Serial.println(buf);
          case 's': // Report switch state to the app
             if (pinState) { server.write(" ON\n"); Serial.println("Pin state is ON"); }  // always send 4 chars
             else { server.write("OFF\n"); Serial.println("Pin state is OFF"); }
@@ -222,6 +251,16 @@ void executeCommand(char cmd)
             if (pinState) { pinState = false; Serial.println("Set pin state to \"OFF\""); }
             else { pinState = true; Serial.println("Set pin state to \"ON\""); }  
             pinChange = true; 
+            break;
+            
+         case '0': 
+            switchDefault(0);
+            break;
+         case '1': 
+            switchDefault(1);
+            break;
+         case '2':
+            switchDefault(2);
             break;
          case 'i':    
             digitalWrite(infoPin, HIGH);
@@ -320,4 +359,5 @@ int getIPComputerNumberOffset(IPAddress address, int offset)
 {
     return getIPComputerNumber(address) - offset;
 }
+
 
