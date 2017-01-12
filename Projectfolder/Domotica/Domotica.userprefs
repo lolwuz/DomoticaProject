@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{B5D86C21-4528-44A2-B9BB-8EEBC01BEA6A}|Default">
   <MonoDevelop.Ide.ItemProperties.Domotica AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Android_Accelerated_x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Domotica/MainActivity.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="Domotica/MainActivity.cs" Line="76" Column="15" />
+      <File FileName="Domotica/MainActivity.cs" Line="83" Column="6" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

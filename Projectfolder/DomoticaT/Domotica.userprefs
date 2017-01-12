@@ -1,8 +1,20 @@
-﻿<Properties StartupItem="Domotica/Domotica.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus_5_API_22" />
-  <MonoDevelop.Ide.Workbench />
+﻿<Properties StartupConfiguration="{B5D86C21-4528-44A2-B9BB-8EEBC01BEA6A}|Default">
+  <MonoDevelop.Ide.ItemProperties.Domotica AndroidDesignerPreferredDevice="Nexus 5X" PreferredExecutionTarget="Android.00d91e4621b11f4e" AndroidDesignerPreferredTheme="Theme.DeviceDefault" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Domotica/MainActivity.cs">
+    <Files>
+      <File FileName="Domotica/MainActivity.cs" Line="85" Column="52" />
+      <File FileName="Domotica/Properties/AssemblyInfo.cs" Line="17" Column="30" />
+      <File FileName="Domotica/Resources/values/theme.xml" Line="5" Column="53" />
+      <File FileName="Domotica/Properties/AndroidManifest.xml" Line="5" Column="99" />
+      <File FileName="Domotica/Resources/menu/menu.xml" Line="1" Column="1" />
+      <File FileName="Domotica/obj/Debug/android/manifest/AndroidManifest.xml" Line="7" Column="1" />
+      <File FileName="Domotica/Resources/values/Strings.xml" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
 </Properties>
