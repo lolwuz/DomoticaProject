@@ -210,4 +210,11 @@
             android:layout_toRightOf="@id/temperature"
             android:layout_alignParentRight="true" />
     </RelativeLayout>
+    <Toolbar
+        android:minHeight="?android:attr/actionBarSize"
+        android:background="?android:attr/colorPrimary"
+        android:minWidth="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/toolbar1" />
 </LinearLayout>

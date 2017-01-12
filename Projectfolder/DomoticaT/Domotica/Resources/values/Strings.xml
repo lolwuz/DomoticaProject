@@ -12,7 +12,9 @@
   <string name="button_connect_text">Connect</string>
   <string name="button_pin_state_text">Change State</string>
   <string name="pin_state_text">Arduino Pin state</string>
-  <string name="tabtext">switches</string>	
+  <string name="tabtext">Connect</string>
+  <string name="tab2text">Switches</string>	
+  <string name="tab3text">Sensors</string>	
   <string name="change_pin_state_value">OFF</string>
   <string name="sensor_text">Sensor value</string>
   <string name="sensor_value">-</string>

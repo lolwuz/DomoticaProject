@@ -78,20 +78,15 @@ namespace Domotica
             base.OnCreate(bundle);
 
             // Set our view from the "main" layout resource (strings are loaded from Recources -> values -> Strings.xml)
-            ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
+            
 			SetContentView(Resource.Layout.Main);
 
-			ActionBar.Tab tab = ActionBar.NewTab();
-			tab.SetText(Resources.GetString(Resource.String.tabtext));
 
-			tab.TabSelected += (sender, args) =>
-			{
-				// Do something when tab is selected
-			};
+			// find and set the controls, so it can be used in the code
+			var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar1);
+			SetActionBar(toolbar);
+			ActionBar.Title = "My Toolbar";
 
-			ActionBar.AddTab(tab);
-
-            // find and set the controls, so it can be used in the code
             buttonConnect = FindViewById<Button>(Resource.Id.buttonConnect);
             buttonChangePinState = FindViewById<Button>(Resource.Id.buttonChangePinState);
             button1 = FindViewById<Button>(Resource.Id.button1);
