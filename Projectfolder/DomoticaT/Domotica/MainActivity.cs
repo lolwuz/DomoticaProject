@@ -64,7 +64,7 @@ namespace Domotica
         Button button2;
         Button button3;
         TextView textViewServerConnect, textViewTimerStateValue;
-        public TextView textViewChangePinStateValue, textViewSensorValue, textViewDebugValue;
+        public TextView textViewChangePinStateValue, textViewSensorValue, textViewDebugValue, textViewphotoValue;
         EditText editTextIPAddress, editTextIPPort;
 
         Timer timerClock, timerSockets;             // Timers   
@@ -83,7 +83,7 @@ namespace Domotica
 
 
 			// find and set the controls, so it can be used in the code
-			var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar1);
+			var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
 			SetActionBar(toolbar);
 			ActionBar.Title = "My Toolbar";
 
@@ -97,6 +97,7 @@ namespace Domotica
             textViewChangePinStateValue = FindViewById<TextView>(Resource.Id.textViewChangePinStateValue);
             textViewSensorValue = FindViewById<TextView>(Resource.Id.textViewSensorValue);
             textViewDebugValue = FindViewById<TextView>(Resource.Id.textViewDebugValue);
+            textViewphotoValue = FindViewById<TextView>(Resource.Id.photoresistorValue);
             editTextIPAddress = FindViewById<EditText>(Resource.Id.editTextIPAddress);
             editTextIPPort = FindViewById<EditText>(Resource.Id.editTextIPPort);
 
@@ -105,6 +106,7 @@ namespace Domotica
             // Init commandlist, scheduled by socket timer
             commandList.Add(new Tuple<string, TextView>("s", textViewChangePinStateValue));
             commandList.Add(new Tuple<string, TextView>("a", textViewSensorValue));
+            commandList.Add(new Tuple<string, TextView>("b", textViewphotoValue));
 
             // activation of connector -> threaded sockets otherwise -> simple sockets 
             // connector = new Connector(this);
@@ -392,6 +394,9 @@ namespace Domotica
                     {
                         if (connector.CheckStarted()) connector.Abort();
                     }
+                    return true;
+                case Resource.Id.sensor:
+                    StartActivity(typeof(Sensors));
                     return true;
             }
             return base.OnOptionsItemSelected(item);

@@ -130,5 +130,7 @@ C:\Users\Sjoerd-laptop\Documents\GitHub\DomoticaProject\Projectfolder\DomoticaT\
 C:\Users\Sjoerd-laptop\Documents\GitHub\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Debug\android\assets\System.Core.dll.mdb
 C:\Users\Sjoerd-laptop\Documents\GitHub\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Debug\android\assets\System.dll.mdb
 C:\Users\Sjoerd-laptop\Documents\GitHub\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Debug\android\assets\System.Runtime.Serialization.dll.mdb
+C:\Users\Sjoerd-laptop\Documents\GitHub\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Debug\res\layout\toolbar.xml
+C:\Users\Sjoerd-laptop\Documents\GitHub\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Debug\res\layout\sensor.xml
 C:\Users\Sjoerd-laptop\Documents\GitHub\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Debug\DomoticaT.dll.mdb
 C:\Users\Sjoerd-laptop\Documents\GitHub\DomoticaProject\Projectfolder\DomoticaT\Domotica\bin\Debug\DomoticaT.dll.mdb

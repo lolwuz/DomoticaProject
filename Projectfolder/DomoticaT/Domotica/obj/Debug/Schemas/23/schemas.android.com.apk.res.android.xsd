@@ -2,7 +2,7 @@
 <xs:schema xmlns:android="http://schemas.android.com/apk/res/android" attributeFormDefault="qualified" elementFormDefault="unqualified" targetNamespace="http://schemas.android.com/apk/res/android" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v23</xs:documentation>
-    <xs:documentation>11-1-2017 14:53:11</xs:documentation>
+    <xs:documentation>12-1-2017 13:59:26</xs:documentation>
   </xs:annotation>
   <xs:attribute name="accessibilityLiveRegion">
     <xs:annotation>
@@ -296,8 +296,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -389,8 +387,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -777,8 +773,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@drawable/icon" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
@@ -1091,8 +1085,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -1662,8 +1654,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -1774,8 +1764,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -1867,8 +1855,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -2341,8 +2327,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -2453,8 +2437,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@drawable/icon" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
@@ -3218,8 +3200,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -3640,8 +3620,12 @@
             <xs:enumeration value="@string/ip_port_text" />
             <xs:enumeration value="@string/ip_port_value" />
             <xs:enumeration value="@string/pin_state_text" />
+            <xs:enumeration value="@string/sensor" />
             <xs:enumeration value="@string/sensor_text" />
             <xs:enumeration value="@string/sensor_value" />
+            <xs:enumeration value="@string/tab2text" />
+            <xs:enumeration value="@string/tab3text" />
+            <xs:enumeration value="@string/tabtext" />
             <xs:enumeration value="@string/timer_state_text" />
             <xs:enumeration value="@string/timer_state_value" />
             <xs:enumeration value="@android:string/cancel" />
@@ -3698,8 +3682,12 @@
             <xs:enumeration value="@string/ip_port_text" />
             <xs:enumeration value="@string/ip_port_value" />
             <xs:enumeration value="@string/pin_state_text" />
+            <xs:enumeration value="@string/sensor" />
             <xs:enumeration value="@string/sensor_text" />
             <xs:enumeration value="@string/sensor_value" />
+            <xs:enumeration value="@string/tab2text" />
+            <xs:enumeration value="@string/tab3text" />
+            <xs:enumeration value="@string/tabtext" />
             <xs:enumeration value="@string/timer_state_text" />
             <xs:enumeration value="@string/timer_state_value" />
             <xs:enumeration value="@android:string/cancel" />
@@ -4322,8 +4310,12 @@
             <xs:enumeration value="@string/ip_port_text" />
             <xs:enumeration value="@string/ip_port_value" />
             <xs:enumeration value="@string/pin_state_text" />
+            <xs:enumeration value="@string/sensor" />
             <xs:enumeration value="@string/sensor_text" />
             <xs:enumeration value="@string/sensor_value" />
+            <xs:enumeration value="@string/tab2text" />
+            <xs:enumeration value="@string/tab3text" />
+            <xs:enumeration value="@string/tabtext" />
             <xs:enumeration value="@string/timer_state_text" />
             <xs:enumeration value="@string/timer_state_value" />
             <xs:enumeration value="@android:string/cancel" />
@@ -4866,8 +4858,12 @@
             <xs:enumeration value="@string/ip_port_text" />
             <xs:enumeration value="@string/ip_port_value" />
             <xs:enumeration value="@string/pin_state_text" />
+            <xs:enumeration value="@string/sensor" />
             <xs:enumeration value="@string/sensor_text" />
             <xs:enumeration value="@string/sensor_value" />
+            <xs:enumeration value="@string/tab2text" />
+            <xs:enumeration value="@string/tab3text" />
+            <xs:enumeration value="@string/tabtext" />
             <xs:enumeration value="@string/timer_state_text" />
             <xs:enumeration value="@string/timer_state_value" />
             <xs:enumeration value="@android:string/cancel" />
@@ -5438,8 +5434,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -5531,8 +5525,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -5858,8 +5850,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -5966,8 +5956,12 @@
             <xs:enumeration value="@string/ip_port_text" />
             <xs:enumeration value="@string/ip_port_value" />
             <xs:enumeration value="@string/pin_state_text" />
+            <xs:enumeration value="@string/sensor" />
             <xs:enumeration value="@string/sensor_text" />
             <xs:enumeration value="@string/sensor_value" />
+            <xs:enumeration value="@string/tab2text" />
+            <xs:enumeration value="@string/tab3text" />
+            <xs:enumeration value="@string/tabtext" />
             <xs:enumeration value="@string/timer_state_text" />
             <xs:enumeration value="@string/timer_state_value" />
             <xs:enumeration value="@android:string/cancel" />
@@ -6274,8 +6268,12 @@
             <xs:enumeration value="@string/ip_port_text" />
             <xs:enumeration value="@string/ip_port_value" />
             <xs:enumeration value="@string/pin_state_text" />
+            <xs:enumeration value="@string/sensor" />
             <xs:enumeration value="@string/sensor_text" />
             <xs:enumeration value="@string/sensor_value" />
+            <xs:enumeration value="@string/tab2text" />
+            <xs:enumeration value="@string/tab3text" />
+            <xs:enumeration value="@string/tabtext" />
             <xs:enumeration value="@string/timer_state_text" />
             <xs:enumeration value="@string/timer_state_value" />
             <xs:enumeration value="@android:string/cancel" />
@@ -6479,8 +6477,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@drawable/icon" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
@@ -6793,8 +6789,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@drawable/icon" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
@@ -7107,8 +7101,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@drawable/icon" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
@@ -7461,8 +7453,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@drawable/icon" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
@@ -7775,8 +7765,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@drawable/icon" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
@@ -8089,8 +8077,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -8201,8 +8187,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@drawable/icon" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
@@ -8847,8 +8831,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@drawable/icon" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
@@ -10681,8 +10663,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@drawable/icon" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
@@ -11010,8 +10990,12 @@
             <xs:enumeration value="@string/ip_port_text" />
             <xs:enumeration value="@string/ip_port_value" />
             <xs:enumeration value="@string/pin_state_text" />
+            <xs:enumeration value="@string/sensor" />
             <xs:enumeration value="@string/sensor_text" />
             <xs:enumeration value="@string/sensor_value" />
+            <xs:enumeration value="@string/tab2text" />
+            <xs:enumeration value="@string/tab3text" />
+            <xs:enumeration value="@string/tabtext" />
             <xs:enumeration value="@string/timer_state_text" />
             <xs:enumeration value="@string/timer_state_value" />
             <xs:enumeration value="@android:string/cancel" />
@@ -11068,8 +11052,12 @@
             <xs:enumeration value="@string/ip_port_text" />
             <xs:enumeration value="@string/ip_port_value" />
             <xs:enumeration value="@string/pin_state_text" />
+            <xs:enumeration value="@string/sensor" />
             <xs:enumeration value="@string/sensor_text" />
             <xs:enumeration value="@string/sensor_value" />
+            <xs:enumeration value="@string/tab2text" />
+            <xs:enumeration value="@string/tab3text" />
+            <xs:enumeration value="@string/tabtext" />
             <xs:enumeration value="@string/timer_state_text" />
             <xs:enumeration value="@string/timer_state_value" />
             <xs:enumeration value="@android:string/cancel" />
@@ -11151,8 +11139,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@drawable/icon" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
@@ -11530,8 +11516,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -11657,8 +11641,12 @@
             <xs:enumeration value="@string/ip_port_text" />
             <xs:enumeration value="@string/ip_port_value" />
             <xs:enumeration value="@string/pin_state_text" />
+            <xs:enumeration value="@string/sensor" />
             <xs:enumeration value="@string/sensor_text" />
             <xs:enumeration value="@string/sensor_value" />
+            <xs:enumeration value="@string/tab2text" />
+            <xs:enumeration value="@string/tab3text" />
+            <xs:enumeration value="@string/tabtext" />
             <xs:enumeration value="@string/timer_state_text" />
             <xs:enumeration value="@string/timer_state_value" />
             <xs:enumeration value="@android:string/cancel" />
@@ -11715,8 +11703,12 @@
             <xs:enumeration value="@string/ip_port_text" />
             <xs:enumeration value="@string/ip_port_value" />
             <xs:enumeration value="@string/pin_state_text" />
+            <xs:enumeration value="@string/sensor" />
             <xs:enumeration value="@string/sensor_text" />
             <xs:enumeration value="@string/sensor_value" />
+            <xs:enumeration value="@string/tab2text" />
+            <xs:enumeration value="@string/tab3text" />
+            <xs:enumeration value="@string/tabtext" />
             <xs:enumeration value="@string/timer_state_text" />
             <xs:enumeration value="@string/timer_state_value" />
             <xs:enumeration value="@android:string/cancel" />
@@ -11773,8 +11765,12 @@
             <xs:enumeration value="@string/ip_port_text" />
             <xs:enumeration value="@string/ip_port_value" />
             <xs:enumeration value="@string/pin_state_text" />
+            <xs:enumeration value="@string/sensor" />
             <xs:enumeration value="@string/sensor_text" />
             <xs:enumeration value="@string/sensor_value" />
+            <xs:enumeration value="@string/tab2text" />
+            <xs:enumeration value="@string/tab3text" />
+            <xs:enumeration value="@string/tabtext" />
             <xs:enumeration value="@string/timer_state_text" />
             <xs:enumeration value="@string/timer_state_value" />
             <xs:enumeration value="@android:string/cancel" />
@@ -13728,8 +13724,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -15355,8 +15349,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@drawable/icon" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
@@ -16177,8 +16169,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -16833,8 +16823,12 @@
             <xs:enumeration value="@string/ip_port_text" />
             <xs:enumeration value="@string/ip_port_value" />
             <xs:enumeration value="@string/pin_state_text" />
+            <xs:enumeration value="@string/sensor" />
             <xs:enumeration value="@string/sensor_text" />
             <xs:enumeration value="@string/sensor_value" />
+            <xs:enumeration value="@string/tab2text" />
+            <xs:enumeration value="@string/tab3text" />
+            <xs:enumeration value="@string/tabtext" />
             <xs:enumeration value="@string/timer_state_text" />
             <xs:enumeration value="@string/timer_state_value" />
             <xs:enumeration value="@android:string/cancel" />
@@ -16989,8 +16983,7 @@
             <xs:enumeration value="@id/relativeLayout4" />
             <xs:enumeration value="@id/relativeLayout5" />
             <xs:enumeration value="@id/relativeLayout6" />
-            <xs:enumeration value="@id/temperature" />
-            <xs:enumeration value="@id/temperatureValue" />
+            <xs:enumeration value="@id/sensor" />
             <xs:enumeration value="@id/textViewChangePinState" />
             <xs:enumeration value="@id/textViewChangePinStateValue" />
             <xs:enumeration value="@id/textViewDebug" />
@@ -17003,6 +16996,7 @@
             <xs:enumeration value="@id/textViewServerConnect" />
             <xs:enumeration value="@id/textViewTimerState" />
             <xs:enumeration value="@id/textViewTimerStateValue" />
+            <xs:enumeration value="@id/toolbar" />
             <xs:enumeration value="@android:id/accessibilityActionContextClick" />
             <xs:enumeration value="@android:id/accessibilityActionScrollDown" />
             <xs:enumeration value="@android:id/accessibilityActionScrollLeft" />
@@ -17344,8 +17338,12 @@
             <xs:enumeration value="@string/ip_port_text" />
             <xs:enumeration value="@string/ip_port_value" />
             <xs:enumeration value="@string/pin_state_text" />
+            <xs:enumeration value="@string/sensor" />
             <xs:enumeration value="@string/sensor_text" />
             <xs:enumeration value="@string/sensor_value" />
+            <xs:enumeration value="@string/tab2text" />
+            <xs:enumeration value="@string/tab3text" />
+            <xs:enumeration value="@string/tabtext" />
             <xs:enumeration value="@string/timer_state_text" />
             <xs:enumeration value="@string/timer_state_value" />
             <xs:enumeration value="@android:string/cancel" />
@@ -18059,8 +18057,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -18580,8 +18576,12 @@
             <xs:enumeration value="@string/ip_port_text" />
             <xs:enumeration value="@string/ip_port_value" />
             <xs:enumeration value="@string/pin_state_text" />
+            <xs:enumeration value="@string/sensor" />
             <xs:enumeration value="@string/sensor_text" />
             <xs:enumeration value="@string/sensor_value" />
+            <xs:enumeration value="@string/tab2text" />
+            <xs:enumeration value="@string/tab3text" />
+            <xs:enumeration value="@string/tabtext" />
             <xs:enumeration value="@string/timer_state_text" />
             <xs:enumeration value="@string/timer_state_value" />
             <xs:enumeration value="@android:string/cancel" />
@@ -20717,8 +20717,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@drawable/icon" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
@@ -21058,8 +21056,12 @@
             <xs:enumeration value="@string/ip_port_text" />
             <xs:enumeration value="@string/ip_port_value" />
             <xs:enumeration value="@string/pin_state_text" />
+            <xs:enumeration value="@string/sensor" />
             <xs:enumeration value="@string/sensor_text" />
             <xs:enumeration value="@string/sensor_value" />
+            <xs:enumeration value="@string/tab2text" />
+            <xs:enumeration value="@string/tab3text" />
+            <xs:enumeration value="@string/tabtext" />
             <xs:enumeration value="@string/timer_state_text" />
             <xs:enumeration value="@string/timer_state_value" />
             <xs:enumeration value="@android:string/cancel" />
@@ -21273,8 +21275,12 @@
             <xs:enumeration value="@string/ip_port_text" />
             <xs:enumeration value="@string/ip_port_value" />
             <xs:enumeration value="@string/pin_state_text" />
+            <xs:enumeration value="@string/sensor" />
             <xs:enumeration value="@string/sensor_text" />
             <xs:enumeration value="@string/sensor_value" />
+            <xs:enumeration value="@string/tab2text" />
+            <xs:enumeration value="@string/tab3text" />
+            <xs:enumeration value="@string/tabtext" />
             <xs:enumeration value="@string/timer_state_text" />
             <xs:enumeration value="@string/timer_state_value" />
             <xs:enumeration value="@android:string/cancel" />
@@ -21545,8 +21551,12 @@
             <xs:enumeration value="@string/ip_port_text" />
             <xs:enumeration value="@string/ip_port_value" />
             <xs:enumeration value="@string/pin_state_text" />
+            <xs:enumeration value="@string/sensor" />
             <xs:enumeration value="@string/sensor_text" />
             <xs:enumeration value="@string/sensor_value" />
+            <xs:enumeration value="@string/tab2text" />
+            <xs:enumeration value="@string/tab3text" />
+            <xs:enumeration value="@string/tabtext" />
             <xs:enumeration value="@string/timer_state_text" />
             <xs:enumeration value="@string/timer_state_value" />
             <xs:enumeration value="@android:string/cancel" />
@@ -22255,8 +22265,12 @@
             <xs:enumeration value="@string/ip_port_text" />
             <xs:enumeration value="@string/ip_port_value" />
             <xs:enumeration value="@string/pin_state_text" />
+            <xs:enumeration value="@string/sensor" />
             <xs:enumeration value="@string/sensor_text" />
             <xs:enumeration value="@string/sensor_value" />
+            <xs:enumeration value="@string/tab2text" />
+            <xs:enumeration value="@string/tab3text" />
+            <xs:enumeration value="@string/tabtext" />
             <xs:enumeration value="@string/timer_state_text" />
             <xs:enumeration value="@string/timer_state_value" />
             <xs:enumeration value="@android:string/cancel" />
@@ -23742,8 +23756,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -23835,8 +23847,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -23928,8 +23938,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -24021,8 +24029,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -24182,8 +24188,12 @@
             <xs:enumeration value="@string/ip_port_text" />
             <xs:enumeration value="@string/ip_port_value" />
             <xs:enumeration value="@string/pin_state_text" />
+            <xs:enumeration value="@string/sensor" />
             <xs:enumeration value="@string/sensor_text" />
             <xs:enumeration value="@string/sensor_value" />
+            <xs:enumeration value="@string/tab2text" />
+            <xs:enumeration value="@string/tab3text" />
+            <xs:enumeration value="@string/tabtext" />
             <xs:enumeration value="@string/timer_state_text" />
             <xs:enumeration value="@string/timer_state_value" />
             <xs:enumeration value="@android:string/cancel" />
@@ -24491,8 +24501,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@drawable/icon" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
@@ -24805,8 +24813,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@drawable/icon" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
@@ -25512,8 +25518,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@drawable/icon" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
@@ -26127,8 +26131,12 @@
             <xs:enumeration value="@string/ip_port_text" />
             <xs:enumeration value="@string/ip_port_value" />
             <xs:enumeration value="@string/pin_state_text" />
+            <xs:enumeration value="@string/sensor" />
             <xs:enumeration value="@string/sensor_text" />
             <xs:enumeration value="@string/sensor_value" />
+            <xs:enumeration value="@string/tab2text" />
+            <xs:enumeration value="@string/tab3text" />
+            <xs:enumeration value="@string/tabtext" />
             <xs:enumeration value="@string/timer_state_text" />
             <xs:enumeration value="@string/timer_state_value" />
             <xs:enumeration value="@android:string/cancel" />
@@ -26188,8 +26196,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -26534,8 +26540,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -27129,8 +27133,12 @@
             <xs:enumeration value="@string/ip_port_text" />
             <xs:enumeration value="@string/ip_port_value" />
             <xs:enumeration value="@string/pin_state_text" />
+            <xs:enumeration value="@string/sensor" />
             <xs:enumeration value="@string/sensor_text" />
             <xs:enumeration value="@string/sensor_value" />
+            <xs:enumeration value="@string/tab2text" />
+            <xs:enumeration value="@string/tab3text" />
+            <xs:enumeration value="@string/tabtext" />
             <xs:enumeration value="@string/timer_state_text" />
             <xs:enumeration value="@string/timer_state_value" />
             <xs:enumeration value="@android:string/cancel" />
@@ -27216,8 +27224,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -29279,8 +29285,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -29665,8 +29669,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@drawable/icon" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
@@ -30293,8 +30295,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -30552,8 +30552,12 @@
             <xs:enumeration value="@string/ip_port_text" />
             <xs:enumeration value="@string/ip_port_value" />
             <xs:enumeration value="@string/pin_state_text" />
+            <xs:enumeration value="@string/sensor" />
             <xs:enumeration value="@string/sensor_text" />
             <xs:enumeration value="@string/sensor_value" />
+            <xs:enumeration value="@string/tab2text" />
+            <xs:enumeration value="@string/tab3text" />
+            <xs:enumeration value="@string/tabtext" />
             <xs:enumeration value="@string/timer_state_text" />
             <xs:enumeration value="@string/timer_state_value" />
             <xs:enumeration value="@android:string/cancel" />
@@ -30675,8 +30679,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@drawable/icon" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
@@ -31204,8 +31206,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@drawable/icon" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
@@ -31837,8 +31837,12 @@
             <xs:enumeration value="@string/ip_port_text" />
             <xs:enumeration value="@string/ip_port_value" />
             <xs:enumeration value="@string/pin_state_text" />
+            <xs:enumeration value="@string/sensor" />
             <xs:enumeration value="@string/sensor_text" />
             <xs:enumeration value="@string/sensor_value" />
+            <xs:enumeration value="@string/tab2text" />
+            <xs:enumeration value="@string/tab3text" />
+            <xs:enumeration value="@string/tabtext" />
             <xs:enumeration value="@string/timer_state_text" />
             <xs:enumeration value="@string/timer_state_value" />
             <xs:enumeration value="@android:string/cancel" />
@@ -31897,7 +31901,7 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@style/Theme.Custom" />
+            <xs:enumeration value="@style/MyTheme" />
             <xs:enumeration value="@style/XamarinDesignerCustomAppliedTheme" />
             <xs:enumeration value="@android:style/Animation" />
             <xs:enumeration value="@android:style/Animation.Activity" />
@@ -33028,8 +33032,12 @@
             <xs:enumeration value="@string/ip_port_text" />
             <xs:enumeration value="@string/ip_port_value" />
             <xs:enumeration value="@string/pin_state_text" />
+            <xs:enumeration value="@string/sensor" />
             <xs:enumeration value="@string/sensor_text" />
             <xs:enumeration value="@string/sensor_value" />
+            <xs:enumeration value="@string/tab2text" />
+            <xs:enumeration value="@string/tab3text" />
+            <xs:enumeration value="@string/tabtext" />
             <xs:enumeration value="@string/timer_state_text" />
             <xs:enumeration value="@string/timer_state_value" />
             <xs:enumeration value="@android:string/cancel" />
@@ -33305,8 +33313,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -34703,8 +34709,12 @@
             <xs:enumeration value="@string/ip_port_text" />
             <xs:enumeration value="@string/ip_port_value" />
             <xs:enumeration value="@string/pin_state_text" />
+            <xs:enumeration value="@string/sensor" />
             <xs:enumeration value="@string/sensor_text" />
             <xs:enumeration value="@string/sensor_value" />
+            <xs:enumeration value="@string/tab2text" />
+            <xs:enumeration value="@string/tab3text" />
+            <xs:enumeration value="@string/tabtext" />
             <xs:enumeration value="@string/timer_state_text" />
             <xs:enumeration value="@string/timer_state_value" />
             <xs:enumeration value="@android:string/cancel" />
@@ -34761,8 +34771,12 @@
             <xs:enumeration value="@string/ip_port_text" />
             <xs:enumeration value="@string/ip_port_value" />
             <xs:enumeration value="@string/pin_state_text" />
+            <xs:enumeration value="@string/sensor" />
             <xs:enumeration value="@string/sensor_text" />
             <xs:enumeration value="@string/sensor_value" />
+            <xs:enumeration value="@string/tab2text" />
+            <xs:enumeration value="@string/tab3text" />
+            <xs:enumeration value="@string/tabtext" />
             <xs:enumeration value="@string/timer_state_text" />
             <xs:enumeration value="@string/timer_state_value" />
             <xs:enumeration value="@android:string/cancel" />
@@ -35103,8 +35117,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@drawable/icon" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
@@ -35417,8 +35429,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@drawable/icon" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
@@ -35731,8 +35741,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@drawable/icon" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
@@ -36045,8 +36053,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@drawable/icon" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
@@ -37884,8 +37890,12 @@
             <xs:enumeration value="@string/ip_port_text" />
             <xs:enumeration value="@string/ip_port_value" />
             <xs:enumeration value="@string/pin_state_text" />
+            <xs:enumeration value="@string/sensor" />
             <xs:enumeration value="@string/sensor_text" />
             <xs:enumeration value="@string/sensor_value" />
+            <xs:enumeration value="@string/tab2text" />
+            <xs:enumeration value="@string/tab3text" />
+            <xs:enumeration value="@string/tabtext" />
             <xs:enumeration value="@string/timer_state_text" />
             <xs:enumeration value="@string/timer_state_value" />
             <xs:enumeration value="@android:string/cancel" />
@@ -37942,8 +37952,12 @@
             <xs:enumeration value="@string/ip_port_text" />
             <xs:enumeration value="@string/ip_port_value" />
             <xs:enumeration value="@string/pin_state_text" />
+            <xs:enumeration value="@string/sensor" />
             <xs:enumeration value="@string/sensor_text" />
             <xs:enumeration value="@string/sensor_value" />
+            <xs:enumeration value="@string/tab2text" />
+            <xs:enumeration value="@string/tab3text" />
+            <xs:enumeration value="@string/tabtext" />
             <xs:enumeration value="@string/timer_state_text" />
             <xs:enumeration value="@string/timer_state_value" />
             <xs:enumeration value="@android:string/cancel" />
@@ -38755,7 +38769,7 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@style/Theme.Custom" />
+            <xs:enumeration value="@style/MyTheme" />
             <xs:enumeration value="@style/XamarinDesignerCustomAppliedTheme" />
             <xs:enumeration value="@android:style/Animation" />
             <xs:enumeration value="@android:style/Animation.Activity" />
@@ -39951,8 +39965,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -40093,8 +40105,12 @@
             <xs:enumeration value="@string/ip_port_text" />
             <xs:enumeration value="@string/ip_port_value" />
             <xs:enumeration value="@string/pin_state_text" />
+            <xs:enumeration value="@string/sensor" />
             <xs:enumeration value="@string/sensor_text" />
             <xs:enumeration value="@string/sensor_value" />
+            <xs:enumeration value="@string/tab2text" />
+            <xs:enumeration value="@string/tab3text" />
+            <xs:enumeration value="@string/tabtext" />
             <xs:enumeration value="@string/timer_state_text" />
             <xs:enumeration value="@string/timer_state_value" />
             <xs:enumeration value="@android:string/cancel" />
@@ -40136,8 +40152,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -40256,8 +40270,12 @@
             <xs:enumeration value="@string/ip_port_text" />
             <xs:enumeration value="@string/ip_port_value" />
             <xs:enumeration value="@string/pin_state_text" />
+            <xs:enumeration value="@string/sensor" />
             <xs:enumeration value="@string/sensor_text" />
             <xs:enumeration value="@string/sensor_value" />
+            <xs:enumeration value="@string/tab2text" />
+            <xs:enumeration value="@string/tab3text" />
+            <xs:enumeration value="@string/tabtext" />
             <xs:enumeration value="@string/timer_state_text" />
             <xs:enumeration value="@string/timer_state_value" />
             <xs:enumeration value="@android:string/cancel" />
@@ -40733,8 +40751,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -41140,8 +41156,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -41403,8 +41417,12 @@
             <xs:enumeration value="@string/ip_port_text" />
             <xs:enumeration value="@string/ip_port_value" />
             <xs:enumeration value="@string/pin_state_text" />
+            <xs:enumeration value="@string/sensor" />
             <xs:enumeration value="@string/sensor_text" />
             <xs:enumeration value="@string/sensor_value" />
+            <xs:enumeration value="@string/tab2text" />
+            <xs:enumeration value="@string/tab3text" />
+            <xs:enumeration value="@string/tabtext" />
             <xs:enumeration value="@string/timer_state_text" />
             <xs:enumeration value="@string/timer_state_value" />
             <xs:enumeration value="@android:string/cancel" />
@@ -41583,8 +41601,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -41676,8 +41692,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@drawable/icon" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
@@ -42856,8 +42870,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@drawable/icon" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
@@ -43170,8 +43182,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@drawable/icon" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
@@ -44004,8 +44014,6 @@
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="@color/theme_custom_background" />
-            <xs:enumeration value="@color/theme_devicedefault_background" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />

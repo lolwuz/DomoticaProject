@@ -5,6 +5,6 @@
     <AndroidDesignerPreferredDevice>Nexus 5</AndroidDesignerPreferredDevice>
     <SelectedDevice>LGE Nexus 5X</SelectedDevice>
     <DefaultDevice>Android_Accelerated_x86</DefaultDevice>
-    <AndroidDesignerPreferredTheme>Theme.Custom</AndroidDesignerPreferredTheme>
+    <AndroidDesignerPreferredTheme>Theme.DeviceDefault</AndroidDesignerPreferredTheme>
   </PropertyGroup>
 </Project>

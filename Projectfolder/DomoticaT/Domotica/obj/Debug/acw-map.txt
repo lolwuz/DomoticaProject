@@ -1,3 +1,7 @@
+Domotica.Sensors, DomoticaT;md59a029c5e3fbbf5ca706745f408ebe991.Sensors
+Domotica.Sensors, DomoticaT, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md59a029c5e3fbbf5ca706745f408ebe991.Sensors
+Domotica.Sensors;md59a029c5e3fbbf5ca706745f408ebe991.Sensors
+domotica.Sensors;md59a029c5e3fbbf5ca706745f408ebe991.Sensors
 Domotica.MainActivity, DomoticaT;md59a029c5e3fbbf5ca706745f408ebe991.MainActivity
 Domotica.MainActivity, DomoticaT, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md59a029c5e3fbbf5ca706745f408ebe991.MainActivity
 Domotica.MainActivity;md59a029c5e3fbbf5ca706745f408ebe991.MainActivity
