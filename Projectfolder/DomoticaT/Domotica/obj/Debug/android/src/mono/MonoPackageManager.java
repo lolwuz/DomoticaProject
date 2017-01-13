@@ -99,6 +99,7 @@ class MonoPackageManager_Resources {
 	public static final String[] Assemblies = new String[]{
 		/* We need to ensure that "DomoticaT.dll" comes first in this list. */
 		"DomoticaT.dll",
+		"Java.Interop.dll",
 	};
 	public static final String[] Dependencies = new String[]{
 	};

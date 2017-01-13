@@ -1,10 +1,10 @@
 ﻿<Properties StartupConfiguration="{B5D86C21-4528-44A2-B9BB-8EEBC01BEA6A}|Default">
-  <MonoDevelop.Ide.ItemProperties.Domotica AndroidDesignerPreferredDevice="Nexus 5X" PreferredExecutionTarget="Android.Android_Accelerated_x86" AndroidDesignerPreferredTheme="MyTheme" />
+  <MonoDevelop.Ide.ItemProperties.Domotica AndroidDesignerPreferredDevice="Nexus 5X" PreferredExecutionTarget="Android.00d91e4621b11f4e" AndroidDesignerPreferredTheme="MyTheme" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Domotica/Resources/values/theme.xml">
     <Files>
-      <File FileName="Domotica/MainActivity.cs" Line="86" Column="57" />
+      <File FileName="Domotica/MainActivity.cs" Line="100" Column="77" />
       <File FileName="Domotica/Resources/values/Strings.xml" Line="21" Column="42" />
-      <File FileName="Domotica/Resources/values/theme.xml" Line="7" Column="13" />
+      <File FileName="Domotica/Resources/values/theme.xml" Line="6" Column="11" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

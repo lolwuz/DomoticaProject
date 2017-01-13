@@ -64,7 +64,7 @@ namespace Domotica
         Button button2;
         Button button3;
         TextView textViewServerConnect, textViewTimerStateValue;
-        public TextView textViewChangePinStateValue, textViewSensorValue, textViewDebugValue, textViewphotoValue;
+        public TextView textViewChangePinStateValue, textViewSensorValue, textViewDebugValue, textViewPhotoValue;
         EditText editTextIPAddress, editTextIPPort;
 
         Timer timerClock, timerSockets;             // Timers   
@@ -89,15 +89,16 @@ namespace Domotica
 
             buttonConnect = FindViewById<Button>(Resource.Id.buttonConnect);
             buttonChangePinState = FindViewById<Button>(Resource.Id.buttonChangePinState);
-            button1 = FindViewById<Button>(Resource.Id.button1);
-            button2 = FindViewById<Button>(Resource.Id.button2);
-            button3 = FindViewById<Button>(Resource.Id.button3);
+            button1 = FindViewById<ToggleButton>(Resource.Id.toggleButton1);
+            button2 = FindViewById<ToggleButton>(Resource.Id.toggleButton2);
+            button3 = FindViewById<ToggleButton>(Resource.Id.toggleButton3);
             textViewTimerStateValue = FindViewById<TextView>(Resource.Id.textViewTimerStateValue);
             textViewServerConnect = FindViewById<TextView>(Resource.Id.textViewServerConnect);
             textViewChangePinStateValue = FindViewById<TextView>(Resource.Id.textViewChangePinStateValue);
-            textViewSensorValue = FindViewById<TextView>(Resource.Id.textViewSensorValue);
-            textViewDebugValue = FindViewById<TextView>(Resource.Id.textViewDebugValue);
-            textViewphotoValue = FindViewById<TextView>(Resource.Id.photoresistorValue);
+			// Sensoren.
+            textViewSensorValue = FindViewById<TextView>(Resource.Id.TextViewSensorValue);
+            textViewPhotoValue = FindViewById<TextView>(Resource.Id.PhotoresistorValue);
+			// 
             editTextIPAddress = FindViewById<EditText>(Resource.Id.editTextIPAddress);
             editTextIPPort = FindViewById<EditText>(Resource.Id.editTextIPPort);
 
@@ -106,7 +107,7 @@ namespace Domotica
             // Init commandlist, scheduled by socket timer
             commandList.Add(new Tuple<string, TextView>("s", textViewChangePinStateValue));
             commandList.Add(new Tuple<string, TextView>("a", textViewSensorValue));
-            commandList.Add(new Tuple<string, TextView>("b", textViewphotoValue));
+            commandList.Add(new Tuple<string, TextView>("b", textViewPhotoValue));
 
             // activation of connector -> threaded sockets otherwise -> simple sockets 
             // connector = new Connector(this);
@@ -297,10 +298,13 @@ namespace Domotica
         {
             RunOnUiThread(() =>
             {
-                if (result == "OFF") textview.SetTextColor(Color.Red);
-                else if (result == " ON") textview.SetTextColor(Color.Green);
-                else textview.SetTextColor(Color.White);  
-                textview.Text = result;
+				if (result == "OFF") textview.SetTextColor(Color.Red);
+				else if (result == " ON") textview.SetTextColor(Color.Green);
+				else
+				{
+					textview.SetTextColor(Color.White);
+					textview.Text = result;
+				}
             });
         }
 

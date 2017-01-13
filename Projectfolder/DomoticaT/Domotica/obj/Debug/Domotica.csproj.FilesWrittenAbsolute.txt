@@ -15,3 +15,5 @@
 /Users/Marten/DomoticaProject/Projectfolder/DomoticaT/Domotica/bin/Debug/Domotica.Domotica-Signed.apk
 /Users/Marten/DomoticaProject/Projectfolder/DomoticaT/Domotica/obj/Debug/uploadflags.txt
 /Users/Marten/DomoticaProject/Projectfolder/DomoticaT/Domotica/obj/Debug/DomoticaT.dll.mdb
+/Users/Marten/DomoticaProject/Projectfolder/DomoticaT/Domotica/obj/Debug/res/layout/sensor.xml
+/Users/Marten/DomoticaProject/Projectfolder/DomoticaT/Domotica/obj/Debug/res/layout/toolbar.xml

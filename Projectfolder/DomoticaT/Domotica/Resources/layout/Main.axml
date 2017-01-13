@@ -85,85 +85,53 @@
             android:digits="0123456789"
             android:layout_below="@id/textViewIPPort"
             android:layout_alignParentRight="true" />
-        <Button
-            android:text="@string/button_connect_text"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/editTextIPAddress"
-            android:id="@+id/buttonConnect"
-            android:layout_alignParentLeft="true"
-            android:backgroundTint="#add8e6ff" />
-        <Button
-            android:text="@string/button_pin_state_text"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/editTextIPPort"
-            android:id="@+id/buttonChangePinState"
-            android:layout_alignParentRight="true"
-            android:backgroundTint="#add8e6ff" />
-        <TextView
-            android:text="@string/pin_state_text"
-            android:layout_width="150dp"
-            android:layout_height="30dp"
-            android:id="@+id/textViewChangePinState"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@id/buttonConnect"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-        <TextView
-            android:text="@string/change_pin_state_value"
-            android:layout_width="200dp"
-            android:layout_height="30dp"
-            android:id="@+id/textViewChangePinStateValue"
-            android:layout_alignParentRight="true"
-            android:layout_below="@id/buttonChangePinState"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
     </RelativeLayout>
-    <RelativeLayout
+    <TextView
+        android:text="@string/pin_state_text"
+        android:id="@+id/textViewChangePinState"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/relativeLayout4">
-        <TextView
-            android:text="@string/debug_text"
-            android:id="@+id/textViewDebug"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_width="76.0dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true" />
-        <TextView
-            android:text="@string/debug_value"
-            android:id="@+id/textViewDebugValue"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/textViewDebug"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="0.0dp" />
-    </RelativeLayout>
-    <RelativeLayout
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="@string/change_pin_state_value"
+        android:id="@+id/textViewChangePinStateValue"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/relativeLayout5"
-        android:minWidth="25px"
-        android:minHeight="25px" />
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/relativeLayout6"
-        android:minWidth="25px"
-        android:minHeight="25px" />
+        android:layout_height="wrap_content" />
     <Button
-        android:text="Button1"
+        android:text="@string/button_connect_text"
+        android:id="@+id/buttonConnect"
+        android:backgroundTint="#add8e6ff"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button1" />
+        android:layout_height="wrap_content" />
     <Button
-        android:text="Button2"
+        android:text="@string/button_pin_state_text"
+        android:id="@+id/buttonChangePinState"
+        android:backgroundTint="#add8e6ff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <ToggleButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button2" />
-    <Button
-        android:text="Button3"
+        android:id="@+id/toggleButton1" />
+    <ToggleButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button3" />
+        android:id="@+id/toggleButton2" />
+    <ToggleButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/toggleButton3" />
+    <TextView
+        android:text="21"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/TextViewSensorValue" />
+    <TextView
+        android:text="120"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/PhotoresistorValue" />
 </LinearLayout>
