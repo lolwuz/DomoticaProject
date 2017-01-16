@@ -32,5 +32,8 @@ C:\Users\Marten Hoekstra\Documents\GitHub\DomoticaProject\Projectfolder\Domotica
 C:\Users\Marten Hoekstra\Documents\GitHub\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Release\android\assets\System.dll.mdb
 C:\Users\Marten Hoekstra\Documents\GitHub\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Release\android\assets\System.Runtime.Serialization.dll.mdb
 C:\Users\Marten Hoekstra\Documents\GitHub\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Release\Domotica.csprojResolveAssemblyReference.cache
+C:\Users\Marten Hoekstra\Documents\GitHub\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Release\res\layout\sensor.xml
+C:\Users\Marten Hoekstra\Documents\GitHub\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Release\res\layout\toolbar.xml
+C:\Users\Marten Hoekstra\Documents\GitHub\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Release\res\menu\edit_menus.xml
 C:\Users\Marten Hoekstra\Documents\GitHub\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Release\DomoticaT.dll.mdb
 C:\Users\Marten Hoekstra\Documents\GitHub\DomoticaProject\Projectfolder\DomoticaT\Domotica\bin\Release\DomoticaT.dll.mdb

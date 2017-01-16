@@ -128,13 +128,15 @@ namespace Domotica
             {
                 //RunOnUiThread(() =>
                 //{
-                    if (socket != null) // only if socket exists
-                    {
-                        // Send a command to the Arduino server on every tick (loop though list)
-                        UpdateGUI(ExecuteCommand(commandList[listIndex].Item1), commandList[listIndex].Item2);  //e.g. UpdateGUI(executeCommand("s"), textViewChangePinStateValue);
-                        if (++listIndex >= commandList.Count) listIndex = 0;
-                    }
-                    else timerSockets.Enabled = false;  // If socket broken -> disable timer
+                if (socket != null) // only if socket exists
+                {
+                    // Send a command to the Arduino server on every tick (loop though list)
+                    UpdateGUI(ExecuteCommand("s"), textViewChangePinStateValue);
+                    UpdateGUI(ExecuteCommand("a"), textViewSensorValue);
+                    UpdateGUI(ExecuteCommand("b"), textViewPhotoValue);
+
+                }
+                else timerSockets.Enabled = false;  // If socket broken -> disable timer
                 //});
             };
 
@@ -148,7 +150,14 @@ namespace Domotica
                     {
                         if (connector == null) // -> simple sockets
                         {
-                            ConnectSocket(editTextIPAddress.Text, editTextIPPort.Text);
+                            try
+                            {
+                                ConnectSocket(editTextIPAddress.Text, editTextIPPort.Text);
+                            }
+                            catch 
+                            {
+                                Console.WriteLine("No Socket found."); 
+                            }                                                                   
                         }
                         else // -> threaded sockets
                         {
@@ -218,6 +227,13 @@ namespace Domotica
                     }
                 };
             }
+
+            var edittoolbar = FindViewById<Toolbar>(Resource.Id.edit_toolbar);
+            edittoolbar.Title = "Editing";
+            edittoolbar.InflateMenu(Resource.Menu.edit_menus);
+            edittoolbar.MenuItemClick += (sender, e) => {
+                Toast.MakeText(this, "Bottom toolbar tapped: " + e.Item.TitleFormatted, ToastLength.Short).Show();
+            };
         }
 
 
@@ -298,8 +314,9 @@ namespace Domotica
         {
             RunOnUiThread(() =>
             {
+                Console.WriteLine(result);
 				if (result == "OFF") textview.SetTextColor(Color.Red);
-				else if (result == " ON") textview.SetTextColor(Color.Green);
+				else if (result == "ON") textview.SetTextColor(Color.Green);
 				else
 				{
 					textview.SetTextColor(Color.White);
