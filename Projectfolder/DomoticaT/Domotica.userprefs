@@ -1,15 +1,25 @@
 ﻿<Properties StartupConfiguration="{B5D86C21-4528-44A2-B9BB-8EEBC01BEA6A}|Default">
   <MonoDevelop.Ide.ItemProperties.Domotica AndroidDesignerPreferredDevice="Nexus 5X" PreferredExecutionTarget="Android.00d91e4621b11f4e" AndroidDesignerPreferredTheme="MyTheme" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Domotica/Resources/values/theme.xml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Domotica/obj/Debug/android/src/android/support/v7/widget/Toolbar_NavigationOnClickEventDispatcher.java">
     <Files>
-      <File FileName="Domotica/MainActivity.cs" Line="100" Column="77" />
+      <File FileName="Domotica/MainActivity.cs" Line="52" Column="20" />
       <File FileName="Domotica/Resources/values/Strings.xml" Line="21" Column="42" />
-      <File FileName="Domotica/Resources/values/theme.xml" Line="6" Column="11" />
+      <File FileName="Domotica/Resources/values/theme.xml" Line="20" Column="13" />
+      <File FileName="Domotica/Resources/menu/menu.xml" Line="1" Column="1" />
+      <File FileName="Domotica/SplashActivity.cs" Line="11" Column="1" />
+      <File FileName="Domotica/Properties/AndroidManifest.xml" Line="1" Column="1" />
+      <File FileName="Domotica/Resources/Resource.Designer.cs" Line="27" Column="28" />
+      <File FileName="Domotica/packages.config" Line="1" Column="1" />
+      <File FileName="Domotica/Sender.cs" Line="1" Column="1" />
+      <File FileName="Domotica/obj/Debug/android/src/md59a029c5e3fbbf5ca706745f408ebe991/MainActivity.java" Line="7" Column="27" />
+      <File FileName="Domotica/obj/Debug/android/src/android/support/v7/widget/Toolbar_NavigationOnClickEventDispatcher.java" Line="27" Column="76" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/Marten/DomoticaProject/Projectfolder/DomoticaT/Domotica/MainActivity.cs" relfile="Domotica/MainActivity.cs" line="269" column="11" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
