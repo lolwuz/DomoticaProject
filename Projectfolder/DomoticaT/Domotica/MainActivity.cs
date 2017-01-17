@@ -1,4 +1,4 @@
-﻿// Xamarin/C# app voor de besturing van een Arduino (Uno met Ethernet Shield) m.b.v. een socket-interface.
+﻿   // Xamarin/C# app voor de besturing van een Arduino (Uno met Ethernet Shield) m.b.v. een socket-interface.
 // Dit programma werkt samen met het Arduino-programma DomoticaServer.ino
 // De besturing heeft betrekking op het aan- en uitschakelen van een Arduino pin, waar een led aan kan hangen of, 
 // t.b.v. het Domotica project, een RF-zender waarmee een klik-aan-klik-uit apparaat bestuurd kan worden.
@@ -49,13 +49,12 @@ using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using Android.Graphics;
 using System.Threading.Tasks;
-using Android.Support.V7.App;
 
 namespace Domotica
 {
-    [Activity(Label = "@string/application_name", Icon = "@drawable/icon", ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
+    [Activity(Label = "@string/application_name", MainLauncher = true, Icon = "@drawable/icon", ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
 
-    public class MainActivity : AppCompatActivity
+    public class MainActivity : Activity
     {
         // Variables (components/controls)
         // Controls on GUI
@@ -86,7 +85,7 @@ namespace Domotica
 			// find and set the controls, so it can be used in the code
 			var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
 			SetActionBar(toolbar);
-			ActionBar.Title = "Student thuis";
+			ActionBar.Title = "My Toolbar";
 
             buttonConnect = FindViewById<Button>(Resource.Id.buttonConnect);
             buttonChangePinState = FindViewById<Button>(Resource.Id.buttonChangePinState);
@@ -229,8 +228,12 @@ namespace Domotica
                 };
             }
 
-            
-
+            var edittoolbar = FindViewById<Toolbar>(Resource.Id.edit_toolbar);
+            edittoolbar.Title = "Editing";
+            edittoolbar.InflateMenu(Resource.Menu.edit_menus);
+            edittoolbar.MenuItemClick += (sender, e) => {
+                Toast.MakeText(this, "Bottom toolbar tapped: " + e.Item.TitleFormatted, ToastLength.Short).Show();
+            };
         }
 
 
