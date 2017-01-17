@@ -169,7 +169,8 @@ void loop()
   	  //Serial.println("Temperature for Device 1 is: ");
   	  //Serial.println(sensors.getTempCByIndex(0)); // Why "byIndex"? 
   
-    	  temperatureValue = sensors.getTempCByIndex(0); // update sensor value
+    	temperatureValue = sensors.getTempCByIndex(0); // update sensor value
+      photoResistorValue = analogRead(photoPin);
         
       // Activate pin based op pinState
       if (pinChange) {
@@ -232,17 +233,18 @@ void executeCommand(char cmd)
          char buf[4] = {'\0', '\0', '\0', '\0'};
 
          // Command protocol
-         // Serial.print("["); Serial.print(cmd); Serial.print("] -> ");
+         Serial.print("["); Serial.print(cmd); Serial.print("] -> ");
          switch (cmd) {
          case 'a': // Report temperature value to app.
             intToCharBuf(temperatureValue, buf, 4);                // convert to charbuffer
             server.write(buf, 4);                             // response is always 4 chars (\n included)
-            //Serial.print("Sensor: "); Serial.println(buf);
+            Serial.print("Sensor: "); Serial.println(buf);
             break;
          case 'b': // Report photoResistor value to app.
             intToCharBuf(photoResistorValue, buf, 4);
             server.write(buf, 4);
-            //Serial.print("Sensor: "); Serial.println(buf);
+            Serial.print("Sensor: "); Serial.println(buf);
+            break;
          case 's': // Report switch state to the app
             if (pinState) { server.write(" ON\n"); Serial.println("Pin state is ON"); }  // always send 4 chars
             else { server.write("OFF\n"); Serial.println("Pin state is OFF"); }
@@ -267,6 +269,7 @@ void executeCommand(char cmd)
             break;
          default:
             digitalWrite(infoPin, LOW);
+            break;
          }
 }
 
