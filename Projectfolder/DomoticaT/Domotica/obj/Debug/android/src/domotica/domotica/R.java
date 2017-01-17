@@ -16,14 +16,17 @@ public final class R {
     public static final class id {
         public static final int PhotoresistorValue=0x7f070012;
         public static final int TextViewSensorValue=0x7f070011;
-        public static final int abort=0x7f070014;
+        public static final int abort=0x7f070017;
         public static final int buttonChangePinState=0x7f07000d;
         public static final int buttonConnect=0x7f07000c;
         public static final int editTextIPAddress=0x7f070008;
         public static final int editTextIPPort=0x7f070009;
-        public static final int exit=0x7f070013;
+        public static final int exit=0x7f070016;
+        public static final int menu_copy=0x7f070014;
+        public static final int menu_cut=0x7f070013;
+        public static final int menu_paste=0x7f070015;
         public static final int relativeLayout1=0x7f070001;
-        public static final int sensor=0x7f070015;
+        public static final int sensor=0x7f070018;
         public static final int textViewChangePinState=0x7f07000a;
         public static final int textViewChangePinStateValue=0x7f07000b;
         public static final int textViewIPAddress=0x7f070006;
@@ -43,10 +46,11 @@ public final class R {
         public static final int toolbar=0x7f030002;
     }
     public static final class menu {
-        public static final int menu=0x7f060000;
+        public static final int edit_menus=0x7f060000;
+        public static final int menu=0x7f060001;
     }
     public static final class string {
-        public static final int abort=0x7f040015;
+        public static final int abort=0x7f040018;
         public static final int application_name=0x7f040000;
         public static final int arduino_server_connect=0x7f040004;
         public static final int arduino_server_text=0x7f040003;
@@ -61,10 +65,13 @@ public final class R {
         public static final int ip_port_text=0x7f040007;
         public static final int ip_port_value=0x7f040008;
         public static final int pin_state_text=0x7f04000b;
-        public static final int sensor=0x7f040016;
+        public static final int sensor=0x7f040019;
         public static final int sensor_text=0x7f040010;
         public static final int sensor_value=0x7f040011;
+        public static final int tab1_text=0x7f040015;
+        public static final int tab2_text=0x7f040016;
         public static final int tab2text=0x7f04000d;
+        public static final int tab3_text=0x7f040017;
         public static final int tab3text=0x7f04000e;
         public static final int tabtext=0x7f04000c;
         public static final int timer_state_text=0x7f040001;

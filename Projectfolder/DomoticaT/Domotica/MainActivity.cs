@@ -77,15 +77,27 @@ namespace Domotica
         {
             base.OnCreate(bundle);
 
-            // Set our view from the "main" layout resource (strings are loaded from Recources -> values -> Strings.xml)
-            
+			ActionBar.Title = "MOEDER APP";
+			ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
 			SetContentView(Resource.Layout.Main);
 
+			ActionBar.Tab tab = ActionBar.NewTab();
+			tab.SetText(Resources.GetString(Resource.String.tab1_text));
+			tab.TabSelected += (sender, args) =>
+			{
+				// Do something when tab is selected
+			};
 
-			// find and set the controls, so it can be used in the code
-			var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
-			SetActionBar(toolbar);
-			ActionBar.Title = "My Toolbar";
+			ActionBar.AddTab(tab);
+
+			tab = ActionBar.NewTab();
+			tab.SetText(Resources.GetString(Resource.String.tab2_text));
+			tab.TabSelected += (sender, args) =>
+			{
+				// Do something when tab is selected
+			};
+
+			ActionBar.AddTab(tab);
 
             buttonConnect = FindViewById<Button>(Resource.Id.buttonConnect);
             buttonChangePinState = FindViewById<Button>(Resource.Id.buttonChangePinState);
@@ -228,12 +240,12 @@ namespace Domotica
                 };
             }
 
-            var edittoolbar = FindViewById<Toolbar>(Resource.Id.edit_toolbar);
-            edittoolbar.Title = "Editing";
-            edittoolbar.InflateMenu(Resource.Menu.edit_menus);
-            edittoolbar.MenuItemClick += (sender, e) => {
-                Toast.MakeText(this, "Bottom toolbar tapped: " + e.Item.TitleFormatted, ToastLength.Short).Show();
-            };
+            //var edittoolbar = FindViewById<Toolbar>(Resource.Id.edit_toolbar);
+            //edittoolbar.Title = "Editing";
+            //edittoolbar.InflateMenu(Resource.Menu.edit_menus);
+            //edittoolbar.MenuItemClick += (sender, e) => {
+            //    Toast.MakeText(this, "Bottom toolbar tapped: " + e.Item.TitleFormatted, ToastLength.Short).Show();
+            //};
         }
 
 
@@ -268,7 +280,7 @@ namespace Domotica
                     }
                     UpdateConnectionState(3, result);
                 }
-            }
+            }   
             return result;
         }
 
@@ -316,7 +328,7 @@ namespace Domotica
             {
                 Console.WriteLine(result);
 				if (result == "OFF") textview.SetTextColor(Color.Red);
-				else if (result == "ON") textview.SetTextColor(Color.Green);
+				else if (result == " ON") textview.SetTextColor(Color.Green);
 				else
 				{
 					textview.SetTextColor(Color.White);
