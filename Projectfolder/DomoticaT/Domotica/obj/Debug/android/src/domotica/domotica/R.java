@@ -28,7 +28,6 @@ public final class R {
         public static final int minTempSeekBar=0x7f070012;
         public static final int minTempTextView=0x7f070013;
         public static final int relativeLayout1=0x7f070000;
-        public static final int sensor=0x7f07001a;
         public static final int textViewChangePinState=0x7f070009;
         public static final int textViewChangePinStateValue=0x7f07000a;
         public static final int textViewIPAddress=0x7f070005;
@@ -67,7 +66,6 @@ public final class R {
         public static final int ip_port_text=0x7f040007;
         public static final int ip_port_value=0x7f040008;
         public static final int pin_state_text=0x7f04000b;
-        public static final int sensor=0x7f040019;
         public static final int sensor_text=0x7f040010;
         public static final int sensor_value=0x7f040011;
         public static final int tab1_text=0x7f040015;

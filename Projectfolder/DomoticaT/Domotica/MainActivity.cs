@@ -106,8 +106,8 @@ namespace Domotica
 
             // Init commandlist, scheduled by socket timer
             commandList.Add(new Tuple<string, TextView>("s", textViewChangePinStateValue));
-            // commandList.Add(new Tuple<string, TextView>("a", textViewSensorValue));
-            // commandList.Add(new Tuple<string, TextView>("b", textViewPhotoValue));
+             commandList.Add(new Tuple<string, TextView>("a", textViewSensorValue));
+             commandList.Add(new Tuple<string, TextView>("b", textViewPhotoValue));
 
             // activation of connector -> threaded sockets otherwise -> simple sockets 
             // connector = new Connector(this);
@@ -126,18 +126,17 @@ namespace Domotica
             timerSockets = new System.Timers.Timer() { Interval = 1000, Enabled = false }; // Interval >= 750
             timerSockets.Elapsed += (obj, args) =>
             {
-                RunOnUiThread(() =>
-                {
+
 	                if (socket != null) // only if socket exists
 	                {
 	                    // Send a command to the Arduino server on every tick (loop though list)
 						UpdateGUI(ExecuteCommand("s"), textViewChangePinStateValue);
-						textViewSensorValue.Text = ExecuteCommand("a");
-						textViewPhotoValue.Text = ExecuteCommand("b");
+                        UpdateGUI(ExecuteCommand("a"), textViewSensorValue);
+                        UpdateGUI(ExecuteCommand("b"), textViewPhotoValue);
 
-	                }
+                }
 	                else timerSockets.Enabled = false;  // If socket broken -> disable timer
-                });
+
             };
 
             //Add the "Connect" button handler.
@@ -171,7 +170,7 @@ namespace Domotica
             }
 
             //Add the "Change pin state" button handler.
-            if (buttonChangePinState != null)
+            /*if (buttonChangePinState != null)
             {
                 buttonChangePinState.Click += (sender, e) =>
                 {
@@ -184,7 +183,7 @@ namespace Domotica
                         if (connector.CheckStarted()) connector.SendMessage("t");  // Send toggle-command to the Arduino
                     }
                 };
-            }
+            }*/
             if (button1 != null)
             {
                 button1.Click += (sender, e) =>
@@ -424,9 +423,7 @@ namespace Domotica
                         if (connector.CheckStarted()) connector.Abort();
                     }
                     return true;
-                case Resource.Id.sensor:
-                    StartActivity(typeof(Sensors));
-                    return true;
+
             }
             return base.OnOptionsItemSelected(item);
         }
