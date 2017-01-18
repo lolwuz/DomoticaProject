@@ -64,40 +64,25 @@ namespace Domotica
         Button button2;
         Button button3;
         TextView textViewServerConnect, textViewTimerStateValue;
-        public TextView textViewChangePinStateValue, textViewSensorValue, textViewDebugValue, textViewPhotoValue;
+		SeekBar seekBar;
+        public TextView textViewChangePinStateValue, textViewSensorValue, textViewDebugValue, textViewPhotoValue, tempMinTextView;
         EditText editTextIPAddress, editTextIPPort;
 
         Timer timerClock, timerSockets;             // Timers   
         Socket socket = null;                       // Socket   
         Connector connector = null;                 // Connector (simple-mode or threaded-mode)
         List<Tuple<string, TextView>> commandList = new List<Tuple<string, TextView>>();  // List for commands and response places on UI
-        int listIndex = 0;
+        
+
+		float minTemp = 0;
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
 			ActionBar.Title = "MOEDER APP";
-			ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
+			//ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
 			SetContentView(Resource.Layout.Main);
-
-			ActionBar.Tab tab = ActionBar.NewTab();
-			tab.SetText(Resources.GetString(Resource.String.tab1_text));
-			tab.TabSelected += (sender, args) =>
-			{
-				// Do something when tab is selected
-			};
-
-			ActionBar.AddTab(tab);
-
-			tab = ActionBar.NewTab();
-			tab.SetText(Resources.GetString(Resource.String.tab2_text));
-			tab.TabSelected += (sender, args) =>
-			{
-				// Do something when tab is selected
-			};
-
-			ActionBar.AddTab(tab);
 
             buttonConnect = FindViewById<Button>(Resource.Id.buttonConnect);
             buttonChangePinState = FindViewById<Button>(Resource.Id.buttonChangePinState);
@@ -110,16 +95,19 @@ namespace Domotica
 			// Sensoren.
             textViewSensorValue = FindViewById<TextView>(Resource.Id.TextViewSensorValue);
             textViewPhotoValue = FindViewById<TextView>(Resource.Id.PhotoresistorValue);
-			// 
+			// Connectboxes.
             editTextIPAddress = FindViewById<EditText>(Resource.Id.editTextIPAddress);
             editTextIPPort = FindViewById<EditText>(Resource.Id.editTextIPPort);
+
+			seekBar = FindViewById<SeekBar>(Resource.Id.minTempSeekBar);
+			tempMinTextView = FindViewById<TextView>(Resource.Id.minTempTextView);
 
             UpdateConnectionState(4, "Disconnected");
 
             // Init commandlist, scheduled by socket timer
             commandList.Add(new Tuple<string, TextView>("s", textViewChangePinStateValue));
-            commandList.Add(new Tuple<string, TextView>("a", textViewSensorValue));
-            commandList.Add(new Tuple<string, TextView>("b", textViewPhotoValue));
+            // commandList.Add(new Tuple<string, TextView>("a", textViewSensorValue));
+            // commandList.Add(new Tuple<string, TextView>("b", textViewPhotoValue));
 
             // activation of connector -> threaded sockets otherwise -> simple sockets 
             // connector = new Connector(this);
@@ -138,18 +126,18 @@ namespace Domotica
             timerSockets = new System.Timers.Timer() { Interval = 1000, Enabled = false }; // Interval >= 750
             timerSockets.Elapsed += (obj, args) =>
             {
-                //RunOnUiThread(() =>
-                //{
-                if (socket != null) // only if socket exists
+                RunOnUiThread(() =>
                 {
-                    // Send a command to the Arduino server on every tick (loop though list)
-                    UpdateGUI(ExecuteCommand("s"), textViewChangePinStateValue);
-                    UpdateGUI(ExecuteCommand("a"), textViewSensorValue);
-                    UpdateGUI(ExecuteCommand("b"), textViewPhotoValue);
+	                if (socket != null) // only if socket exists
+	                {
+	                    // Send a command to the Arduino server on every tick (loop though list)
+						UpdateGUI(ExecuteCommand("s"), textViewChangePinStateValue);
+						textViewSensorValue.Text = ExecuteCommand("a");
+						textViewPhotoValue.Text = ExecuteCommand("b");
 
-                }
-                else timerSockets.Enabled = false;  // If socket broken -> disable timer
-                //});
+	                }
+	                else timerSockets.Enabled = false;  // If socket broken -> disable timer
+                });
             };
 
             //Add the "Connect" button handler.
@@ -240,12 +228,20 @@ namespace Domotica
                 };
             }
 
-            //var edittoolbar = FindViewById<Toolbar>(Resource.Id.edit_toolbar);
-            //edittoolbar.Title = "Editing";
-            //edittoolbar.InflateMenu(Resource.Menu.edit_menus);
-            //edittoolbar.MenuItemClick += (sender, e) => {
-            //    Toast.MakeText(this, "Bottom toolbar tapped: " + e.Item.TitleFormatted, ToastLength.Short).Show();
-            //};
+            seekBar.ProgressChanged += (object sender, SeekBar.ProgressChangedEventArgs e) =>
+			{
+				if (e.FromUser)
+				{
+					minTemp = 15 + (e.Progress / 100.0f) * 10.0f;
+					tempMinTextView.Text = string.Format("De minimum temperatuur is gezet op {0} graden celcius.", minTemp);
+
+					//int numVal = Convert.ToInt32(ExecuteCommand("b"));
+					//if (minTemp > numVal) { 
+					//	socket.Send(Encoding.ASCII.GetBytes("0"));
+					//}
+
+				}
+			};
         }
 
 

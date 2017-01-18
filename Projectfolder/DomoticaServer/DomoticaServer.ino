@@ -65,8 +65,8 @@ NewRemoteTransmitter transmitter(22708690, 2, 265, 3);  // APA3 (Gamma) remote, 
 char actionDevice = 'A';                 // Variable to store Action Device id ('A', 'B', 'C')
 bool pinState = false;                   // Variable to store actual pin state
 bool pinChange = false;                  // Variable to store actual pin change
-float temperatureValue = 0;              // Variable to store temperature value.
-float photoResistorValue = 0;
+int temperatureValue = 0;              // Variable to store temperature value.
+int photoResistorValue = 0;
 
 bool switchArray[3] = {false, false, false};
 
@@ -130,22 +130,11 @@ void loop()
    EthernetClient ethernetClient = server.available();
    if (!ethernetClient) {
       Serial.println("Trying to connect to App.");
-      // Temperatuur Onewire
-      // Serial.println(" Requesting temperatures...");
-      sensors.requestTemperatures(); // Send the command to get temperatures
-      // Serial.println("DONE");
-      // Serial.println("Temperature for Device 1 is: ");
-      // Serial.println(sensors.getTempCByIndex(0)); // Why "byIndex"? 
-  
-      temperatureValue = sensors.getTempCByIndex(0); // update sensor value
       blink(ledPin);
       
-      // Digitaal FotoResistor
-      //Serial.println("Digitaal waarde: ");
-      //Serial.println(analogRead(photoPin));
-
+      sensors.requestTemperatures();
+      temperatureValue = sensors.getTempCByIndex(0); // update sensor value
       photoResistorValue = analogRead(photoPin);
-
       
       return; // wait for connection and blink LED
    }
@@ -158,20 +147,12 @@ void loop()
    while (ethernetClient.connected()) 
    { 
       // You can have more than one IC on the same bus. 
-      // 0 refers to the first IC on the wire
-      
+      // 0 refers to the first IC on the wire    
       checkEvent(switchPin, pinState);          // update pin state
 
-  	  //Serial.println(" Requesting temperatures...");
-  	  //sensors.requestTemperatures(); // Send the command to get temperatures
-  	  //Serial.println("DONE");
-  
-  	  //Serial.println("Temperature for Device 1 is: ");
-  	  //Serial.println(sensors.getTempCByIndex(0)); // Why "byIndex"? 
-  
-    	temperatureValue = sensors.getTempCByIndex(0); // update sensor value
-      photoResistorValue = analogRead(photoPin);
-        
+      sensors.requestTemperatures(); // Send the command to get temperatures
+      temperatureValue = sensors.getTempCByIndex(0); // update sensor value
+           
       // Activate pin based op pinState
       if (pinChange) {
          if (pinState) { switchDefault(3); }
@@ -231,7 +212,7 @@ bool changeSwitchState(bool state, int sw){
 void executeCommand(char cmd)
 {     
          char buf[4] = {'\0', '\0', '\0', '\0'};
-
+         
          // Command protocol
          Serial.print("["); Serial.print(cmd); Serial.print("] -> ");
          switch (cmd) {
@@ -241,6 +222,7 @@ void executeCommand(char cmd)
             Serial.print("Sensor: "); Serial.println(buf);
             break;
          case 'b': // Report photoResistor value to app.
+            photoResistorValue = analogRead(photoPin);
             intToCharBuf(photoResistorValue, buf, 4);
             server.write(buf, 4);
             Serial.print("Sensor: "); Serial.println(buf);

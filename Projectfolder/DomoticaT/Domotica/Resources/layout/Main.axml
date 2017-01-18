@@ -7,9 +7,6 @@
     android:minWidth="25px"
     android:minHeight="25px"
     android:backgroundTint="#fff5f5dc">
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
     <RelativeLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
@@ -85,19 +82,22 @@
             android:digits="0123456789"
             android:layout_below="@id/textViewIPPort"
             android:layout_alignParentRight="true" />
+        <TextView
+            android:text="@string/pin_state_text"
+            android:id="@+id/textViewChangePinState"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editTextIPAddress" />
+        <TextView
+            android:text="@string/change_pin_state_value"
+            android:id="@+id/textViewChangePinStateValue"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewChangePinState"
+            android:layout_toRightOf="@id/textViewChangePinState" />
     </RelativeLayout>
-    <TextView
-        android:text="@string/pin_state_text"
-        android:id="@+id/textViewChangePinState"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:text="@string/change_pin_state_value"
-        android:id="@+id/textViewChangePinStateValue"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
     <Button
         android:text="@string/button_connect_text"
         android:id="@+id/buttonConnect"
@@ -138,4 +138,14 @@
         android:layout_height="55.7dp"
         android:id="@+id/PhotoresistorValue"
         android:gravity="center" />
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/minTempSeekBar" />
+    <TextView
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/minTempTextView" />
 </LinearLayout>
