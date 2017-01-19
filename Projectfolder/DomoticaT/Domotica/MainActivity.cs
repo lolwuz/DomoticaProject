@@ -72,7 +72,7 @@ namespace Domotica
         Socket socket = null;                       // Socket   
         Connector connector = null;                 // Connector (simple-mode or threaded-mode)
         List<Tuple<string, TextView>> commandList = new List<Tuple<string, TextView>>();  // List for commands and response places on UI
-        
+		int listIndex = 0;
 
 		float minTemp = 0;
 
@@ -105,9 +105,8 @@ namespace Domotica
             UpdateConnectionState(4, "Disconnected");
 
             // Init commandlist, scheduled by socket timer
-            commandList.Add(new Tuple<string, TextView>("s", textViewChangePinStateValue));
-             commandList.Add(new Tuple<string, TextView>("a", textViewSensorValue));
-             commandList.Add(new Tuple<string, TextView>("b", textViewPhotoValue));
+            commandList.Add(new Tuple<string, TextView>("a", textViewSensorValue));
+            commandList.Add(new Tuple<string, TextView>("b", textViewPhotoValue));
 
             // activation of connector -> threaded sockets otherwise -> simple sockets 
             // connector = new Connector(this);
@@ -127,15 +126,12 @@ namespace Domotica
             timerSockets.Elapsed += (obj, args) =>
             {
 
-	                if (socket != null) // only if socket exists
-	                {
-	                    // Send a command to the Arduino server on every tick (loop though list)
-						UpdateGUI(ExecuteCommand("s"), textViewChangePinStateValue);
-                        UpdateGUI(ExecuteCommand("a"), textViewSensorValue);
-                        UpdateGUI(ExecuteCommand("b"), textViewPhotoValue);
-
-                }
-	                else timerSockets.Enabled = false;  // If socket broken -> disable timer
+				if (socket != null) // only if socket exists
+				{
+					UpdateGUI(ExecuteCommand(commandList[listIndex].Item1), commandList[listIndex].Item2);  //e.g. UpdateGUI(executeCommand("s"), textViewChangePinStateValue);
+					if (++listIndex >= commandList.Count) listIndex = 0;
+				}
+	            else timerSockets.Enabled = false;  // If socket broken -> disable timer
 
             };
 
@@ -248,35 +244,37 @@ namespace Domotica
         //Method should only be called when so cket existst
         public string ExecuteCommand(string cmd)
         {
-            byte[] buffer = new byte[4]; // response is always 4 bytes
-            int bytesRead = 0;
-            string result = "---";
+			byte[] buffer = new byte[4]; // response is always 4 bytes
+			int bytesRead = 0;
+			string result = "---";
 
-            if (socket != null)
-            {
-                //Send command to server
-                socket.Send(Encoding.ASCII.GetBytes(cmd));
+			if (socket != null)
+			{
+				//Send command to server
+				socket.Send(Encoding.ASCII.GetBytes(cmd));
 
-                try //Get response from server
-                {
-                    //Store received bytes (always 4 bytes, ends with \n)
-                    bytesRead = socket.Receive(buffer);  // If no data is available for reading, the Receive method will block until data is available,
-                    //Read available bytes.              // socket.Available gets the amount of data that has been received from the network and is available to be read
-                    while (socket.Available > 0) bytesRead = socket.Receive(buffer);
-                    if (bytesRead == 4)
-                        result = Encoding.ASCII.GetString(buffer, 0, bytesRead - 1); // skip \n
-                    else result = "err";
-                }
-                catch (Exception exception) {
-                    result = exception.ToString();
-                    if (socket != null) {
-                        socket.Close();
-                        socket = null;
-                    }
-                    UpdateConnectionState(3, result);
-                }
-            }   
-            return result;
+				try //Get response from server
+				{
+					//Store received bytes (always 4 bytes, ends with \n)
+					bytesRead = socket.Receive(buffer);  // If no data is available for reading, the Receive method will block until data is available,
+														 //Read available bytes.              // socket.Available gets the amount of data that has been received from the network and is available to be read
+					while (socket.Available > 0) bytesRead = socket.Receive(buffer);
+					if (bytesRead == 4)
+						result = Encoding.ASCII.GetString(buffer, 0, bytesRead - 1); // skip \n
+					else result = "err";
+				}
+				catch (Exception exception)
+				{
+					result = exception.ToString();
+					if (socket != null)
+					{
+						socket.Close();
+						socket = null;
+					}
+					UpdateConnectionState(3, result);
+				}
+			}
+			return result;			
         }
 
         //Update connection state label (GUI).
@@ -317,20 +315,23 @@ namespace Domotica
         }
 
         //Update GUI based on Arduino response
-        public void UpdateGUI(string result, TextView textview)
+        public void UpdateGUI(string photoresult, TextView phototextview)
         {
             RunOnUiThread(() =>
             {
-                Console.WriteLine(result);
-				if (result == "OFF") textview.SetTextColor(Color.Red);
-				else if (result == " ON") textview.SetTextColor(Color.Green);
-				else
-				{
-					textview.SetTextColor(Color.White);
-					textview.Text = result;
-				}
+				phototextview.Text = photoresult;
             });
         }
+
+		public void UpdateTemp(string tempResult, TextView textview) 
+		{ 
+			RunOnUiThread(() =>
+			{
+				textview.Text = tempResult;				
+			});
+		}
+
+
 
         // Connect to socket ip/prt (simple sockets)
         public void ConnectSocket(string ip, string prt)
