@@ -153,12 +153,6 @@ void loop()
       sensors.requestTemperatures(); // Send the command to get temperatures
       temperatureValue = sensors.getTempCByIndex(0); // update sensor value
            
-      // Activate pin based op pinState
-      if (pinChange) {
-         if (pinState) { switchDefault(3); }
-         else { switchDefault(3); }
-         pinChange = false;
-      }
    
       // Execute when byte is received.
       while (ethernetClient.available())
@@ -185,15 +179,9 @@ void switchDefault(int light)
     case 2:
       transmitter.sendUnit(2, changeSwitchState(switchArray[2], 2));
       break;
-    case 3:
-      transmitter.sendGroup(pinState);
-      break;
     default:
       Serial.println("None Switched");
    }
-      
-            
-   delay(100);
 }
 
 bool changeSwitchState(bool state, int sw){
@@ -227,16 +215,6 @@ void executeCommand(char cmd)
             server.write(buf, 4);
             Serial.print("Sensor: "); Serial.println(buf);
             break;
-         case 's': // Report switch state to the app
-            if (pinState) { server.write(" ON\n"); Serial.println("Pin state is ON"); }  // always send 4 chars
-            else { server.write("OFF\n"); Serial.println("Pin state is OFF"); }
-            break;
-         case 't': // Toggle state; If state is already ON then turn it OFF
-            if (pinState) { pinState = false; Serial.println("Set pin state to \"OFF\""); }
-            else { pinState = true; Serial.println("Set pin state to \"ON\""); }  
-            pinChange = true; 
-            break;
-            
          case '0': 
             switchDefault(0);
             break;
@@ -246,11 +224,7 @@ void executeCommand(char cmd)
          case '2':
             switchDefault(2);
             break;
-         case 'i':    
-            digitalWrite(infoPin, HIGH);
-            break;
          default:
-            digitalWrite(infoPin, LOW);
             break;
          }
 }
