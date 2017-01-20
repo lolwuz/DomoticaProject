@@ -38,6 +38,7 @@
 #include <NewRemoteTransmitter.h> // Remote Control, Gamma, APA3
 #include <OneWire.h>              // Dallas Semiconductor's protocol for DS18B20 temp. http://playground.arduino.cc/Learning/OneWire
 #include <DallasTemperature.h>    // Lib. Om te temperatuur hex. om te zetten naar Graden.
+#include <NewRemoteReceiver.h>
 
 // Set Ethernet Shield MAC address  (check yours)
 byte mac[] = { 0x40, 0x6c, 0x8f, 0x36, 0x84, 0x8a }; // Ethernet adapter shield S. Oosterhaven
@@ -73,7 +74,7 @@ bool switchArray[3] = {false, false, false};
 void setup()
 {
    
-   Serial.begin(9600);
+   Serial.begin(250000);
    Serial.println("Domotica project, Arduino Domotica Server\n");
    Serial.println("Dallas Temperature begin");
    sensors.begin();
@@ -121,6 +122,8 @@ void setup()
    Serial.print(" ["); Serial.print(IPnr); Serial.print("] "); 
    Serial.print("  [Testcase: telnet "); Serial.print(Ethernet.localIP()); Serial.print(" "); Serial.print(ethPort); Serial.println("]");
    signalNumber(ledPin, IPnr);
+
+   // NewRemoteReceiver::init(0, 4, showCode);
 }
 
 void loop()
@@ -168,30 +171,23 @@ void loop()
 // Choose and switch your Kaku device, state is true/false (HIGH/LOW)
 void switchDefault(int light)
 {   
-
    switch(light){
     case 0:
-      transmitter.sendUnit(0, changeSwitchState(switchArray[0], 0));
+      transmitter.sendUnit(0, switchArray[0]);
+      Serial.print("Switch: "); Serial.println(switchArray[0]);
       break;
     case 1:
-      transmitter.sendUnit(1, changeSwitchState(switchArray[1], 1));
+      transmitter.sendUnit(1, switchArray[1]);
+      Serial.print("Switch: "); Serial.println(switchArray[1]);
       break; 
     case 2:
-      transmitter.sendUnit(2, changeSwitchState(switchArray[2], 2));
+      transmitter.sendUnit(2, switchArray[2]);
+      Serial.print("Switch: "); Serial.println(switchArray[2]);
       break;
     default:
       Serial.println("None Switched");
+      break;
    }
-}
-
-bool changeSwitchState(bool state, int sw){
-  Serial.println("Switch Number: ");
-  Serial.println(sw);
-  Serial.println("To State: ");
-  Serial.println(!state);
- 
-  switchArray[sw] = !state;
-  return !state;
 }
 
 // Implementation of (simple) protocol between app and Arduino
@@ -215,13 +211,28 @@ void executeCommand(char cmd)
             server.write(buf, 4);
             Serial.print("Sensor: "); Serial.println(buf);
             break;
-         case '0': 
-            switchDefault(0);
+         case '0':
+            switchArray[0] = true; 
+            switchDefault(0);      
             break;
-         case '1': 
+         case '1':
+            switchArray[1] = true;  
             switchDefault(1);
             break;
          case '2':
+            switchArray[2] = true; 
+            switchDefault(2);
+            break;
+         case 'q':
+            switchArray[0] = false; 
+            switchDefault(0);         
+            break;
+         case 'w':
+            switchArray[1] = false;  
+            switchDefault(1);
+            break;
+         case 'e':
+            switchArray[2] = false; 
             switchDefault(2);
             break;
          default:
