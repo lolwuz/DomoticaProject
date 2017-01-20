@@ -143,7 +143,6 @@ namespace Domotica
 					{
 						socket.Send(Encoding.ASCII.GetBytes(cmd));
 					}
-					UpdateGUI(ExecuteCommand(commandList[listIndex]) , textViewSensorValue);  //e.g. UpdateGUI(executeCommand("s"), textViewChangePinStateValue);
 					if (++listIndex >= commandList.Count) listIndex = 0;
 				}
 	            else timerSockets.Enabled = false;  // If socket broken -> disable timer
@@ -207,7 +206,7 @@ namespace Domotica
                 {
                     if (connector == null)
                     {
-                        if (button1.Checked)
+                        if (button2.Checked)
 						{
 							commandList[3] = "1";
 						}
@@ -228,13 +227,13 @@ namespace Domotica
                 {
                     if (connector == null)
                     {
-                        if (button1.Checked)
+                        if (button3.Checked)
 						{
-							commandList[2] = "2";
+							commandList[4] = "2";
 						}
 						else
 						{
-							commandList[2] = "e";
+							commandList[4] = "e";
 						}
                     }
                     else if (connector.CheckStarted())
