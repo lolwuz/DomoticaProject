@@ -103,26 +103,26 @@
         android:id="@+id/buttonConnect"
         android:backgroundTint="#add8e6ff"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="34.0dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp" />
     <Button
-        android:text="@string/button_pin_state_text"
+        android:text="stop lightverify"
         android:id="@+id/buttonChangePinState"
         android:backgroundTint="#add8e6ff"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="36.0dp" />
     <ToggleButton
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="37.3dp"
         android:id="@+id/toggleButton1" />
     <ToggleButton
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="34.7dp"
         android:id="@+id/toggleButton2" />
     <ToggleButton
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="34.7dp"
         android:id="@+id/toggleButton3" />
     <TextView
         android:text="21"
@@ -135,7 +135,7 @@
         android:text="120"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
-        android:layout_height="55.7dp"
+        android:layout_height="29.7dp"
         android:id="@+id/PhotoresistorValue"
         android:gravity="center" />
     <SeekBar
@@ -148,4 +148,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/minTempTextView" />
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lightBar" />
+    <Button
+        android:text="Verify light"
+        android:layout_width="match_parent"
+        android:layout_height="35.0dp"
+        android:id="@+id/button1"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="13dp" />
+    <TextView
+        android:text="Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lightText" />
 </LinearLayout>

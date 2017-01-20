@@ -60,10 +60,11 @@ namespace Domotica
         // Controls on GUI
         Button buttonConnect;
         Button buttonChangePinState;
+        Button lightVerify;
         ToggleButton button1, button2, button3;
         TextView textViewServerConnect, textViewTimerStateValue;
-		SeekBar seekBar;
-        public TextView textViewChangePinStateValue, textViewSensorValue, textViewDebugValue, textViewPhotoValue, tempMinTextView;
+		SeekBar seekBar, seekBarLight;
+        public TextView textViewChangePinStateValue, textViewSensorValue, textViewDebugValue, textViewPhotoValue, tempMinTextView, lightTextView;
         EditText editTextIPAddress, editTextIPPort;
         Timer timerClock, timerSockets;             // Timers   
         Socket socket = null;                       // Socket   
@@ -72,52 +73,69 @@ namespace Domotica
         List<string> commandList = new List<string>();  // List for commands and response places on UI
 		int listIndex = 0;
 		float minTemp = 0;
-		// 
-		string connectIP; 
+        float light = 0;
+        float photoValue = -1;
+        bool stopVerify = false;
+        // Connection IP from the welcome screen.
+        string connectIP;
+
+        bool isPhoto = false;
+
+
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
-			ActionBar.Title = "MOEDER APP";
-			//ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
-			SetContentView(Resource.Layout.Main);
+            ActionBar.Title = "MOEDER APP";
+            //ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
+            SetContentView(Resource.Layout.Main);
 
             buttonConnect = FindViewById<Button>(Resource.Id.buttonConnect);
             buttonChangePinState = FindViewById<Button>(Resource.Id.buttonChangePinState);
             button1 = FindViewById<ToggleButton>(Resource.Id.toggleButton1);
             button2 = FindViewById<ToggleButton>(Resource.Id.toggleButton2);
             button3 = FindViewById<ToggleButton>(Resource.Id.toggleButton3);
+            lightVerify = FindViewById<Button>(Resource.Id.button1);
             textViewTimerStateValue = FindViewById<TextView>(Resource.Id.textViewTimerStateValue);
             textViewServerConnect = FindViewById<TextView>(Resource.Id.textViewServerConnect);
             textViewChangePinStateValue = FindViewById<TextView>(Resource.Id.textViewChangePinStateValue);
-			// Sensoren.
+            // Sensoren.
             textViewSensorValue = FindViewById<TextView>(Resource.Id.TextViewSensorValue);
             textViewPhotoValue = FindViewById<TextView>(Resource.Id.PhotoresistorValue);
-			// Connectboxes.
+            // Connectboxes.
             editTextIPAddress = FindViewById<EditText>(Resource.Id.editTextIPAddress);
             editTextIPPort = FindViewById<EditText>(Resource.Id.editTextIPPort);
 
-			seekBar = FindViewById<SeekBar>(Resource.Id.minTempSeekBar);
-			tempMinTextView = FindViewById<TextView>(Resource.Id.minTempTextView);
+            seekBar = FindViewById<SeekBar>(Resource.Id.minTempSeekBar);
+            seekBarLight = FindViewById<SeekBar>(Resource.Id.lightBar);
+            tempMinTextView = FindViewById<TextView>(Resource.Id.minTempTextView);
+            lightTextView = FindViewById<TextView>(Resource.Id.lightText);
 
             UpdateConnectionState(4, "Disconnected");
 
             // Init commandlist, scheduled by socket timer
             commandList.Add("a");
             commandList.Add("b");
-			commandList.Add("0");
-			commandList.Add("1");
-			commandList.Add("2");
+            commandList.Add("0");
+            commandList.Add("1");
+            commandList.Add("2");
 
-          	// Get the connect IP from the welcome screen.
-			connectIP = Intent.GetStringExtra("MyConnectData") ?? "0.0.0.0";
+            // Get the connect IP from the welcome screen.
+            connectIP = Intent.GetStringExtra("MyConnectData") ?? "0.0.0.0";
 
             // timer object, running clock
             timerClock = new System.Timers.Timer() { Interval = 2000, Enabled = true }; // Interval >= 1000
             timerClock.Elapsed += (obj, args) =>
             {
-                RunOnUiThread(() => { textViewTimerStateValue.Text = DateTime.Now.ToString("h:mm:ss"); }); 
+                RunOnUiThread(() =>
+                {
+                    textViewTimerStateValue.Text = DateTime.Now.ToString("h:mm:ss");
+                    if (stopVerify == false)
+                    {
+                        checkPhotoValue();
+                    }
+                });
             };
 
             // timer object, check Arduino state
@@ -126,50 +144,36 @@ namespace Domotica
             timerSockets.Elapsed += (obj, args) =>
             {
 
-				if (socket != null) // only if socket exists
-				{
-
-					string cmd = commandList[listIndex];
-					if (cmd == "a")
-					{
-						UpdateGUI(ExecuteCommand(cmd), textViewSensorValue);
-					}
-					else if (cmd == "b")
-					{
-						UpdateGUI(ExecuteCommand(cmd), textViewPhotoValue);
-					}
-					else 
-					{
-						socket.Send(Encoding.ASCII.GetBytes(cmd));
-					}
-					if (++listIndex >= commandList.Count) listIndex = 0;
-				}
-	            else timerSockets.Enabled = false;  // If socket broken -> disable timer
+                if (socket != null) // only if socket exists
+                {
+                    ExecuteCommand();
+                }
+                else timerSockets.Enabled = false;  // If socket broken -> disable timer
 
             };
 
-			// Start Connecting to the socket. 
+            // Start Connecting to the socket. 
             if (CheckValidIpAddress(connectIP) && CheckValidPort("3300"))
-			{
-				if (connector == null) // -> simple sockets
-				{
-					try
-					{
-						ConnectSocket(connectIP, "3300");
-					}
-					catch
-					{
-						Console.WriteLine("No Socket found.");
-					}
-				}
-				else // -> threaded sockets
-				{
-					//Stop the thread If the Connector thread is already started.
-					if (connector.CheckStarted()) connector.StopConnector();
-					connector.StartConnector(editTextIPAddress.Text, editTextIPPort.Text);
-				}
-			}
-			else UpdateConnectionState(3, "Please check IP");
+            {
+                if (connector == null) // -> simple sockets
+                {
+                    try
+                    {
+                        ConnectSocket(connectIP, "3300");
+                    }
+                    catch
+                    {
+                        Console.WriteLine("No Socket found.");
+                    }
+                }
+                else // -> threaded sockets
+                {
+                    //Stop the thread If the Connector thread is already started.
+                    if (connector.CheckStarted()) connector.StopConnector();
+                    connector.StartConnector(editTextIPAddress.Text, editTextIPPort.Text);
+                }
+            }
+            else UpdateConnectionState(3, "Please check IP");
 
             if (button1 != null)
             {
@@ -177,14 +181,14 @@ namespace Domotica
                 {
                     if (connector == null)
                     {
-						if (button1.Checked)
-						{
-							commandList[2] = "0";
-						}
-						else 
-						{
-							commandList[2] = "q";	
-						}
+                        if (button1.Checked)
+                        {
+                            commandList[2] = "0";
+                        }
+                        else
+                        {
+                            commandList[2] = "q";
+                        }
                     }
                     else if (connector.CheckStarted())
                     {
@@ -199,13 +203,13 @@ namespace Domotica
                     if (connector == null)
                     {
                         if (button2.Checked)
-						{
-							commandList[3] = "1";
-						}
-						else
-						{
-							commandList[3] = "w";
-						}
+                        {
+                            commandList[3] = "1";
+                        }
+                        else
+                        {
+                            commandList[3] = "w";
+                        }
                     }
                     else if (connector.CheckStarted())
                     {
@@ -220,13 +224,14 @@ namespace Domotica
                     if (connector == null)
                     {
                         if (button3.Checked)
-						{
-							commandList[4] = "2";
-						}
-						else
-						{
-							commandList[4] = "e";
-						}
+                        {
+                            commandList[4] = "2";
+
+                        }
+                        else
+                        {
+                            commandList[4] = "e";
+                        }
                     }
                     else if (connector.CheckStarted())
                     {
@@ -236,21 +241,67 @@ namespace Domotica
             }
 
             seekBar.ProgressChanged += (object sender, SeekBar.ProgressChangedEventArgs e) =>
-			{
-				if (e.FromUser)
-				{
-					minTemp = 15 + (e.Progress / 100.0f) * 10.0f;
-					tempMinTextView.Text = string.Format("De minimum temperatuur is gezet op {0} graden celcius.", minTemp);
+            {
+                if (e.FromUser)
+                {
+                    minTemp = 15 + (e.Progress / 100.0f) * 10.0f;
+                    tempMinTextView.Text = string.Format("De minimum temperatuur is gezet op {0} graden celcius.", minTemp);
 
-					//int numVal = Convert.ToInt32(ExecuteCommand("b"));
-					//if (minTemp > numVal) { 
-					//	socket.Send(Encoding.ASCII.GetBytes("0"));
-					//}
+                    //int numVal = Convert.ToInt32(ExecuteCommand("b"));
+                    //if (minTemp > numVal) { 
+                    //	socket.Send(Encoding.ASCII.GetBytes("0"));
+                    //}
 
-				}
-			};
+                }
+            };
+            seekBarLight.ProgressChanged += (object sender, SeekBar.ProgressChangedEventArgs e) =>
+            {
+                if (e.FromUser)
+                {
+                    light = 0 + (e.Progress * 10.24f);
+                    lightTextView.Text = string.Format("Minimum lichtgevoeligheid is gezet op {0}.", light);
+                }
+            };
+
+
+            if (lightVerify != null)
+            {
+                lightVerify.Click += (sender, e) =>
+                {
+                    photoValue = light;
+                    stopVerify = false;
+
+                };
+            }
+            if (buttonChangePinState != null)
+            {
+                buttonChangePinState.Click += (sender, e) =>
+                {
+                    stopVerify = true;
+                };
+            }
         }
-
+        // Send Command to the server without a response.
+        public void ExecuteCommand()
+        {
+            if (socket != null)
+            {
+                string cmd = commandList[listIndex];
+                if (cmd == "a")
+                {
+                    UpdateGUI(ExecuteCommand(cmd), textViewSensorValue);
+                }
+                else if (cmd == "b")
+                {
+                    UpdateGUI(ExecuteCommand(cmd), textViewPhotoValue);
+                }
+                else
+                {
+                    socket.Send(Encoding.ASCII.GetBytes(cmd));
+                }
+                if (++listIndex >= commandList.Count) listIndex = 0;
+            }        
+        }
         //Send command to server and wait for response (blocking)
         //Method should only be called when so cket existst
         public string ExecuteCommand(string cmd)
@@ -468,6 +519,35 @@ namespace Domotica
                 }
                 else return false;
             } else return false;
+        }
+
+        private void checkPhotoValue()
+        {
+            int et = (int)Convert.ToDouble(textViewPhotoValue.Text);
+            try
+            {
+                et = int.Parse(textViewPhotoValue.Text);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Could not convert.");
+            }
+
+            if (et >= photoValue)
+            {
+                if (connector == null)
+                {           
+                    commandList[4] = "2";             
+                    button3.Checked = true;
+                    isPhoto = true;
+                }
+            }
+            else
+            {
+                commandList[4] = "e";
+                button3.Checked = false;
+                isPhoto = false;
+            }
         }
     }
 }

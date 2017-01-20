@@ -16,19 +16,21 @@ public final class R {
     public static final class id {
         public static final int PhotoresistorValue=0x7f070011;
         public static final int TextViewSensorValue=0x7f070010;
-        public static final int abort=0x7f07001d;
-        public static final int button1=0x7f070017;
+        public static final int abort=0x7f07001f;
+        public static final int button1=0x7f070015;
         public static final int buttonChangePinState=0x7f07000c;
         public static final int buttonConnect=0x7f07000b;
-        public static final int editText1=0x7f070018;
+        public static final int editText1=0x7f07001a;
         public static final int editTextIPAddress=0x7f070007;
         public static final int editTextIPPort=0x7f070008;
-        public static final int exit=0x7f07001c;
-        public static final int frameLayout1=0x7f070015;
-        public static final int linearLayout1=0x7f070016;
-        public static final int menu_copy=0x7f07001a;
-        public static final int menu_cut=0x7f070019;
-        public static final int menu_paste=0x7f07001b;
+        public static final int exit=0x7f07001e;
+        public static final int frameLayout1=0x7f070018;
+        public static final int lightBar=0x7f070014;
+        public static final int lightText=0x7f070016;
+        public static final int linearLayout1=0x7f070019;
+        public static final int menu_copy=0x7f07001c;
+        public static final int menu_cut=0x7f07001b;
+        public static final int menu_paste=0x7f07001d;
         public static final int minTempSeekBar=0x7f070012;
         public static final int minTempTextView=0x7f070013;
         public static final int relativeLayout1=0x7f070000;
@@ -43,7 +45,7 @@ public final class R {
         public static final int toggleButton1=0x7f07000d;
         public static final int toggleButton2=0x7f07000e;
         public static final int toggleButton3=0x7f07000f;
-        public static final int toolbar=0x7f070014;
+        public static final int toolbar=0x7f070017;
     }
     public static final class layout {
         public static final int main=0x7f030000;
