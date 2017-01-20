@@ -60,9 +60,7 @@ namespace Domotica
         // Controls on GUI
         Button buttonConnect;
         Button buttonChangePinState;
-        Button button1;
-        Button button2;
-        Button button3;
+        ToggleButton button1, button2, button3;
         TextView textViewServerConnect, textViewTimerStateValue;
 		SeekBar seekBar;
         public TextView textViewChangePinStateValue, textViewSensorValue, textViewDebugValue, textViewPhotoValue, tempMinTextView;
@@ -71,7 +69,7 @@ namespace Domotica
         Timer timerClock, timerSockets;             // Timers   
         Socket socket = null;                       // Socket   
         Connector connector = null;                 // Connector (simple-mode or threaded-mode)
-        List<Tuple<string, TextView>> commandList = new List<Tuple<string, TextView>>();  // List for commands and response places on UI
+        List<string> commandList = new List<string>();  // List for commands and response places on UI
 		int listIndex = 0;
 
 		float minTemp = 0;
@@ -105,8 +103,11 @@ namespace Domotica
             UpdateConnectionState(4, "Disconnected");
 
             // Init commandlist, scheduled by socket timer
-            commandList.Add(new Tuple<string, TextView>("a", textViewSensorValue));
-            commandList.Add(new Tuple<string, TextView>("b", textViewPhotoValue));
+            commandList.Add("a");
+            commandList.Add("b");
+			commandList.Add("0");
+			commandList.Add("1");
+			commandList.Add("2");
 
             // activation of connector -> threaded sockets otherwise -> simple sockets 
             // connector = new Connector(this);
@@ -128,7 +129,21 @@ namespace Domotica
 
 				if (socket != null) // only if socket exists
 				{
-					UpdateGUI(ExecuteCommand(commandList[listIndex].Item1), commandList[listIndex].Item2);  //e.g. UpdateGUI(executeCommand("s"), textViewChangePinStateValue);
+
+					string cmd = commandList[listIndex];
+					if (cmd == "a")
+					{
+						UpdateGUI(ExecuteCommand(cmd), textViewSensorValue);
+					}
+					else if (cmd == "b")
+					{
+						UpdateGUI(ExecuteCommand(cmd), textViewPhotoValue);
+					}
+					else 
+					{
+						socket.Send(Encoding.ASCII.GetBytes(cmd));
+					}
+					UpdateGUI(ExecuteCommand(commandList[listIndex]) , textViewSensorValue);  //e.g. UpdateGUI(executeCommand("s"), textViewChangePinStateValue);
 					if (++listIndex >= commandList.Count) listIndex = 0;
 				}
 	            else timerSockets.Enabled = false;  // If socket broken -> disable timer
@@ -165,28 +180,20 @@ namespace Domotica
                 };
             }
 
-            //Add the "Change pin state" button handler.
-            /*if (buttonChangePinState != null)
-            {
-                buttonChangePinState.Click += (sender, e) =>
-                {
-                    if (connector == null) // -> simple sockets
-                    {
-                        socket.Send(Encoding.ASCII.GetBytes("t"));                 // Send toggle-command to the Arduino
-                    }
-                    else // -> threaded sockets
-                    {
-                        if (connector.CheckStarted()) connector.SendMessage("t");  // Send toggle-command to the Arduino
-                    }
-                };
-            }*/
             if (button1 != null)
             {
                 button1.Click += (sender, e) =>
                 {
                     if (connector == null)
                     {
-                        socket.Send(Encoding.ASCII.GetBytes("0"));
+						if (button1.Checked)
+						{
+							commandList[2] = "0";
+						}
+						else 
+						{
+							commandList[2] = "q";	
+						}
                     }
                     else if (connector.CheckStarted())
                     {
@@ -200,7 +207,14 @@ namespace Domotica
                 {
                     if (connector == null)
                     {
-                        socket.Send(Encoding.ASCII.GetBytes("1"));
+                        if (button1.Checked)
+						{
+							commandList[3] = "1";
+						}
+						else
+						{
+							commandList[3] = "w";
+						}
                     }
                     else if (connector.CheckStarted())
                     {
@@ -214,7 +228,14 @@ namespace Domotica
                 {
                     if (connector == null)
                     {
-                        socket.Send(Encoding.ASCII.GetBytes("2"));
+                        if (button1.Checked)
+						{
+							commandList[2] = "2";
+						}
+						else
+						{
+							commandList[2] = "e";
+						}
                     }
                     else if (connector.CheckStarted())
                     {
@@ -238,7 +259,6 @@ namespace Domotica
 				}
 			};
         }
-
 
         //Send command to server and wait for response (blocking)
         //Method should only be called when so cket existst
