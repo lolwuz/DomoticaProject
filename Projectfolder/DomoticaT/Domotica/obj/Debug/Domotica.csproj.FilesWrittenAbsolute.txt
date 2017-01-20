@@ -19,3 +19,4 @@
 /Users/Marten/DomoticaProject/Projectfolder/DomoticaT/Domotica/obj/Debug/res/layout/toolbar.xml
 /Users/Marten/DomoticaProject/Projectfolder/DomoticaT/Domotica/obj/Debug/res/menu/edit_menus.xml
 /Users/Marten/DomoticaProject/Projectfolder/DomoticaT/Domotica/obj/Debug/MonoAndroid,Version=v6.0.AssemblyAttribute.cs
+/Users/Marten/DomoticaProject/Projectfolder/DomoticaT/Domotica/obj/Debug/res/layout/welcome.xml

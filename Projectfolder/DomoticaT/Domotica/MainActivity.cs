@@ -52,7 +52,7 @@ using System.Threading.Tasks;
 
 namespace Domotica
 {
-    [Activity(Label = "@string/application_name", MainLauncher = true, Icon = "@drawable/icon", ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
+    [Activity(Label = "@string/application_name", MainLauncher = false, Icon = "@drawable/icon", ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
 
     public class MainActivity : Activity
     {
@@ -65,14 +65,15 @@ namespace Domotica
 		SeekBar seekBar;
         public TextView textViewChangePinStateValue, textViewSensorValue, textViewDebugValue, textViewPhotoValue, tempMinTextView;
         EditText editTextIPAddress, editTextIPPort;
-
         Timer timerClock, timerSockets;             // Timers   
         Socket socket = null;                       // Socket   
-        Connector connector = null;                 // Connector (simple-mode or threaded-mode)
+		Connector connector = null;                 // Connector (simple-mode or threaded-mode.
+		// CommandList Variables.
         List<string> commandList = new List<string>();  // List for commands and response places on UI
 		int listIndex = 0;
-
 		float minTemp = 0;
+		// 
+		string connectIP; 
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -109,10 +110,8 @@ namespace Domotica
 			commandList.Add("1");
 			commandList.Add("2");
 
-            // activation of connector -> threaded sockets otherwise -> simple sockets 
-            // connector = new Connector(this);
-
-            this.Title = (connector == null) ? this.Title + " (simple sockets)" : this.Title + " (thread sockets)";
+          	// Get the connect IP from the welcome screen.
+			connectIP = Intent.GetStringExtra("MyConnectData") ?? "0.0.0.0";
 
             // timer object, running clock
             timerClock = new System.Timers.Timer() { Interval = 2000, Enabled = true }; // Interval >= 1000
@@ -149,35 +148,28 @@ namespace Domotica
 
             };
 
-            //Add the "Connect" button handler.
-            if (buttonConnect != null)  // if button exists
-            {
-                buttonConnect.Click += (sender, e) =>
-                {
-                    //Validate the user input (IP address and port)
-                    if (CheckValidIpAddress(editTextIPAddress.Text) && CheckValidPort(editTextIPPort.Text))
-                    {
-                        if (connector == null) // -> simple sockets
-                        {
-                            try
-                            {
-                                ConnectSocket(editTextIPAddress.Text, editTextIPPort.Text);
-                            }
-                            catch 
-                            {
-                                Console.WriteLine("No Socket found."); 
-                            }                                                                   
-                        }
-                        else // -> threaded sockets
-                        {
-                            //Stop the thread If the Connector thread is already started.
-                            if (connector.CheckStarted()) connector.StopConnector();
-                               connector.StartConnector(editTextIPAddress.Text, editTextIPPort.Text);
-                        }
-                    }
-                    else UpdateConnectionState(3, "Please check IP");
-                };
-            }
+			// Start Connecting to the socket. 
+            if (CheckValidIpAddress(connectIP) && CheckValidPort("3300"))
+			{
+				if (connector == null) // -> simple sockets
+				{
+					try
+					{
+						ConnectSocket(connectIP, "3300");
+					}
+					catch
+					{
+						Console.WriteLine("No Socket found.");
+					}
+				}
+				else // -> threaded sockets
+				{
+					//Stop the thread If the Connector thread is already started.
+					if (connector.CheckStarted()) connector.StopConnector();
+					connector.StartConnector(editTextIPAddress.Text, editTextIPPort.Text);
+				}
+			}
+			else UpdateConnectionState(3, "Please check IP");
 
             if (button1 != null)
             {

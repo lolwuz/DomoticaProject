@@ -16,15 +16,19 @@ public final class R {
     public static final class id {
         public static final int PhotoresistorValue=0x7f070011;
         public static final int TextViewSensorValue=0x7f070010;
-        public static final int abort=0x7f070019;
+        public static final int abort=0x7f07001d;
+        public static final int button1=0x7f070017;
         public static final int buttonChangePinState=0x7f07000c;
         public static final int buttonConnect=0x7f07000b;
+        public static final int editText1=0x7f070018;
         public static final int editTextIPAddress=0x7f070007;
         public static final int editTextIPPort=0x7f070008;
-        public static final int exit=0x7f070018;
-        public static final int menu_copy=0x7f070016;
-        public static final int menu_cut=0x7f070015;
-        public static final int menu_paste=0x7f070017;
+        public static final int exit=0x7f07001c;
+        public static final int frameLayout1=0x7f070015;
+        public static final int linearLayout1=0x7f070016;
+        public static final int menu_copy=0x7f07001a;
+        public static final int menu_cut=0x7f070019;
+        public static final int menu_paste=0x7f07001b;
         public static final int minTempSeekBar=0x7f070012;
         public static final int minTempTextView=0x7f070013;
         public static final int relativeLayout1=0x7f070000;
@@ -45,6 +49,7 @@ public final class R {
         public static final int main=0x7f030000;
         public static final int sensor=0x7f030001;
         public static final int toolbar=0x7f030002;
+        public static final int welcome=0x7f030003;
     }
     public static final class menu {
         public static final int edit_menus=0x7f060000;

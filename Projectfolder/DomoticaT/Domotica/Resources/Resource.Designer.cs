@@ -66,8 +66,11 @@ namespace Domotica
 			// aapt resource value: 0x7f070010
 			public const int TextViewSensorValue = 2131165200;
 			
-			// aapt resource value: 0x7f070019
-			public const int abort = 2131165209;
+			// aapt resource value: 0x7f07001d
+			public const int abort = 2131165213;
+			
+			// aapt resource value: 0x7f070017
+			public const int button1 = 2131165207;
 			
 			// aapt resource value: 0x7f07000c
 			public const int buttonChangePinState = 2131165196;
@@ -75,23 +78,32 @@ namespace Domotica
 			// aapt resource value: 0x7f07000b
 			public const int buttonConnect = 2131165195;
 			
+			// aapt resource value: 0x7f070018
+			public const int editText1 = 2131165208;
+			
 			// aapt resource value: 0x7f070007
 			public const int editTextIPAddress = 2131165191;
 			
 			// aapt resource value: 0x7f070008
 			public const int editTextIPPort = 2131165192;
 			
-			// aapt resource value: 0x7f070018
-			public const int exit = 2131165208;
-			
-			// aapt resource value: 0x7f070016
-			public const int menu_copy = 2131165206;
+			// aapt resource value: 0x7f07001c
+			public const int exit = 2131165212;
 			
 			// aapt resource value: 0x7f070015
-			public const int menu_cut = 2131165205;
+			public const int frameLayout1 = 2131165205;
 			
-			// aapt resource value: 0x7f070017
-			public const int menu_paste = 2131165207;
+			// aapt resource value: 0x7f070016
+			public const int linearLayout1 = 2131165206;
+			
+			// aapt resource value: 0x7f07001a
+			public const int menu_copy = 2131165210;
+			
+			// aapt resource value: 0x7f070019
+			public const int menu_cut = 2131165209;
+			
+			// aapt resource value: 0x7f07001b
+			public const int menu_paste = 2131165211;
 			
 			// aapt resource value: 0x7f070012
 			public const int minTempSeekBar = 2131165202;
@@ -159,6 +171,9 @@ namespace Domotica
 			
 			// aapt resource value: 0x7f030002
 			public const int toolbar = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int Welcome = 2130903043;
 			
 			static Layout()
 			{
