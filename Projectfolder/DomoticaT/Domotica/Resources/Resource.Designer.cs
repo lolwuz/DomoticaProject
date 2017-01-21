@@ -66,8 +66,8 @@ namespace Domotica
 			// aapt resource value: 0x7f070000
 			public const int TextViewSensorValue = 2131165184;
 			
-			// aapt resource value: 0x7f070013
-			public const int abort = 2131165203;
+			// aapt resource value: 0x7f070014
+			public const int abort = 2131165204;
 			
 			// aapt resource value: 0x7f070009
 			public const int button1 = 2131165193;
@@ -84,11 +84,11 @@ namespace Domotica
 			// aapt resource value: 0x7f070004
 			public const int checkBox3 = 2131165188;
 			
-			// aapt resource value: 0x7f07000e
-			public const int editText1 = 2131165198;
+			// aapt resource value: 0x7f07000f
+			public const int editText1 = 2131165199;
 			
-			// aapt resource value: 0x7f070012
-			public const int exit = 2131165202;
+			// aapt resource value: 0x7f070013
+			public const int exit = 2131165203;
 			
 			// aapt resource value: 0x7f07000c
 			public const int frameLayout1 = 2131165196;
@@ -102,20 +102,23 @@ namespace Domotica
 			// aapt resource value: 0x7f07000d
 			public const int linearLayout1 = 2131165197;
 			
-			// aapt resource value: 0x7f070010
-			public const int menu_copy = 2131165200;
-			
-			// aapt resource value: 0x7f07000f
-			public const int menu_cut = 2131165199;
-			
 			// aapt resource value: 0x7f070011
-			public const int menu_paste = 2131165201;
+			public const int menu_copy = 2131165201;
+			
+			// aapt resource value: 0x7f070010
+			public const int menu_cut = 2131165200;
+			
+			// aapt resource value: 0x7f070012
+			public const int menu_paste = 2131165202;
 			
 			// aapt resource value: 0x7f070006
 			public const int minTempSeekBar = 2131165190;
 			
 			// aapt resource value: 0x7f070007
 			public const int minTempTextView = 2131165191;
+			
+			// aapt resource value: 0x7f07000e
+			public const int textView1 = 2131165198;
 			
 			// aapt resource value: 0x7f07000b
 			public const int toolbar = 2131165195;

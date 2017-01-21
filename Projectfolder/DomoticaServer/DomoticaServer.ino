@@ -151,11 +151,10 @@ void loop()
    { 
       // You can have more than one IC on the same bus. 
       // 0 refers to the first IC on the wire    
-      checkEvent(switchPin, pinState);          // update pin state
-
+   
       sensors.requestTemperatures(); // Send the command to get temperatures
-      temperatureValue = sensors.getTempCByIndex(0); // update sensor value
-           
+      temperatureValue = sensors.getTempCByIndex(0); // Update TemperatureValue
+      photoResistorValue = analogRead(photoPin); // Update photoResistorValue         
    
       // Execute when byte is received.
       while (ethernetClient.available())
@@ -206,7 +205,6 @@ void executeCommand(char cmd)
             Serial.print("Sensor: "); Serial.println(buf);
             break;
          case 'b': // Report photoResistor value to app.
-            photoResistorValue = analogRead(photoPin);
             intToCharBuf(photoResistorValue, buf, 4);
             server.write(buf, 4);
             Serial.print("Sensor: "); Serial.println(buf);

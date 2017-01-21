@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:minWidth="25px"
-    android:minHeight="25px">
+    android:minHeight="25px"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:actionBarNavMode="tabs">
     <FrameLayout
         android:minWidth="25px"
         android:minHeight="25px"
@@ -17,13 +19,26 @@
             android:minHeight="25px"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/linearLayout1"
-            android:gravity="center">
-            <Button
-                android:text="Connect"
+            android:id="@+id/linearLayout1">
+            <TextView
+                android:text="HOME STUDENT"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/button1" />
+                android:id="@+id/textView1"
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                android:textSize="40dp"
+                android:paddingTop="75dp"
+                android:paddingBottom="75dp" />
+            <Button
+                android:text="Activate Home Student"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:backgroundTint="#40C4FF"
+                android:id="@+id/button1"
+                android:textColor="#FFFFFF"
+                android:gravity="center" />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -35,7 +50,8 @@
                 android:inputType="numberDecimal"
                 android:digits="0123456789."
                 android:layout_alignParentLeft="true"
-                android:gravity="center" />
+                android:gravity="center"
+                android:textColor="#FFFFFF" />
         </LinearLayout>
     </FrameLayout>
 </LinearLayout>

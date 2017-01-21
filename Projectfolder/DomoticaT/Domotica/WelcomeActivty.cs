@@ -24,10 +24,11 @@ namespace Domotica
 			base.OnCreate(savedInstanceState);
 			SetContentView(Resource.Layout.Welcome);
 
+			ActionBar.Hide();
+			// ActionBar.Title = "SCR Welcome";
 			connectButton = FindViewById<Button>(Resource.Id.button1);
 			editTextIp = FindViewById<EditText>(Resource.Id.editText1);
 			//ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
-
 
 			if (connectButton != null)
 			{

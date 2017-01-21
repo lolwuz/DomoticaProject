@@ -98,12 +98,14 @@ namespace Domotica
 					_sender = new Sender (socket);
 					_sender.StartSender ();
 
-					//Check if connection is active. 
+					//Check if connection is active.
+
 					while ((Thread.VolatileRead (ref _threadStarted) == 1) && socket.Connected) {
 						//Ask for pin status (from Arduino) update every second.
 						socket.Send (Encoding.ASCII.GetBytes ("s"));  // protocol: s: get status information
-						Thread.Sleep (1000);
+						Thread.Sleep (1000);				
 					}
+
 				}
 			} catch (Exception exception) {
 				error = exception.Message;
