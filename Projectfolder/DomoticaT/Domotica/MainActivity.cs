@@ -259,12 +259,12 @@ namespace Domotica
                 {
                     // UpdateTemp(ExecuteCommand(cmd), textViewSensorValue);
 
-					connector.SendMessage(cmd);
+					if (connector.CheckStarted()) connector.SendMessage(cmd); 
                 }
                 else if (cmd == "b")
                 {
-					connector.SendMessage(cmd);
-                }
+					if (connector.CheckStarted()) connector.SendMessage(cmd);
+				}
                 else
                 {
                     // socket.Send(Encoding.ASCII.GetBytes(cmd));
