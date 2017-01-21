@@ -58,14 +58,11 @@ namespace Domotica
     {
         // Variables (components/controls)
         // Controls on GUI
-        Button buttonConnect;
         Button buttonChangePinState;
         Button lightVerify;
-        ToggleButton button1, button2, button3;
-        TextView textViewServerConnect, textViewTimerStateValue;
+        CheckBox button1, button2, button3;
 		SeekBar seekBar, seekBarLight;
-        public TextView textViewChangePinStateValue, textViewSensorValue, textViewDebugValue, textViewPhotoValue, tempMinTextView, lightTextView;
-        EditText editTextIPAddress, editTextIPPort;
+		public TextView textViewChangePinStateValue, textViewSensorValue, textViewDebugValue, textViewPhotoValue, tempMinTextView, lightTextView;
         Timer timerClock, timerSockets;             // Timers   
         Socket socket = null;                       // Socket   
 		Connector connector = null;                 // Connector (simple-mode or threaded-mode.
@@ -79,40 +76,35 @@ namespace Domotica
         // Connection IP from the welcome screen.
         string connectIP;
 
-        bool isPhoto = false;
-
-
-
-        protected override void OnCreate(Bundle bundle)
+	    protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
             ActionBar.Title = "MOEDER APP";
+
+			ActionBar.SetDisplayHomeAsUpEnabled(true);
+			ActionBar.SetHomeButtonEnabled(true);
             //ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
             SetContentView(Resource.Layout.Main);
-
-            buttonConnect = FindViewById<Button>(Resource.Id.buttonConnect);
+			          
             buttonChangePinState = FindViewById<Button>(Resource.Id.buttonChangePinState);
-            button1 = FindViewById<ToggleButton>(Resource.Id.toggleButton1);
-            button2 = FindViewById<ToggleButton>(Resource.Id.toggleButton2);
-            button3 = FindViewById<ToggleButton>(Resource.Id.toggleButton3);
+			button1 = FindViewById<CheckBox>(Resource.Id.checkBox1);
+			button2 = FindViewById<CheckBox>(Resource.Id.checkBox2);
+            button3 = FindViewById<CheckBox>(Resource.Id.checkBox3);
             lightVerify = FindViewById<Button>(Resource.Id.button1);
-            textViewTimerStateValue = FindViewById<TextView>(Resource.Id.textViewTimerStateValue);
-            textViewServerConnect = FindViewById<TextView>(Resource.Id.textViewServerConnect);
-            textViewChangePinStateValue = FindViewById<TextView>(Resource.Id.textViewChangePinStateValue);
+            // textViewTimerStateValue = FindViewById<TextView>(Resource.Id.textViewTimerStateValue);
+              
             // Sensoren.
             textViewSensorValue = FindViewById<TextView>(Resource.Id.TextViewSensorValue);
             textViewPhotoValue = FindViewById<TextView>(Resource.Id.PhotoresistorValue);
-            // Connectboxes.
-            editTextIPAddress = FindViewById<EditText>(Resource.Id.editTextIPAddress);
-            editTextIPPort = FindViewById<EditText>(Resource.Id.editTextIPPort);
-
+           
+         
             seekBar = FindViewById<SeekBar>(Resource.Id.minTempSeekBar);
             seekBarLight = FindViewById<SeekBar>(Resource.Id.lightBar);
             tempMinTextView = FindViewById<TextView>(Resource.Id.minTempTextView);
             lightTextView = FindViewById<TextView>(Resource.Id.lightText);
 
-            UpdateConnectionState(4, "Disconnected");
+            //UpdateConnectionState(4, "Disconnected");
 
             // Init commandlist, scheduled by socket timer
             commandList.Add("a");
@@ -130,7 +122,7 @@ namespace Domotica
             {
                 RunOnUiThread(() =>
                 {
-                    textViewTimerStateValue.Text = DateTime.Now.ToString("h:mm:ss");
+                    // textViewTimerStateValue.Text = DateTime.Now.ToString("h:mm:ss");
                     if (stopVerify == false)
                     {
                         checkPhotoValue();
@@ -170,10 +162,10 @@ namespace Domotica
                 {
                     //Stop the thread If the Connector thread is already started.
                     if (connector.CheckStarted()) connector.StopConnector();
-                    connector.StartConnector(editTextIPAddress.Text, editTextIPPort.Text);
+                    // connector.StartConnector(editTextIPAddress.Text, editTextIPPort.Text);
                 }
             }
-            else UpdateConnectionState(3, "Please check IP");
+            //else UpdateConnectionState(3, "Please check IP");
 
             if (button1 != null)
             {
@@ -333,12 +325,13 @@ namespace Domotica
 						socket.Close();
 						socket = null;
 					}
-					UpdateConnectionState(3, result);
+					// UpdateConnectionState(3, result);
 				}
 			}
 			return result;			
         }
 
+		/*
         //Update connection state label (GUI).
         public void UpdateConnectionState(int state, string text)
         {
@@ -375,6 +368,7 @@ namespace Domotica
                 buttonChangePinState.Enabled = butPinEnabled;
             });
         }
+		*/
 
         //Update GUI based on Arduino response
         public void UpdateGUI(string photoresult, TextView phototextview)
@@ -402,14 +396,14 @@ namespace Domotica
             {
                 if (socket == null)                                       // create new socket
                 {
-                    UpdateConnectionState(1, "Connecting...");
+                    //UpdateConnectionState(1, "Connecting...");
                     try  // to connect to the server (Arduino).
                     {
                         socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                         socket.Connect(new IPEndPoint(IPAddress.Parse(ip), Convert.ToInt32(prt)));
                         if (socket.Connected)
                         {
-                            UpdateConnectionState(2, "Connected");
+                            //UpdateConnectionState(2, "Connected");
                             timerSockets.Enabled = true;                //Activate timer for communication with Arduino     
                         }
                     } catch (Exception exception) {
@@ -419,14 +413,14 @@ namespace Domotica
                             socket.Close();
                             socket = null;
                         }
-                        UpdateConnectionState(4, exception.Message);
+                        //UpdateConnectionState(4, exception.Message);
                     }
 	            }
                 else // disconnect socket
                 {
                     socket.Close(); socket = null;
                     timerSockets.Enabled = false;
-                    UpdateConnectionState(4, "Disconnected");
+                    //UpdateConnectionState(4, "Disconnected");
                 }
             });
         }
@@ -486,7 +480,9 @@ namespace Domotica
                         if (connector.CheckStarted()) connector.Abort();
                     }
                     return true;
-
+				case Android.Resource.Id.Home:
+					Finish();
+					return true;
             }
             return base.OnOptionsItemSelected(item);
         }
@@ -539,14 +535,14 @@ namespace Domotica
                 {           
                     commandList[4] = "2";             
                     button3.Checked = true;
-                    isPhoto = true;
+                   
                 }
             }
             else
             {
                 commandList[4] = "e";
                 button3.Checked = false;
-                isPhoto = false;
+              
             }
         }
     }

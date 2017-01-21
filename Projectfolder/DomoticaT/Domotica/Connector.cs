@@ -80,7 +80,7 @@ namespace Domotica
                 IPAddress ip = IPAddress.Parse(ipAddress);   // IPAddress ipAddress = IPAddress.Parse("192.168.1.105");
 				IPEndPoint ipEndPoint = new IPEndPoint (ip, Convert.ToInt32 (port));
 
-				mainActivity.UpdateConnectionState(1, "Connecting...");
+				// mainActivity.UpdateConnectionState(1, "Connecting...");
 
 				//Try to connect to the Arduino.
 				socket = new Socket (AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -88,7 +88,7 @@ namespace Domotica
 
 				//Check if connection is active -> if so, start receiver and sender
 				if (socket.Connected) {
-					mainActivity.UpdateConnectionState(2, "Connected");
+					// mainActivity.UpdateConnectionState(2, "Connected");
 
 					//Create Receiver instance.
 					_receiver = new Receiver (mainActivity, socket);
@@ -130,9 +130,9 @@ namespace Domotica
 			}
 
 			if (error != null) {
-				mainActivity.UpdateConnectionState(3, "Error: " + error + ".");
+				//mainActivity.UpdateConnectionState(3, "Error: " + error + ".");
 			} else {
-				mainActivity.UpdateConnectionState(4, "Disconnected.");              
+				//mainActivity.UpdateConnectionState(4, "Disconnected.");              
 			}
 			_connectorThread = null;
 		}
@@ -162,7 +162,7 @@ namespace Domotica
 				_connectorThread.Abort ();
 				_connectorThread = null;
 			}
-			mainActivity.UpdateConnectionState(4, "Disconnected.");              
+			//mainActivity.UpdateConnectionState(4, "Disconnected.");              
 		}
 	}
 }

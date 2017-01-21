@@ -1,7 +1,7 @@
-C:\Users\Sjoerd-laptop\Documents\GitHub\project\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Debug\android\assets\DomoticaT.dll
-C:\Users\Sjoerd-laptop\Documents\GitHub\project\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Debug\android\assets\Java.Interop.dll
-C:\Users\Sjoerd-laptop\Documents\GitHub\project\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Debug\android\assets\Mono.Android.dll
-C:\Users\Sjoerd-laptop\Documents\GitHub\project\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Debug\android\assets\mscorlib.dll
-C:\Users\Sjoerd-laptop\Documents\GitHub\project\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Debug\android\assets\System.Core.dll
-C:\Users\Sjoerd-laptop\Documents\GitHub\project\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Debug\android\assets\System.dll
-C:\Users\Sjoerd-laptop\Documents\GitHub\project\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Debug\android\assets\System.Runtime.Serialization.dll
+/Users/Marten/DomoticaProject/Projectfolder/DomoticaT/Domotica/obj/Debug/android/assets/DomoticaT.dll
+/Users/Marten/DomoticaProject/Projectfolder/DomoticaT/Domotica/obj/Debug/android/assets/Mono.Android.dll
+/Users/Marten/DomoticaProject/Projectfolder/DomoticaT/Domotica/obj/Debug/android/assets/mscorlib.dll
+/Users/Marten/DomoticaProject/Projectfolder/DomoticaT/Domotica/obj/Debug/android/assets/System.dll
+/Users/Marten/DomoticaProject/Projectfolder/DomoticaT/Domotica/obj/Debug/android/assets/System.Core.dll
+/Users/Marten/DomoticaProject/Projectfolder/DomoticaT/Domotica/obj/Debug/android/assets/Java.Interop.dll
+/Users/Marten/DomoticaProject/Projectfolder/DomoticaT/Domotica/obj/Debug/android/assets/System.Runtime.Serialization.dll
