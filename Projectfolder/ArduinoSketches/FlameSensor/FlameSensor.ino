@@ -33,12 +33,16 @@ void loop ()
     if (sensor < 100 && sensor > 0) {
     sound = 1000;
   }
-    
+
+  /*
   val = digitalRead (buttonpin) ;// de Val wilde ik nog even testen, dus het zou kunnen dat het niet werkt. Als het inderdaad niet werkt, verwijder de val dan uit de if statement.
   Serial.print(val);//
     if (sensor < 400 && val == LOW) // When the flame sensor detects a signal, LED flashes
   {
     tone(buzzer, sound, 200);
   }
+
+  */
   delay(1000);
+  
 }
