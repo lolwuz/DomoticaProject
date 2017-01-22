@@ -60,7 +60,7 @@ OneWire ds(TempPin);
 DallasTemperature sensors(&ds);
 
 EthernetServer server(ethPort);              // EthernetServer instance (listening on port <ethPort>).
-NewRemoteTransmitter transmitter(22708690, 2, 265, 3);  // APA3 (Gamma) remote, use pin <RFPin> 
+NewRemoteTransmitter transmitter(22708690, RFPin, 265, 3);  // APA3 (Gamma) remote, use pin <RFPin> 
 
 
 char actionDevice = 'A';                 // Variable to store Action Device id ('A', 'B', 'C')
@@ -74,7 +74,7 @@ bool switchArray[3] = {false, false, false};
 void setup()
 {
    
-   Serial.begin(250000);
+   Serial.begin(9600);
    Serial.println("Domotica project, Arduino Domotica Server\n");
    Serial.println("Dallas Temperature begin");
    sensors.begin();
@@ -201,7 +201,7 @@ void executeCommand(char cmd)
          switch (cmd) {
          case 'a': // Report temperature value to app.
             intToCharBuf(temperatureValue, buf, 4);                // convert to charbuffer
-            buf[0] = 'T';
+            buf[0] = 'T'; // The App can now recognize the temperature Value.
             server.write(buf, 4);                             // response is always 4 chars (\n included)
             Serial.print("Sensor: "); Serial.println(buf);
             break;
@@ -210,27 +210,28 @@ void executeCommand(char cmd)
             server.write(buf, 4);
             Serial.print("Sensor: "); Serial.println(buf);
             break;
-         case '0':
+            
+         case '0': // Switch 1 = On 
             switchArray[0] = true; 
             switchDefault(0);      
             break;
-         case '1':
+         case '1': // Switch 2 = On
             switchArray[1] = true;  
             switchDefault(1);
             break;
-         case '2':
+         case '2': // Switch 3 = On 
             switchArray[2] = true; 
             switchDefault(2);
             break;
-         case 'q':
+         case 'q': // Switch 1 = Off
             switchArray[0] = false; 
             switchDefault(0);         
             break;
-         case 'w':
+         case 'w': // Switch 2 = Off
             switchArray[1] = false;  
             switchDefault(1);
             break;
-         case 'e':
+         case 'e': // Switch 3 = Off
             switchArray[2] = false; 
             switchDefault(2);
             break;

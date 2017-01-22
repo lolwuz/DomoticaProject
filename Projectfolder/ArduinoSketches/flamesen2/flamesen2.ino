@@ -1,11 +1,10 @@
-/* Flame Sensor analog example.
-Code by Reichenstein7 (thejamerson.com)
 
-Flame Sensor Ordered from DX ( http://www.dx.com/p/arduino-flame-sensor-for-temperature-
-detection-blue-dc-3-3-5v-118075?tc=USD&gclid=CPX6sYCRrMACFZJr7AodewsA-Q#.U_n5jWOrjfU )
+#include <NewRemoteTransmitter.h>
+#define RFPin 2 // RF Pin for the RF-sender. 
 
-To test view the output, point a serial monitor such as Putty at your arduino. 
-*/
+NewRemoteTransmitter transmitter(22708692, RFPin, 265, 3); // Adress for Arduino server klik-aan-uit = 22608692
+                                                       
+
 
 // lowest and highest sensor readings:
 const int sensorMin = 0;     // sensor minimum
@@ -25,9 +24,11 @@ void loop() {
   // range value:
   switch (range) {
   case 0:    // A fire closer than 1.5 feet away.
+    transmitter.sendGroup(true);
     Serial.println("** Close Fire **");
     break;
   case 1:    // A fire between 1-3 feet away.
+    transmitter.sendGroup(true);
     Serial.println("** Distant Fire **");
     break;
   case 2:    // No fire detected.
