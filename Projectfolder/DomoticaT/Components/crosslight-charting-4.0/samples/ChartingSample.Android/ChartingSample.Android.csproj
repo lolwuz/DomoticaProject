@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4AAAE283-E062-4326-800F-AC5940C8490B}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ChartingSample.Android</RootNamespace>
+    <AssemblyName>ChartingSample.Android</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <AndroidApplication>true</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <TargetFrameworkVersion>v4.0.3</TargetFrameworkVersion>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <AndroidSupportedAbis>armeabi%3barmeabi-v7a%3bx86</AndroidSupportedAbis>
+    <MandroidI18n />
+    <JavaMaximumHeapSize>
+    </JavaMaximumHeapSize>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidLinkSkip>
+    </AndroidLinkSkip>
+    <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
+    <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
+    <MonoDroidExtraArgs>
+    </MonoDroidExtraArgs>
+    <AndroidStoreUncompressedFileExtensions>
+    </AndroidStoreUncompressedFileExtensions>
+    <JavaOptions>
+    </JavaOptions>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
+    <AndroidSupportedAbis>armeabi;armeabi-v7a;x86;arm64-v8a;x86_64</AndroidSupportedAbis>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Mono.Android" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Xamarin.Android.Support.v4">
+      <HintPath>..\..\lib\extras\Xamarin.Android.Support.v4.dll</HintPath>
+    </Reference>
+    <Reference Include="Intersoft.Crosslight">
+      <HintPath>..\..\lib\pcl\Intersoft.Crosslight.dll</HintPath>
+    </Reference>
+    <Reference Include="Intersoft.Crosslight.UI.DataVisualization">
+      <HintPath>..\..\lib\pcl\Intersoft.Crosslight.UI.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Intersoft.Crosslight.Android">
+      <HintPath>../../lib\/android/Intersoft.Crosslight.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Intersoft.Crosslight.UI.DataVisualization.Android">
+      <HintPath>../../lib\/android/Intersoft.Crosslight.UI.DataVisualization.Android.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Activities\Axis\AdditionalDateTimeFragmentGridLines.cs" />
+    <Compile Include="Activities\Axis\AdditionalNumericGridLinesFragment.cs" />
+    <Compile Include="Activities\Axis\AlternatingDependentGridLinesFragment.cs" />
+    <Compile Include="Activities\Axis\AlternatingIndependentGridLinesFragment.cs" />
+    <Compile Include="Activities\Axis\AxisAppearanceFragment.cs" />
+    <Compile Include="Activities\Axis\AxisPositionFragment.cs" />
+    <Compile Include="Activities\Axis\CategoryAxisFragment.cs" />
+    <Compile Include="Activities\Axis\DateTimeAxisDateFormatFragment.cs" />
+    <Compile Include="Activities\Axis\DateTimeAxisFragment.cs" />
+    <Compile Include="Activities\Axis\GridLinesStyleFragment.cs" />
+    <Compile Include="Activities\Axis\NumericAxisFragment.cs" />
+    <Compile Include="Activities\Axis\NumericAxisNumberFormatFragment.cs" />
+    <Compile Include="Activities\ChartViewSampleFragment.cs" />
+    <Compile Include="Activities\Customization\CustomPaletteFragment.cs" />
+    <Compile Include="Activities\Axis\DateTimeAxisConfigurationFragment.cs" />
+    <Compile Include="Activities\Axis\NumeriAxisConfigurationFragment.cs" />
+    <Compile Include="Activities\Customization\AreaFillStyleFragment.cs" />
+    <Compile Include="Activities\Customization\ColumnBarFillStyleFragment.cs" />
+    <Compile Include="Activities\Customization\InitialZoomFragment.cs" />
+    <Compile Include="Activities\Customization\PaletteOrderFragment.cs" />
+    <Compile Include="Activities\Customization\PaletteTypesFragment.cs" />
+    <Compile Include="Activities\Customization\ZoomConfigurationFragment.cs" />
+    <Compile Include="Activities\ReferenceSampleFragment.cs" />
+    <Compile Include="Activities\ReferenceSampleFragment2.cs" />
+    <Compile Include="Activities\Series\AreaFragment.cs" />
+    <Compile Include="Activities\Series\BarFragment.cs" />
+    <Compile Include="Activities\MultipleSeries\ColumnAndLineFragment.cs" />
+    <Compile Include="Activities\Series\ColumnFragment.cs" />
+    <Compile Include="Activities\Customization\LegendAppearanceFragment.cs" />
+    <Compile Include="Activities\Customization\TitlePositionFragment.cs" />
+    <Compile Include="Activities\Customization\LegendPositionFragment.cs" />
+    <Compile Include="Activities\Customization\TitleAppearanceFragment.cs" />
+    <Compile Include="Activities\Customization\DataPointStyleSelectorFragment.cs" />
+    <Compile Include="Activities\Series\DoughnutFragment.cs" />
+    <Compile Include="Activities\Series\LineFragment.cs" />
+    <Compile Include="Activities\MainDrawerActivity.cs" />
+    <Compile Include="Activities\NavigationListFragment.cs" />
+    <Compile Include="Activities\Series\PieFragment.cs" />
+    <Compile Include="Activities\Series\ScatterFragment.cs" />
+    <Compile Include="Activities\Series\SmoothAreaFragment.cs" />
+    <Compile Include="Activities\Series\SmoothLineFragment.cs" />
+    <Compile Include="Activities\Series\Stacked100AreaFragment.cs" />
+    <Compile Include="Activities\Series\Stacked100BarFragment.cs" />
+    <Compile Include="Activities\Series\Stacked100ColumnFragment.cs" />
+    <Compile Include="Activities\Series\Stacked100LineFragment.cs" />
+    <Compile Include="Activities\Series\StackedAreaFragment.cs" />
+    <Compile Include="Activities\Series\StackedBarFragment.cs" />
+    <Compile Include="Activities\Series\StackedColumnFragment.cs" />
+    <Compile Include="Activities\Series\StackedLineFragment.cs" />
+    <Compile Include="Activities\Series\StepAreaFragment.cs" />
+    <Compile Include="Activities\Series\StepLineFragment.cs" />
+    <Compile Include="Infrastructure\AppInitializer.cs" />
+    <Compile Include="Resources\Resource.Designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="LaunchActivity.cs" />
+    <Compile Include="Activities\Customization\DataAnnotationFragment.cs" />
+    <Compile Include="AndroidApp.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Assets\AboutAssets.txt" />
+    <None Include="Properties\AndroidManifest.xml" />
+    <AndroidResource Include="Resources\layout\MainLayout.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\values\Strings.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\values\Styles.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ReferenceSample.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ReferenceSample2.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\light_splash.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+     Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\menu.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChartingSample.Core\ChartingSample.Core.csproj">
+      <Project>{6AA74239-1A52-4F65-A5D9-7098B0DB5E87}</Project>
+      <Name>ChartingSample.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

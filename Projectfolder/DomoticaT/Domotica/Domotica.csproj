@@ -54,7 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sensors.cs" />
+    <Compile Include="SensorsActivity.cs" />
     <Compile Include="Connector.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Receiver.cs" />

@@ -201,6 +201,7 @@ void executeCommand(char cmd)
          switch (cmd) {
          case 'a': // Report temperature value to app.
             intToCharBuf(temperatureValue, buf, 4);                // convert to charbuffer
+            buf[0] = 'T';
             server.write(buf, 4);                             // response is always 4 chars (\n included)
             Serial.print("Sensor: "); Serial.println(buf);
             break;

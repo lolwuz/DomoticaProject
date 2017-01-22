@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<component format="1" id="crosslight-charting">
+  <name>Crosslight Charting</name>
+  <publisher>Intersoft Solutions Corp.</publisher>
+  <publisher-url>http://www.intersoftpt.com</publisher-url>
+  <version>4.0</version>
+  <summary>An enterprise mobile charting component for Crosslight.</summary>
+  <samples>
+    <sample id="ChartingSample.Core">
+      <name>Charting Sample Core</name>
+      <summary>Charting Sample Core</summary>
+    </sample>
+    <sample id="ChartingSample.iOS">
+      <name>iOS Charting Sample</name>
+      <summary>iOS Charting Sample</summary>
+    </sample>
+    <sample id="ChartingSample.Android">
+      <name>Android Charting Sample</name>
+      <summary>Android Charting Sample</summary>
+    </sample>
+  </samples>
+</component>

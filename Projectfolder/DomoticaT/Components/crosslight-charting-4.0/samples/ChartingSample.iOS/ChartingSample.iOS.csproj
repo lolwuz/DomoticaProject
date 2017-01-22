@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProjectGuid>{926AFDCF-8CF3-410A-8490-5B13668E0513}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ChartingSample.iOS</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkIdentifier>Xamarin.iOS</TargetFrameworkIdentifier>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchLink>None</MtouchLink>
+    <MtouchDebug>true</MtouchDebug>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchLink>None</MtouchLink>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+    <MtouchDebug>true</MtouchDebug>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchArch>ARMv7</MtouchArch>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <MtouchI18n>
+    </MtouchI18n>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\iPhone\Ad-Hoc</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+    <CodesignKey>iPhone Distribution</CodesignKey>
+    <BuildIpa>True</BuildIpa>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\iPhone\AppStore</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+    <CodesignKey>iPhone Distribution</CodesignKey>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyName>CrosslightAppiOS</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Infrastructure\AppInitializer.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <None Include="Info.plist" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewControllers\Axis\CategoryAxisViewController.cs" />
+    <Compile Include="ViewControllers\Axis\DateTimeAxisViewController.cs" />
+    <Compile Include="ViewControllers\Axis\NumericAxisViewController.cs" />
+    <Compile Include="ViewControllers\MainDrawerViewController.cs" />
+    <Compile Include="ViewControllers\NavigationViewController.cs" />
+    <Compile Include="ViewControllers\Series\AreaViewController.cs" />
+    <Compile Include="ViewControllers\Series\BarViewController.cs" />
+    <Compile Include="ViewControllers\Series\ColumnViewController.cs" />
+    <Compile Include="ViewControllers\Series\DoughnutViewController.cs" />
+    <Compile Include="ViewControllers\Series\LineViewController.cs" />
+    <Compile Include="ViewControllers\Series\PieViewController.cs" />
+    <Compile Include="ViewControllers\Series\ScatterViewController.cs" />
+    <Compile Include="ViewControllers\Series\SmoothAreaViewController.cs" />
+    <Compile Include="ViewControllers\Series\SmoothLineViewController.cs" />
+    <Compile Include="ViewControllers\Series\Stacked100AreaViewController.cs" />
+    <Compile Include="ViewControllers\Series\Stacked100BarViewController.cs" />
+    <Compile Include="ViewControllers\Series\Stacked100ColumnViewController.cs" />
+    <Compile Include="ViewControllers\Series\Stacked100LineViewController.cs" />
+    <Compile Include="ViewControllers\Series\StackedAreaViewController.cs" />
+    <Compile Include="ViewControllers\Series\StackedBarViewController.cs" />
+    <Compile Include="ViewControllers\Series\StackedColumnViewController.cs" />
+    <Compile Include="ViewControllers\Series\StackedLineViewController.cs" />
+    <Compile Include="ViewControllers\Series\StepAreaViewController.cs" />
+    <Compile Include="ViewControllers\Series\StepLineViewController.cs" />
+    <Compile Include="ViewControllers\Customization\DataPointStyleSelectorViewController.cs" />
+    <Compile Include="ViewControllers\Customization\LegendAppearanceViewController.cs" />
+    <Compile Include="ViewControllers\Customization\LegendPositionViewController.cs" />
+    <Compile Include="ViewControllers\Customization\TitleAppearanceViewController.cs" />
+    <Compile Include="ViewControllers\Customization\TitlePositionViewController.cs" />
+    <Compile Include="ViewControllers\Axis\AdditionalNumericGridLinesViewController.cs" />
+    <Compile Include="ViewControllers\Axis\AlternatingDependentGridLinesViewController.cs" />
+    <Compile Include="ViewControllers\Axis\AxisAppearanceViewController.cs" />
+    <Compile Include="ViewControllers\Axis\AxisPositionViewController.cs" />
+    <Compile Include="ViewControllers\Axis\DateTimeAxisConfigurationViewController.cs" />
+    <Compile Include="ViewControllers\Axis\NumericAxisConfigurationViewController.cs" />
+    <Compile Include="ViewControllers\MultipleSeries\ColumnAndLineViewController.cs" />
+    <Compile Include="ViewControllers\Customization\AreaFillStyleViewController.cs" />
+    <Compile Include="ViewControllers\Customization\ColumnBarFillStyleViewController.cs" />
+    <Compile Include="ViewControllers\Customization\CustomPaletteViewController.cs" />
+    <Compile Include="ViewControllers\Customization\DataAnnotationViewController.cs" />
+    <Compile Include="ViewControllers\Customization\PaletteOrderViewController.cs" />
+    <Compile Include="ViewControllers\Customization\PaletteTypesViewController.cs" />
+    <Compile Include="ViewControllers\Axis\DateTimeAxisDateFormatViewController.cs" />
+    <Compile Include="ViewControllers\Axis\NumericAxisNumberFormatViewController.cs" />
+    <Compile Include="ViewControllers\Axis\GridLinesStyleViewController.cs" />
+    <Compile Include="ViewControllers\Customization\InitialZoomViewController.cs" />
+    <Compile Include="ViewControllers\Customization\ZoomConfigurationViewController.cs" />
+    <Compile Include="ViewControllers\ReferenceSampleViewController.cs" />
+    <Compile Include="ViewControllers\ReferenceSample2ViewController.cs" />
+    <Compile Include="ViewControllers\ChartViewSampleController.cs" />
+    <Compile Include="ViewControllers\Axis\AdditionalDateTimeGridLinesViewController.cs" />
+    <Compile Include="ViewControllers\Axis\AlternatingIndependentGridLinesViewController.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Intersoft.Crosslight">
+      <HintPath>..\..\lib\pcl\Intersoft.Crosslight.dll</HintPath>
+    </Reference>
+    <Reference Include="Intersoft.Crosslight.UI.DataVisualization">
+      <HintPath>..\..\lib\pcl\Intersoft.Crosslight.UI.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="Intersoft.Crosslight.iOS">
+      <HintPath>../../lib\/ios-unified/Intersoft.Crosslight.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Intersoft.Crosslight.UI.DataVisualization.iOS">
+      <HintPath>../../lib\/ios-unified/Intersoft.Crosslight.UI.DataVisualization.iOS.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon.png" />
+    <BundleResource Include="Resources\Icon%402x.png" />
+    <BundleResource Include="Resources\Icon-72.png" />
+    <BundleResource Include="Resources\Icon-72%402x.png" />
+    <BundleResource Include="Resources\Icon-Small.png" />
+    <BundleResource Include="Resources\Icon-Small%402x.png" />
+    <BundleResource Include="Resources\Icon-Small-50.png" />
+    <BundleResource Include="Resources\Icon-Small-50%402x.png" />
+    <BundleResource Include="Resources\Default.png" />
+    <BundleResource Include="Resources\Default%402x.png" />
+    <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="Resources\Default-Portrait.png" />
+    <BundleResource Include="Resources\Default-Landscape.png" />
+    <BundleResource Include="Resources\Default-Portrait%402x.png" />
+    <BundleResource Include="Resources\Default-Landscape%402x.png" />
+    <BundleResource Include="Resources\bg%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ITunesArtwork Include="iTunesArtwork" />
+    <ITunesArtwork Include="iTunesArtwork%402x" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ChartingSample.Core\ChartingSample.Core.csproj">
+      <Project>{6AA74239-1A52-4F65-A5D9-7098B0DB5E87}</Project>
+      <Name>ChartingSample.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

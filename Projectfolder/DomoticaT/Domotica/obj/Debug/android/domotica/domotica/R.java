@@ -33,6 +33,7 @@ public final class R {
         public static final int menu_paste=0x7f070012;
         public static final int minTempSeekBar=0x7f070006;
         public static final int minTempTextView=0x7f070007;
+        public static final int settings=0x7f070015;
         public static final int textView1=0x7f07000e;
         public static final int toolbar=0x7f07000b;
     }
@@ -64,6 +65,7 @@ public final class R {
         public static final int pin_state_text=0x7f04000b;
         public static final int sensor_text=0x7f040010;
         public static final int sensor_value=0x7f040011;
+        public static final int settings=0x7f040019;
         public static final int tab1_text=0x7f040015;
         public static final int tab2_text=0x7f040016;
         public static final int tab2text=0x7f04000d;

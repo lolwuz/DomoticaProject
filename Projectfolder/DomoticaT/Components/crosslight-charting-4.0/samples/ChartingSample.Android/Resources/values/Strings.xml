@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="ApplicationName">UI.Android</string>
+  <string name="Update">Update</string>
+  <string name="Change">Change Data</string>
+  <string name="Add">Add Series</string>
+  <string name="Delete">Del Series</string>
+  <string name="Reset">Reset Series</string>
+</resources>

@@ -76,7 +76,7 @@ namespace Domotica
 
                     if (bytesRead == 4) { 
                         result = Encoding.ASCII.GetString(buffer, 0, bytesRead - 1); // remove \n
-						if (result[0] == '0')
+						if (result[0] == 'T')
 						{
 							mainActivity.UpdateTemp(result, mainActivity.textViewSensorValue);
 						}

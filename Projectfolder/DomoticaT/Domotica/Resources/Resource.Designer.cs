@@ -117,6 +117,9 @@ namespace Domotica
 			// aapt resource value: 0x7f070007
 			public const int minTempTextView = 2131165191;
 			
+			// aapt resource value: 0x7f070015
+			public const int settings = 2131165205;
+			
 			// aapt resource value: 0x7f07000e
 			public const int textView1 = 2131165198;
 			
@@ -230,6 +233,9 @@ namespace Domotica
 			
 			// aapt resource value: 0x7f040011
 			public const int sensor_value = 2130968593;
+			
+			// aapt resource value: 0x7f040019
+			public const int settings = 2130968601;
 			
 			// aapt resource value: 0x7f040015
 			public const int tab1_text = 2130968597;

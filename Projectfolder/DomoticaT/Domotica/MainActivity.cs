@@ -166,7 +166,7 @@ namespace Domotica
 			}
 			else
 			{
-				// Return back to Welcome screen. 
+				Finish();
 			}
 
 			if (button1 != null)
@@ -252,28 +252,23 @@ namespace Domotica
         public void ExecuteCommand()
         {
             if (socket == null)
-            {
-				
+            {				
                 string cmd = commandList[listIndex];
-                if (cmd == "a")
-                {
-                    // UpdateTemp(ExecuteCommand(cmd), textViewSensorValue);
+				if (cmd == "a")
+				{
 
-					if (connector.CheckStarted()) connector.SendMessage(cmd); 
-                }
-                else if (cmd == "b")
-                {
 					if (connector.CheckStarted()) connector.SendMessage(cmd);
 				}
-                else
-                {
-                    // socket.Send(Encoding.ASCII.GetBytes(cmd));
+				else if (cmd == "b")
+				{
 					if (connector.CheckStarted()) connector.SendMessage(cmd);
-                }
-                if (++listIndex >= commandList.Count) listIndex = 0;
-
-
-
+				}
+				else
+				{
+					// socket.Send(Encoding.ASCII.GetBytes(cmd));
+					if (connector.CheckStarted()) connector.SendMessage(cmd);
+				}
+				if (++listIndex >= commandList.Count) listIndex = 0;
             }        
         }
         //Send command to server and wait for response (blocking)
@@ -424,6 +419,10 @@ namespace Domotica
                         if (connector.CheckStarted()) connector.Abort();
                     }
 					return true;
+				case Resource.Id.settings:
+					Intent settingsIntent = new Intent(this, typeof(SensorsActivity));
+					StartActivity(settingsIntent);
+					return true;
 				case Android.Resource.Id.Home:
 					Finish();
 					return true;
@@ -463,7 +462,7 @@ namespace Domotica
 
         private void checkPhotoValue()
         {
-            /*int et = (int)Convert.ToDouble(textViewPhotoValue.Text);
+            int et = (int)Convert.ToDouble(textViewPhotoValue.Text);
             try
             {
                 et = int.Parse(textViewPhotoValue.Text);
@@ -488,7 +487,7 @@ namespace Domotica
                 button3.Checked = false;
               
             }
-            */
+            
         }
     }
 }

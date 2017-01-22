@@ -12,8 +12,8 @@ using Android.Widget;
 
 namespace Domotica
 {
-    [Activity(Label = "Sensors")]
-    public class Sensors : Activity
+    [Activity(Label = "SensorsActivity")]
+    public class SensorsActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -21,8 +21,7 @@ namespace Domotica
 
             SetContentView(Resource.Layout.Sensor);
 
-            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
-            SetActionBar(toolbar);
+           
             ActionBar.Title = "Sensors";
             ActionBar.SetDisplayHomeAsUpEnabled(true);
             ActionBar.SetHomeButtonEnabled(true);

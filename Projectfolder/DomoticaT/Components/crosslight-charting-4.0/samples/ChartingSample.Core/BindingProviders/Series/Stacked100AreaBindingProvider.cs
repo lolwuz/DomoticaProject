@@ -1,0 +1,18 @@
+﻿using Intersoft.Crosslight;
+using Intersoft.Crosslight.UI.DataVisualization;
+
+namespace ChartingSample
+{
+    public class Stacked100AreaBindingProvider : BindingProvider
+    {
+        #region Constructors
+
+        public Stacked100AreaBindingProvider()
+        {
+            this.AddBinding("ActionPresenterButton", BindableProperties.CommandProperty, "ShowPresenterCommand");
+            this.AddBinding("ChartView", ChartProperties.ChartProperty, new BindingDescription("Chart", BindingMode.TwoWay, UpdateSourceTrigger.PropertyChanged));
+        }
+
+        #endregion
+    }
+}
