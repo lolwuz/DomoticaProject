@@ -62,8 +62,9 @@ namespace Domotica
         Button lightVerify;
         CheckBox button1, button2, button3;
 		SeekBar seekBar, seekBarLight;
-		public TextView textViewChangePinStateValue, textViewSensorValue, textViewDebugValue, textViewPhotoValue, tempMinTextView, lightTextView;
-        Timer timerClock, timerSockets;             // Timers   
+		public TextView textViewChangePinStateValue, textViewSensorValue, textViewDebugValue,
+		textViewPhotoValue, tempMinTextView, lightTextView, textViewStartTime, textViewEndTime, textViewPresentTime;
+        Timer timerClock, timerSockets;             // Timers  
         Socket socket = null;                       // Socket   
 		Connector connector = null;                 // Connector (simple-mode or threaded-mode.
 		// CommandList Variables.
@@ -75,6 +76,8 @@ namespace Domotica
         bool stopVerify = false;
         // Connection IP from the welcome screen.
         string connectIP;
+		string startTime;
+		string endTime;
 
 	    protected override void OnCreate(Bundle bundle)
         {
@@ -92,8 +95,13 @@ namespace Domotica
 			button2 = FindViewById<CheckBox>(Resource.Id.checkBox2);
             button3 = FindViewById<CheckBox>(Resource.Id.checkBox3);
             lightVerify = FindViewById<Button>(Resource.Id.button1);
-            // textViewTimerStateValue = FindViewById<TextView>(Resource.Id.textViewTimerStateValue);
-              
+
+			// TimeViews
+			textViewStartTime = FindViewById<TextView>(Resource.Id.textViewStartTime);
+			textViewPresentTime = FindViewById<TextView>(Resource.Id.textViewPresentTime);
+			textViewEndTime = FindViewById<TextView>(Resource.Id.textViewEndTime);
+
+            
             // Sensoren.
             textViewSensorValue = FindViewById<TextView>(Resource.Id.TextViewSensorValue);
             textViewPhotoValue = FindViewById<TextView>(Resource.Id.PhotoresistorValue);
@@ -113,8 +121,13 @@ namespace Domotica
             commandList.Add("1");
             commandList.Add("2");
 
-            // Get the connect IP from the welcome screen.
-            connectIP = Intent.GetStringExtra("MyConnectData") ?? "0.0.0.0";
+			// Get the connect IP from the welcome screen.
+			connectIP = "192.168.0.99";
+
+			//connectIP = Intent.GetStringExtra("MyConnectData") ?? "0.0.0.0";
+
+			endTime = Intent.GetStringExtra("start") ?? "0000";
+			startTime = Intent.GetStringExtra("end") ?? "0000";
 
             // timer object, running clock
             timerClock = new System.Timers.Timer() { Interval = 1000, Enabled = true }; // Interval >= 1000
@@ -123,7 +136,11 @@ namespace Domotica
                 RunOnUiThread(() =>
                 {
 					ExecuteCommand();
-                    // textViewTimerStateValue.Text = DateTime.Now.ToString("h:mm:ss");
+
+					textViewStartTime.Text = startTime;
+					textViewPresentTime.Text = DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString(); 
+					textViewEndTime.Text = endTime;
+
                     if (stopVerify == false)
                     {
                         checkPhotoValue();
@@ -421,7 +438,7 @@ namespace Domotica
 					return true;
 				case Resource.Id.settings:
 					Intent settingsIntent = new Intent(this, typeof(SensorsActivity));
-					StartActivity(settingsIntent);
+					StartActivityForResult(settingsIntent, 1);
 					return true;
 				case Android.Resource.Id.Home:
 					Finish();
