@@ -47,7 +47,7 @@ int ethPort = 3300;                                  // Take a free port (check 
 
 #define photoPin     A0 // Photoresistor pin. 
 
-#define RFPin        2  // output, pin to control the RF-sender (and Click-On Click-Off-device)
+#define RFPin        4  // output, pin to control the RF-sender (and Click-On Click-Off-device)
 #define TempPin      3  // Temp pin onewire
 #define lowPin       5  // output, always LOW
 #define highPin      6  // output, always HIGH
@@ -73,7 +73,6 @@ bool switchArray[3] = {false, false, false};
 
 void setup()
 {
-   
    Serial.begin(9600);
    Serial.println("Domotica project, Arduino Domotica Server\n");
    Serial.println("Dallas Temperature begin");
@@ -123,7 +122,7 @@ void setup()
    Serial.print("  [Testcase: telnet "); Serial.print(Ethernet.localIP()); Serial.print(" "); Serial.print(ethPort); Serial.println("]");
    signalNumber(ledPin, IPnr);
 
-   // NewRemoteReceiver::init(0, 4, showCode);
+   NewRemoteReceiver::init(2, 2, showCode);
 }
 
 void loop()
@@ -329,5 +328,13 @@ int getIPComputerNumberOffset(IPAddress address, int offset)
 {
     return getIPComputerNumber(address) - offset;
 }
+
+void showCode(NewRemoteCode receivedCode) {
+  if (receivedCode.unit == 7) {
+    Server.Write("SOS\n");
+  }
+}
+
+
 
 
