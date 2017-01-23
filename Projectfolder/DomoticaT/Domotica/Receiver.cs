@@ -82,11 +82,11 @@ namespace Domotica
 						}
 						else if (result == "SOS")
 						{
-							mainActivity.button1.Text = "Someone is walking the stairs...";
+							mainActivity.UpdateButton("Someone is walking the stairs..." , mainActivity.button1);
 						}
 						else if (result == "KOK")
 						{
-							mainActivity.button2.Text = "Cooking in progress...";
+							mainActivity.UpdateButton("Cooking in progress...", mainActivity.button2);
 						}
 						else
 						{

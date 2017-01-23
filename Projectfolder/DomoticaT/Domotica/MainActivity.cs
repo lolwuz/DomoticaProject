@@ -354,6 +354,14 @@ namespace Domotica
             });
         }
 
+		public void UpdateButton(string text, CheckBox check)
+		{
+			RunOnUiThread(() =>
+			{
+				check.Text = text;
+			});
+		}
+
 		public void UpdateTemp(string tempResult, TextView textview) 
 		{ 
 			RunOnUiThread(() =>
