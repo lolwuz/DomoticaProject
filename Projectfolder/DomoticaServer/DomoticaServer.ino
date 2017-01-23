@@ -55,6 +55,7 @@ int ethPort = 3300;                                  // Take a free port (check 
 #define ledPin       8  // output, led used for "connect state": blinking = searching; continuously = connected
 #define infoPin      9  // output, more information
 #define analogPin    1  // sensor value
+#define buzzer       6 
 
 OneWire ds(TempPin);
 DallasTemperature sensors(&ds);
@@ -85,6 +86,7 @@ void setup()
    pinMode(RFPin, OUTPUT);
    pinMode(ledPin, OUTPUT);
    pinMode(infoPin, OUTPUT);
+   pinMode(buzzer, OUTPUT);
  
    
    //Default states
@@ -94,6 +96,7 @@ void setup()
    digitalWrite(RFPin, HIGH);
    digitalWrite(ledPin, LOW);
    digitalWrite(infoPin, LOW);
+   digitalWrite(buzzer, LOW);
   
 
 
@@ -332,6 +335,13 @@ int getIPComputerNumberOffset(IPAddress address, int offset)
 void showCode(NewRemoteCode receivedCode) {
   if (receivedCode.unit == 7) {
     server.write("SOS\n");
+    Serial.print("SOS");
+    tone(buzzer, 2000, 1000);
+  }
+  if (receivedCode.unit == 8) {
+    server.write("KOK\n"); 
+    Serial.print("KOK");
+    tone(buzzer, 800, 1000);
   }
 }
 
