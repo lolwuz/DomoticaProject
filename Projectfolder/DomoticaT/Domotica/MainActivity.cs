@@ -60,7 +60,7 @@ namespace Domotica
         // Controls on GUI
         Button buttonChangePinState;
         Button lightVerify;
-        CheckBox button1, button2, button3;
+        public CheckBox button1, button2, button3;
 		SeekBar seekBar, seekBarLight;
 		public TextView textViewChangePinStateValue, textViewSensorValue, textViewDebugValue,
 		textViewPhotoValue, tempMinTextView, lightTextView, textViewStartTime, textViewEndTime, textViewPresentTime;
@@ -74,6 +74,7 @@ namespace Domotica
         float light = 0;
         float photoValue = -1;
         bool stopVerify = false;
+		bool isGaming = false;
         // Connection IP from the welcome screen.
         string connectIP;
 		string startTime;
@@ -126,8 +127,8 @@ namespace Domotica
 
 			//connectIP = Intent.GetStringExtra("MyConnectData") ?? "0.0.0.0";
 
-			endTime = Intent.GetStringExtra("start") ?? "0000";
-			startTime = Intent.GetStringExtra("end") ?? "0000";
+			endTime = Intent.GetStringExtra("start") ?? "00:00";
+			startTime = Intent.GetStringExtra("end") ?? "00:00";
 
             // timer object, running clock
             timerClock = new System.Timers.Timer() { Interval = 1000, Enabled = true }; // Interval >= 1000
@@ -138,7 +139,7 @@ namespace Domotica
 					ExecuteCommand();
 
 					textViewStartTime.Text = startTime;
-					textViewPresentTime.Text = DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString(); 
+					textViewPresentTime.Text = DateTime.Now.ToString("HH:mm:ss"); 
 					textViewEndTime.Text = endTime;
 
                     if (stopVerify == false)
@@ -261,7 +262,26 @@ namespace Domotica
             {
                 buttonChangePinState.Click += (sender, e) =>
                 {
-                    stopVerify = true;
+					isGaming = !isGaming;
+
+					if (isGaming)
+					{
+						button1.Checked = true;
+						button2.Checked = true;
+
+						buttonChangePinState.Text = "Gaming Mode - Active";
+						button1.Text = "Mother EDS (Early Detection System)";
+						button2.Text = "Cooking Sensor";
+					}
+					else 
+					{
+						button1.Checked = false;
+						button2.Checked = false;
+
+						buttonChangePinState.Text = "Gaming Mode - Disabled";
+						button1.Text = "Mother EDS (Early Detection System)";
+						button2.Text = "Cooking Sensor";
+					}
                 };
             }
         }
@@ -477,34 +497,32 @@ namespace Domotica
             } else return false;
         }
 
-        private void checkPhotoValue()
-        {
-            int et = (int)Convert.ToDouble(textViewPhotoValue.Text);
-            try
-            {
-                et = int.Parse(textViewPhotoValue.Text);
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Could not convert.");
-            }
+		private void checkPhotoValue()
+		{
+			int et = (int)Convert.ToDouble(textViewPhotoValue.Text);
+			try
+			{
+				et = int.Parse(textViewPhotoValue.Text);
+			}
+			catch (Exception)
+			{
+				Console.WriteLine("Could not convert.");
+			}
 
-            if (et >= photoValue)
-            {
-                if (connector == null)
-                {           
-                    commandList[4] = "2";             
-                    button3.Checked = true;
-                   
-                }
-            }
-            else
-            {
-                commandList[4] = "e";
-                button3.Checked = false;
-              
-            }
-            
-        }
+			if (et >= photoValue)
+			{
+				if (connector == null)
+				{
+					commandList[4] = "2";
+					button3.Checked = true;
+
+				}
+			}
+			else
+			{
+				commandList[4] = "e";
+				button3.Checked = false;
+			}
+		}
     }
 }

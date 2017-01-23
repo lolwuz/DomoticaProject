@@ -42,8 +42,8 @@ namespace Domotica
 			{
 				setTimeStartButton.Click += (sender, e) =>
 				{
-					startTime = Convert.ToString(timePicker1.Hour) + ":" + Convert.ToString(timePicker1.Minute);
-					textViewStart.Text = Convert.ToString(timePicker1.Hour) + ":" + Convert.ToString(timePicker1.Minute);
+					startTime = convertPicker();
+					textViewStart.Text = convertPicker();
 				};
 			}
 
@@ -51,10 +51,8 @@ namespace Domotica
 			{
 				setTimeEndButton.Click += (sender, e) =>
 				{
-
-
-					endTime = Convert.ToString(timePicker1.Hour) + ":" + Convert.ToString(timePicker1.Minute);
-					textViewEnd.Text = Convert.ToString(timePicker1.Hour) + ":" + Convert.ToString(timePicker1.Minute);
+					endTime = convertPicker();
+					textViewEnd.Text = convertPicker();
 				};
 			}
 
@@ -63,6 +61,33 @@ namespace Domotica
          
             // Create your application here
         }
+
+		public string convertPicker()
+		{
+			String formattedTime = "";
+			int hour = timePicker1.Hour;
+			String sHour = "00";
+			if (hour < 10)
+			{
+				sHour = "0" + hour;
+			}
+			else {
+				sHour = Convert.ToString(hour);
+			}
+
+			int minute = timePicker1.Minute;
+			String sMinute = "00";
+			if (minute < 10)
+			{
+				sMinute = "0" + minute;
+			}
+			else {
+				sMinute = Convert.ToString(minute);
+			}
+			formattedTime = sHour + ":" + sMinute;
+
+			return formattedTime;
+		}
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
