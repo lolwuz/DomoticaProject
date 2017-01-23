@@ -122,7 +122,7 @@ void setup()
    Serial.print("  [Testcase: telnet "); Serial.print(Ethernet.localIP()); Serial.print(" "); Serial.print(ethPort); Serial.println("]");
    signalNumber(ledPin, IPnr);
 
-   NewRemoteReceiver::init(2, 2, showCode);
+   NewRemoteReceiver::init(0, 2, showCode);
 }
 
 void loop()
@@ -331,7 +331,7 @@ int getIPComputerNumberOffset(IPAddress address, int offset)
 
 void showCode(NewRemoteCode receivedCode) {
   if (receivedCode.unit == 7) {
-    Server.Write("SOS\n");
+    server.write("SOS\n");
   }
 }
 
