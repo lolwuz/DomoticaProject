@@ -18,9 +18,13 @@ namespace Domotica
 		TimePicker timePicker1;
 		Button setTimeStartButton, setTimeEndButton;
 		TextView textViewStart, textViewEnd;
+		TextView endTimeView, startTimeView;
 
 		string startTime;
 		string endTime;
+
+		string startTimeInt;
+		string endTimeInt;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -36,6 +40,9 @@ namespace Domotica
 			textViewStart = FindViewById<TextView>(Resource.Id.textViewStart);
 			textViewEnd = FindViewById<TextView>(Resource.Id.textViewEnd);
 
+			endTimeView = FindViewById<TextView>(Resource.Id.textViewEnd);
+			startTimeView = FindViewById<TextView>(Resource.Id.textViewStart);
+
 			timePicker1.SetIs24HourView(Java.Lang.Boolean.True);
 
 			if (setTimeStartButton != null)
@@ -43,6 +50,7 @@ namespace Domotica
 				setTimeStartButton.Click += (sender, e) =>
 				{
 					startTime = convertPicker();
+					startTimeInt = Convert.ToString(timePicker1.Hour) + Convert.ToString(timePicker1.Minute);
 					textViewStart.Text = convertPicker();
 				};
 			}
@@ -52,16 +60,15 @@ namespace Domotica
 				setTimeEndButton.Click += (sender, e) =>
 				{
 					endTime = convertPicker();
+					endTimeInt = Convert.ToString(timePicker1.Hour) + Convert.ToString(timePicker1.Minute);
 					textViewEnd.Text = convertPicker();
 				};
 			}
 
 			//textViewTimerStateValue.Text = DateTime.Now.ToString("h:mm:ss");
-
-         
-            // Create your application here
         }
 
+		// Convert Ours en minute to a readable string. 
 		public string convertPicker()
 		{
 			String formattedTime = "";
@@ -93,11 +100,14 @@ namespace Domotica
         {
 			if (item.ItemId == Android.Resource.Id.Home)
 			{
-				Intent mainIntent = new Intent(this, typeof(MainActivity));
+				var mainIntent = new Intent(this, typeof(MainActivity));
+
 				mainIntent.PutExtra("start", startTime);
+				mainIntent.PutExtra("startInt", startTimeInt);
 				mainIntent.PutExtra("end", endTime);
-				StartActivityForResult(mainIntent, 1);
-				Finish();
+				mainIntent.PutExtra("startInt", endTimeInt);
+
+				StartActivity(mainIntent);
 			}
             return base.OnOptionsItemSelected(item);
         }

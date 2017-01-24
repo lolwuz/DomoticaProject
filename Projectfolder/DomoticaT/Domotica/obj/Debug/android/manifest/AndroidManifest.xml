@@ -3,7 +3,7 @@
   <!--suppress UsesMinSdkAttributes-->
   <uses-sdk android:minSdkVersion="11" />
   <uses-permission android:name="android.permission.INTERNET" />
-  <application android:label="Domotica" android:icon="@drawable/icon" android:theme="@style/MyTheme" android:name="android.app.Application" android:allowBackup="true" android:debuggable="true">
+  <application android:icon="@drawable/icon" android:theme="@style/MyTheme" android:label="MAM" android:name="android.app.Application" android:allowBackup="true" android:debuggable="true">
     <activity android:label="SensorsActivity" android:name="md59a029c5e3fbbf5ca706745f408ebe991.SensorsActivity" />
     <activity android:icon="@drawable/icon" android:label="@string/application_name" android:screenOrientation="portrait" android:name="md59a029c5e3fbbf5ca706745f408ebe991.MainActivity" />
     <activity android:icon="@drawable/icon" android:label="@string/application_name" android:screenOrientation="portrait" android:name="md59a029c5e3fbbf5ca706745f408ebe991.WelcomeActivty">
