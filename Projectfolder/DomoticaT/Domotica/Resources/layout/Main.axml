@@ -84,20 +84,20 @@
         android:gravity="center" />
     <SeekBar
         android:layout_width="match_parent"
-        android:layout_height="25.0dp"
+        android:layout_height="30.0dp"
         android:id="@+id/minTempSeekBar" />
     <TextView
-        android:text="Small Text"
+        android:text="TempValue"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/minTempTextView" />
     <SeekBar
         android:layout_width="match_parent"
-        android:layout_height="25.0dp"
+        android:layout_height="30.0dp"
         android:id="@+id/lightBar" />
     <TextView
-        android:text="Text"
+        android:text="PhotoValue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/lightText" />

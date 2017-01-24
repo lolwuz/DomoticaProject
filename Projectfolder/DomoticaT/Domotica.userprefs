@@ -1,6 +1,6 @@
 ﻿<Properties StartupConfiguration="{B5D86C21-4528-44A2-B9BB-8EEBC01BEA6A}|Default">
   <MonoDevelop.Ide.ItemProperties.Domotica AndroidDesignerPreferredDevice="Nexus 5" PreferredExecutionTarget="Android.00d91e4621b11f4e" AndroidDesignerPreferredTheme="MyTheme" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Domotica/WelcomeActivty.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Domotica/MainActivity.cs">
     <Files>
       <File FileName="Domotica/MainActivity.cs" Line="218" Column="22" />
       <File FileName="Domotica/Resources/menu/menu.xml" Line="1" Column="1" />
@@ -9,8 +9,10 @@
       <File FileName="Domotica/Receiver.cs" Line="92" Column="1" />
       <File FileName="Domotica/Connector.cs" Line="145" Column="1" />
       <File FileName="Domotica/Assets/AboutAssets.txt" Line="12" Column="3" />
-      <File FileName="Domotica/Properties/AndroidManifest.xml" Line="1" Column="1" />
+      <File FileName="Domotica/Properties/AndroidManifest.xml" Line="4" Column="29" />
       <File FileName="Domotica/WelcomeActivty.cs" Line="39" Column="34" />
+      <File FileName="Domotica/Properties/AssemblyInfo.cs" Line="1" Column="1" />
+      <File FileName="Domotica/Resources/values/Strings.xml" Line="3" Column="34" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />

@@ -283,43 +283,7 @@ namespace Domotica
 				if (++listIndex >= commandList.Count) listIndex = 0;
             }        
         }
-        //Send command to server and wait for response (blocking)
-        //Method should only be called when so cket existst
-        public string ExecuteCommand(string cmd)
-        {
-			byte[] buffer = new byte[4]; // response is always 4 bytes
-			int bytesRead = 0;
-			string result = "---";
-
-			if (socket != null)
-			{
-				//Send command to server
-				socket.Send(Encoding.ASCII.GetBytes(cmd));
-
-				try //Get response from server
-				{
-					//Store received bytes (always 4 bytes, ends with \n)
-					bytesRead = socket.Receive(buffer);  // If no data is available for reading, the Receive method will block until data is available,
-														 //Read available bytes.              // socket.Available gets the amount of data that has been received from the network and is available to be read
-					while (socket.Available > 0) bytesRead = socket.Receive(buffer);
-					if (bytesRead == 4)
-						result = Encoding.ASCII.GetString(buffer, 0, bytesRead - 1); // skip \n
-					else result = "err";
-				}
-				catch (Exception exception)
-				{
-					result = exception.ToString();
-					if (socket != null)
-					{
-						socket.Close();
-						socket = null;
-					}
-					// UpdateConnectionState(3, result);
-				}
-			}
-			return result;			
-        }
-
+     
         //Update GUI based on Arduino response
         public void UpdateGUI(string photoresult, TextView phototextview)
         {
