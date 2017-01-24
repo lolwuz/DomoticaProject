@@ -80,6 +80,14 @@ namespace Domotica
 						{
 							mainActivity.UpdateTemp(result, mainActivity.textViewSensorValue);
 						}
+						else if (result == "SOS")
+						{
+							mainActivity.UpdateButton("Someone is walking the stairs..." , mainActivity.button1);
+						}
+						else if (result == "KOK")
+						{
+							mainActivity.UpdateButton("Cooking in progress...", mainActivity.button2);
+						}
 						else
 						{
 							mainActivity.UpdateGUI(result, mainActivity.textViewPhotoValue);

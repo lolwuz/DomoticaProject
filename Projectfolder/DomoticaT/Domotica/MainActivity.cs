@@ -33,6 +33,9 @@
 // S. Oosterhaven
 // W. Dalof (voor de basis van het Threaded interface)
 //
+// Groep 2 MAM - App.
+// Koen Lukkien, Simon Rijpstra, Sybren Politiek, Sjoerd Politiek, Jorrit Heida en Marten Hoekstra
+// 21/1/2016 - Finale Versie Technische assesment.
 using System;
 using System.Text;
 using System.Net;
@@ -59,46 +62,52 @@ namespace Domotica
         // Variables (components/controls)
         // Controls on GUI
         Button buttonChangePinState;
-        Button lightVerify;
-        CheckBox button1, button2, button3;
+        public CheckBox button1, button2, button3;
 		SeekBar seekBar, seekBarLight;
-		public TextView textViewChangePinStateValue, textViewSensorValue, textViewDebugValue, textViewPhotoValue, tempMinTextView, lightTextView;
-        Timer timerClock, timerSockets;             // Timers   
+		public TextView textViewChangePinStateValue, textViewSensorValue, textViewDebugValue,
+		textViewPhotoValue, tempMinTextView, lightTextView, textViewStartTime, textViewEndTime, textViewPresentTime;
+        Timer timerClock, timerSockets;             // Timers  
         Socket socket = null;                       // Socket   
 		Connector connector = null;                 // Connector (simple-mode or threaded-mode.
 		// CommandList Variables.
         List<string> commandList = new List<string>();  // List for commands and response places on UI
 		int listIndex = 0;
 		float minTemp = 0;
-        float light = 0;
         float photoValue = -1;
-        bool stopVerify = false;
+		bool isGaming = false;
+		bool isGamingNow = false;
         // Connection IP from the welcome screen.
         string connectIP;
+		string startTime;
+		string endTime;
+		string startTimeInt;
+		string endTimeInt;
 
 	    protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
             ActionBar.Title = "Student Room Control";
 			ActionBar.SetDisplayHomeAsUpEnabled(true);
-			ActionBar.SetHomeButtonEnabled(true);
+			ActionBar.SetHomeButtonEnabled(true); // Enable the back button in the ActionBar.
 
-			connector = new Connector(this);
-            //ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
-            SetContentView(Resource.Layout.Main);
-			          
+			connector = new Connector(this); // Activate the Sender and Reciever codes.
+			//ActionBar.NavigationMode = ActionBarNavigationMode.Tabs; // Obsulete (should not be used).
+			SetContentView(Resource.Layout.Main);          
             buttonChangePinState = FindViewById<Button>(Resource.Id.buttonChangePinState);
 			button1 = FindViewById<CheckBox>(Resource.Id.checkBox1);
 			button2 = FindViewById<CheckBox>(Resource.Id.checkBox2);
             button3 = FindViewById<CheckBox>(Resource.Id.checkBox3);
-            lightVerify = FindViewById<Button>(Resource.Id.button1);
-            // textViewTimerStateValue = FindViewById<TextView>(Resource.Id.textViewTimerStateValue);
-              
-            // Sensoren.
+   
+			// TimeViews
+			textViewStartTime = FindViewById<TextView>(Resource.Id.textViewStartTime);
+			textViewPresentTime = FindViewById<TextView>(Resource.Id.textViewPresentTime);
+			textViewEndTime = FindViewById<TextView>(Resource.Id.textViewEndTime);
+			       
+            // Sensor view.
             textViewSensorValue = FindViewById<TextView>(Resource.Id.TextViewSensorValue);
             textViewPhotoValue = FindViewById<TextView>(Resource.Id.PhotoresistorValue);
-           
-         
+      		
+			// Set dynamic values for switching the lights. 
             seekBar = FindViewById<SeekBar>(Resource.Id.minTempSeekBar);
             seekBarLight = FindViewById<SeekBar>(Resource.Id.lightBar);
             tempMinTextView = FindViewById<TextView>(Resource.Id.minTempTextView);
@@ -107,27 +116,40 @@ namespace Domotica
             //UpdateConnectionState(4, "Disconnected");
 
             // Init commandlist, scheduled by socket timer
-            commandList.Add("a");
-            commandList.Add("b");
-            commandList.Add("0");
-            commandList.Add("1");
-            commandList.Add("2");
+            commandList.Add("a"); // Temperature value
+            commandList.Add("b"); // PhotoSensor value.
+            commandList.Add("q"); // Switch 1
+            commandList.Add("w"); // Switch 2
+            commandList.Add("e"); // Switch 3
 
-            // Get the connect IP from the welcome screen.
-            connectIP = Intent.GetStringExtra("MyConnectData") ?? "0.0.0.0";
+			// Get the connect IP from the welcome screen. If IP differs from the default IP, user input is used.
+			connectIP = "192.168.1.14"; // Obi Wlan Kenobi static IP for arduino. :-) 
+			//string connectIPDiffert = Intent.GetStringExtra("MyConnectData") ?? "0.0.0.0";
+			//if (connectIPDiffert != "192.168.1.3") 
+			//{
+			//	connectIP = connectIPDiffert;
+			//}
 
-            // timer object, running clock
+			// Get values from the Settings window. 
+			endTime = Intent.GetStringExtra("start") ?? "00:00"; // Display Values
+			startTime = Intent.GetStringExtra("end") ?? "00:00";
+			endTimeInt = Intent.GetStringExtra("endInt") ?? "0000"; // Value to convert with Int.Parse()
+			startTimeInt = Intent.GetStringExtra("startInt") ?? "0000"; 
+			                                
+            // timer object, running clock. 
             timerClock = new System.Timers.Timer() { Interval = 1000, Enabled = true }; // Interval >= 1000
             timerClock.Elapsed += (obj, args) =>
             {
+				
                 RunOnUiThread(() =>
                 {
 					ExecuteCommand();
-                    // textViewTimerStateValue.Text = DateTime.Now.ToString("h:mm:ss");
-                    if (stopVerify == false)
-                    {
-                        checkPhotoValue();
-                    }
+					checkGamingMode();
+					textViewStartTime.Text = endTime;
+					textViewPresentTime.Text = DateTime.Now.ToString("HH:mm:ss"); 
+					textViewEndTime.Text = startTime;
+
+					checkPhotoValue();	
                 });
             };
 
@@ -225,26 +247,16 @@ namespace Domotica
             {
                 if (e.FromUser)
                 {
-                    light = 0 + (e.Progress * 10.24f);
-                    lightTextView.Text = string.Format("Minimum lichtgevoeligheid is gezet op {0}.", light);
+                    photoValue = 0 + (e.Progress * 10.24f);
+                    lightTextView.Text = string.Format("The light will switch at {0}.", photoValue);
                 }
             };
 
-
-            if (lightVerify != null)
-            {
-                lightVerify.Click += (sender, e) =>
-                {
-                    photoValue = light;
-                    stopVerify = false;
-
-                };
-            }
             if (buttonChangePinState != null)
             {
                 buttonChangePinState.Click += (sender, e) =>
                 {
-                    stopVerify = true;
+					isGamingNow = !isGamingNow;
                 };
             }
         }
@@ -271,43 +283,7 @@ namespace Domotica
 				if (++listIndex >= commandList.Count) listIndex = 0;
             }        
         }
-        //Send command to server and wait for response (blocking)
-        //Method should only be called when so cket existst
-        public string ExecuteCommand(string cmd)
-        {
-			byte[] buffer = new byte[4]; // response is always 4 bytes
-			int bytesRead = 0;
-			string result = "---";
-
-			if (socket != null)
-			{
-				//Send command to server
-				socket.Send(Encoding.ASCII.GetBytes(cmd));
-
-				try //Get response from server
-				{
-					//Store received bytes (always 4 bytes, ends with \n)
-					bytesRead = socket.Receive(buffer);  // If no data is available for reading, the Receive method will block until data is available,
-														 //Read available bytes.              // socket.Available gets the amount of data that has been received from the network and is available to be read
-					while (socket.Available > 0) bytesRead = socket.Receive(buffer);
-					if (bytesRead == 4)
-						result = Encoding.ASCII.GetString(buffer, 0, bytesRead - 1); // skip \n
-					else result = "err";
-				}
-				catch (Exception exception)
-				{
-					result = exception.ToString();
-					if (socket != null)
-					{
-						socket.Close();
-						socket = null;
-					}
-					// UpdateConnectionState(3, result);
-				}
-			}
-			return result;			
-        }
-
+     
         //Update GUI based on Arduino response
         public void UpdateGUI(string photoresult, TextView phototextview)
         {
@@ -316,6 +292,14 @@ namespace Domotica
 				phototextview.Text = photoresult;
             });
         }
+
+		public void UpdateButton(string text, CheckBox check)
+		{
+			RunOnUiThread(() =>
+			{
+				check.Text = text;
+			});
+		}
 
 		public void UpdateTemp(string tempResult, TextView textview) 
 		{ 
@@ -345,7 +329,7 @@ namespace Domotica
                             //UpdateConnectionState(2, "Connected");
                             timerSockets.Enabled = true;                //Activate timer for communication with Arduino     
                         }
-                    } catch (Exception exception) {
+                    } catch (Exception) {
                         timerSockets.Enabled = false;
                         if (socket != null)
                         {
@@ -460,34 +444,81 @@ namespace Domotica
             } else return false;
         }
 
-        private void checkPhotoValue()
-        {
-            int et = (int)Convert.ToDouble(textViewPhotoValue.Text);
-            try
-            {
-                et = int.Parse(textViewPhotoValue.Text);
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Could not convert.");
-            }
+		private void checkPhotoValue()
+		{
+			int et = (int)Convert.ToDouble(textViewPhotoValue.Text);
+			try
+			{
+				et = int.Parse(textViewPhotoValue.Text);
+			}
+			catch (Exception)
+			{
+				Console.WriteLine("Could not convert.");
+			}
 
-            if (et >= photoValue)
-            {
-                if (connector == null)
-                {           
-                    commandList[4] = "2";             
-                    button3.Checked = true;
-                   
-                }
-            }
-            else
-            {
-                commandList[4] = "e";
-                button3.Checked = false;
-              
-            }
-            
-        }
+			if (photoValue < et)
+			{
+				commandList[4] = "2";
+				button3.Checked = true;			
+			}
+			else
+			{
+				commandList[4] = "e";
+				button3.Checked = false;
+			}
+		}
+
+		private void checkGamingMode()
+		{
+			int start = 0;
+			int present = 0;
+			int end = 0;
+
+			try
+			{
+				string nowTimeInt = Convert.ToString(DateTime.Now.Hour) + Convert.ToString(DateTime.Now.Minute);
+				start = int.Parse(endTimeInt);
+				present = int.Parse(nowTimeInt);
+				end = int.Parse(startTimeInt);
+			}
+			catch (Exception)
+			{
+				Console.WriteLine("Could not convert.");
+			}
+
+			if (present > start && present < end)
+			{
+				isGaming = true;
+			}
+			else 
+			{
+				isGaming = false;
+			}
+
+			if (isGaming || isGamingNow)
+			{
+				button1.Checked = true;
+				button2.Checked = true;
+
+				commandList[2] = "0";
+				commandList[3] = "1";
+		
+				buttonChangePinState.Text = "Gaming Mode - Active";
+				button1.Text = "Mother EDS (Early Detection System)";
+				button2.Text = "Cooking Sensor";
+			}
+			else
+			{
+				button1.Checked = false;
+				button2.Checked = false;
+			
+				commandList[2] = "q";
+				commandList[3] = "w";
+
+				buttonChangePinState.Text = "Gaming Mode - Disabled";
+				button1.Text = "Mother EDS (Early Detection System)";
+				button2.Text = "Cooking Sensor";
+			}
+		}
     }
 }
