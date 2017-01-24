@@ -24,11 +24,11 @@ void loop() {
   // range value:
   switch (range) {
   case 0:    // A fire closer than 1.5 feet away.
-    transmitter.sendGroup(true);
+    transmitter.sendUnit(8);
     Serial.println("** Close Fire **");
     break;
   case 1:    // A fire between 1-3 feet away.
-    transmitter.sendGroup(true);
+    transmitter.sendUnit(8);
     Serial.println("** Distant Fire **");
     break;
   case 2:    // No fire detected.
