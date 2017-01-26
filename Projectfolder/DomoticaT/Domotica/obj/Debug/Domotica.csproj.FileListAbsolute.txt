@@ -139,12 +139,9 @@ C:\Users\Sjoerd-laptop\Documents\GitHub\DomoticaProject\Projectfolder\DomoticaT\
 C:\Users\Sjoerd-laptop\Documents\GitHub\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Debug\DomoticaT.dll.mdb
 C:\Users\Sjoerd-laptop\Documents\GitHub\project\DomoticaProject\Projectfolder\DomoticaT\Domotica\bin\Debug\DomoticaT.dll
 C:\Users\Sjoerd-laptop\Documents\GitHub\project\DomoticaProject\Projectfolder\DomoticaT\Domotica\bin\Debug\DomoticaT.pdb
-C:\Users\Sjoerd-laptop\Documents\GitHub\project\DomoticaProject\Projectfolder\DomoticaT\Domotica\bin\Debug\Domotica.Domotica.apk
-C:\Users\Sjoerd-laptop\Documents\GitHub\project\DomoticaProject\Projectfolder\DomoticaT\Domotica\bin\Debug\Domotica.Domotica-Signed.apk
 C:\Users\Sjoerd-laptop\Documents\GitHub\project\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Debug\Domotica.csprojResolveAssemblyReference.cache
 C:\Users\Sjoerd-laptop\Documents\GitHub\project\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Debug\DomoticaT.dll
 C:\Users\Sjoerd-laptop\Documents\GitHub\project\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Debug\DomoticaT.pdb
-C:\Users\Sjoerd-laptop\Documents\GitHub\project\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Debug\android\bin\Domotica.Domotica.apk
 C:\Users\Sjoerd-laptop\Documents\GitHub\project\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Debug\res\layout\sensor.xml
 C:\Users\Sjoerd-laptop\Documents\GitHub\project\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Debug\res\layout\welcome.xml
 C:\Users\Sjoerd-laptop\Documents\GitHub\project\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Debug\res\layout\main.xml
@@ -175,5 +172,8 @@ C:\Users\Sjoerd-laptop\Documents\GitHub\project\DomoticaProject\Projectfolder\Do
 C:\Users\Sjoerd-laptop\Documents\GitHub\project\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Debug\android\assets\System.Core.dll.mdb
 C:\Users\Sjoerd-laptop\Documents\GitHub\project\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Debug\android\assets\System.dll.mdb
 C:\Users\Sjoerd-laptop\Documents\GitHub\project\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Debug\android\assets\System.Runtime.Serialization.dll.mdb
+C:\Users\Sjoerd-laptop\Documents\GitHub\project\DomoticaProject\Projectfolder\DomoticaT\Domotica\bin\Debug\MAM.DOMOTICA.apk
+C:\Users\Sjoerd-laptop\Documents\GitHub\project\DomoticaProject\Projectfolder\DomoticaT\Domotica\bin\Debug\MAM.DOMOTICA-Signed.apk
+C:\Users\Sjoerd-laptop\Documents\GitHub\project\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Debug\android\bin\MAM.DOMOTICA.apk
 C:\Users\Sjoerd-laptop\Documents\GitHub\project\DomoticaProject\Projectfolder\DomoticaT\Domotica\obj\Debug\DomoticaT.dll.mdb
 C:\Users\Sjoerd-laptop\Documents\GitHub\project\DomoticaProject\Projectfolder\DomoticaT\Domotica\bin\Debug\DomoticaT.dll.mdb

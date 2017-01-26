@@ -123,12 +123,12 @@ namespace Domotica
             commandList.Add("e"); // Switch 3
 
 			// Get the connect IP from the welcome screen. If IP differs from the default IP, user input is used.
-			connectIP = "192.168.1.14"; // Obi Wlan Kenobi static IP for arduino. :-) 
-			//string connectIPDiffert = Intent.GetStringExtra("MyConnectData") ?? "0.0.0.0";
-			//if (connectIPDiffert != "192.168.1.3") 
-			//{
-			//	connectIP = connectIPDiffert;
-			//}
+			connectIP = "192.168.0.99"; // Obi Wlan Kenobi static IP for arduino. :-) 
+		    string connectIPDiffert = Intent.GetStringExtra("MyConnectData") ?? "0.0.0.0";
+			if (connectIPDiffert != "192.168.1.3") 
+			{
+				connectIP = connectIPDiffert;
+			}
 
 			// Get values from the Settings window. 
 			endTime = Intent.GetStringExtra("start") ?? "00:00"; // Display Values
