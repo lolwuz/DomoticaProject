@@ -17,23 +17,26 @@ void setup() {
 void loop() {
   // read the sensor on analog A0:
 	int sensorReading = analogRead(A0);
+  Serial.print(sensorReading);
   // map the sensor range (four options):
   // ex: 'long int map(long int, long int, long int, long int, long int)'
 	int range = map(sensorReading, sensorMin, sensorMax, 0, 3);
-  
+  Serial.print(range);
   // range value:
   switch (range) {
   case 0:    // A fire closer than 1.5 feet away.
     transmitter.sendUnit(8, true);
     Serial.println("** Close Fire **");
+    delay(10000);
     break;
   case 1:    // A fire between 1-3 feet away.
     transmitter.sendUnit(8, true);
     Serial.println("** Distant Fire **");
+    delay(10000);
     break;
   case 2:    // No fire detected.
     Serial.println("No Fire");
     break;
   }
-  delay(1);  // delay between reads
+  delay(100);  // delay between reads
 }
